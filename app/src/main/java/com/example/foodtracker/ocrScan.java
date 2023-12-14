@@ -53,8 +53,8 @@ public class ocrScan extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityOcrScanBinding binding;
 
-    ProductController controller = new ProductController();
-    Product newProduct = new Product(null, null, null, null,null);
+
+
     private Button saveIngredientsButton;
     String ingredients;
     //UI views
@@ -92,7 +92,7 @@ public class ocrScan extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-
+        saveIngredientsButton = findViewById(R.id.saveIngredients);
         inputImageBtn = findViewById(R.id.inputImageBtn);
         recognizeTextBtn = findViewById(R.id.recognizeTextBtn);
         imageIv = findViewById(R.id.imageIv);
@@ -107,10 +107,11 @@ public class ocrScan extends AppCompatActivity {
 
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
 
+
         saveIngredientsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.addIngredient(newProduct,ingredients);
+                launchNextPage(v);
             }
         });
 
@@ -133,6 +134,11 @@ public class ocrScan extends AppCompatActivity {
             }
 
         });
+    }
+    public void launchNextPage(View v){
+        Intent intent = new Intent(this, addProduct.class);
+        intent.putExtra("Ingredients", ingredients);
+        startActivity(intent);
     }
 
     @Override
