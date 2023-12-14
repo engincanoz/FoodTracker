@@ -32,7 +32,7 @@
             android:exported="false"
             android:label="@string/title_activity_add_product" />
         <activity
-            android:name=".ui.dietDisplay"
+            android:name=".dietDisplay"
             android:exported="false"
             android:label="@string/title_activity_diet_display" />
         <activity
