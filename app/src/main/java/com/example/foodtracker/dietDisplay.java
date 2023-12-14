@@ -1,4 +1,4 @@
-package com.example.foodtracker.ui;
+package com.example.foodtracker;
 
 import android.os.Bundle;
 

@@ -1,33 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        android:background="@drawable/round_drawable"
+        android:backgroundTint="#514CAF50"
+        android:text="Prepare my DIet!"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <fragment
-        android:id="@+id/nav_host_fragment_activity_diet_help"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation4" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_201"
+                android:clickable="false"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+
+                    tools:layout_editor_absoluteX="1dp">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Diet Help"
+                        android:textSize="23dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="43dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/img_arrowleft" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="108dp">
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="91dp"
+                    android:layout_height="107dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.09"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/img_frame8" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="263dp"
+                    android:layout_height="102dp"
+                    android:text="What kind of diet you want?"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.786"
+                    app:layout_constraintStart_toEndOf="@+id/imageView9"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textViewgpt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="34dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Maintenance Calorie Calculator"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="376dp"
+                android:layout_height="217dp"
+                android:layout_gravity="center"
+                android:background="@color/gray_300">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="358dp"
+                    android:layout_height="121dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+                    <RadioGroup
+                        android:id="@+id/radiogroupLIFESTYLE"
+                        android:layout_width="320dp"
+
+                        android:layout_height="113dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="335dp"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/radioButton6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Very Active"
+                                android:textSize="12dp"
+                                app:layout_constraintBottom_toTopOf="@+id/radioButton5"
+                                app:layout_constraintEnd_toEndOf="@+id/radioButton3"
+                                app:layout_constraintHorizontal_bias="0.068"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton3"
+                                android:layout_width="155dp"
+                                android:layout_height="29dp"
+                                android:text="Sedentary"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:layout_editor_absoluteY="6dp" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton4"
+                                android:layout_width="154dp"
+                                android:layout_height="31dp"
+                                android:text="Lightly Active"
+                                android:textSize="12dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.088"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:layout_editor_absoluteY="66dp" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton7"
+                                android:layout_width="122dp"
+                                android:layout_height="31dp"
+                                android:text="Super Active"
+                                android:textSize="12dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.845"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:layout_editor_absoluteY="35dp" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton5"
+                                android:layout_width="138dp"
+                                android:layout_height="33dp"
+                                android:text="Moderately Active"
+                                android:textSize="12dp"
+                                app:layout_constraintBottom_toTopOf="@+id/radioButton4"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.081"
+                                app:layout_constraintStart_toStartOf="parent" />
+
+                            <EditText
+                                android:id="@+id/kgInput"
+                                android:layout_width="126dp"
+                                android:layout_height="42dp"
+                                android:text="Your kg:"
+                                android:textSize="15dp"
+                                tools:layout_editor_absoluteX="180dp"
+                                tools:layout_editor_absoluteY="64dp" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </RadioGroup>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choose your lifestyle:"
+                    android:textAlignment="center"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radiogroupGENDER"
+                    app:layout_constraintVertical_bias="0.063" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="221dp"
+                    android:layout_height="29dp"
+                    android:text="Choose your gender:"
+                    android:textAlignment="center"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioGroup
+                    android:id="@+id/radiogroupGENDER"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+                    <RadioButton
+                        android:id="@+id/radioButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Female"
+                        android:textSize="13dp" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton2"
+                        android:layout_width="103dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="44dp"
+                        android:layout_weight="1"
+                        android:text="Male"
+                        android:textSize="13dp" />
+                </RadioGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="145dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="34dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Diet Planner"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="159dp">
+
+                <Button
+                    android:id="@+id/KetogenicDiet"
+                    android:layout_width="276dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/round_drawable"
+                    android:backgroundTint="#27216EF3"
+                    android:text="KetogenIc DIet"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ProteinDiet" />
+
+                <Button
+                    android:id="@+id/ProteinDiet"
+                    android:layout_width="276dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/round_drawable"
+                    android:backgroundTint="#2DFF5722"
+                    android:fontFamily="@font/poppins"
+                    android:text="ProteIn Based DIet"
+                    android:textColor="#000000"
+                    android:textColorHint="@color/black"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="1dp" />
+
+                <Button
+                    android:id="@+id/WeightlossDiet"
+                    android:layout_width="276dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/round_drawable"
+                    android:backgroundTint="#3121F3D3"
+                    android:text="WeIght Loss DIet"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.503"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/KetogenicDiet" />
+
+                <Button
+                    android:id="@+id/WeightGainDiet"
+                    android:layout_width="276dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/round_drawable"
+                    android:backgroundTint="#0C21F387"
+                    android:text="WeIght GaIn DIet"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/WeightlossDiet" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
