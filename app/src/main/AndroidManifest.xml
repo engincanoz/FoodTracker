@@ -13,6 +13,41 @@
         android:theme="@style/Theme.FoodTracker"
         tools:targetApi="31">
         <activity
+            android:name=".ocrScan"
+            android:exported="false"
+            android:label="@string/title_activity_ocr_scan"
+            android:theme="@style/Theme.FoodTracker" />
+        <activity
+            android:name=".addProduct"
+            android:exported="false"
+            android:label="@string/title_activity_add_product" />
+        <activity
+            android:name=".ui.dietDisplay"
+            android:exported="false"
+            android:label="@string/title_activity_diet_display" />
+        <activity
+            android:name=".dietHelp"
+            android:exported="false"
+            android:label="@string/title_activity_diet_help" />
+        <activity
+            android:name=".product"
+            android:exported="false"
+            android:label="@string/title_activity_product" />
+        <activity
+            android:name=".expiredProducts"
+            android:exported="false"
+            android:label="@string/title_activity_expired_products" />
+        <activity
+            android:name=".myProducts"
+            android:exported="false"
+            android:label="@string/title_activity_my_products" />
+        <activity
+            android:name=".login"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.FoodTracker.Fullscreen" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
