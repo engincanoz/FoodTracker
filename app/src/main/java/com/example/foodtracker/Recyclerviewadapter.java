@@ -20,7 +20,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
 
     public Recyclerviewadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.recyclerviewrow,parent,false);
+        View view = inflater.inflate(R.layout.activity_recylerviewrow,parent,false);
         return new Recyclerviewadapter.MyViewHolder(view);
     }
 
