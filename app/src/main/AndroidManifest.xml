@@ -30,7 +30,7 @@
             android:exported="false"
             android:label="@string/title_activity_diet_help" />
         <activity
-            android:name=".product"
+            android:name=".productx"
             android:exported="false"
             android:label="@string/title_activity_product" />
         <activity

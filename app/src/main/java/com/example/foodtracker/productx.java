@@ -12,7 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.foodtracker.databinding.ActivityProductBinding;
 
-public class product extends AppCompatActivity {
+public class productx extends AppCompatActivity {
 
     private ActivityProductBinding binding;
 

@@ -24,7 +24,7 @@ public class login extends AppCompatActivity {
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
-    private static final boolean AUTO_HIDE = true;
+        private static final boolean AUTO_HIDE = true;
 
     /**
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
@@ -112,8 +112,8 @@ public class login extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mVisible = true;
-        mControlsView = binding.fullscreenContentControls;
-        mContentView = binding.fullscreenContent;
+        //mControlsView = binding.fullscreenContentControls;
+        //mContentView = binding.fullscreenContent;
 
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +126,7 @@ public class login extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
+        //binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override

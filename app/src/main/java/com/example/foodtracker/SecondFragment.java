@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.foodtracker.databinding.FragmentSecondBinding;
 
-public class SecondFragment extends Fragment {
+public class    SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
 
