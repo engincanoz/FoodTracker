@@ -13,6 +13,16 @@
         android:theme="@style/Theme.FoodTracker"
         tools:targetApi="31">
         <activity
+            android:name=".recylerviewrow"
+            android:exported="false"
+            android:label="@string/title_activity_recylerviewrow"
+            android:theme="@style/Theme.FoodTracker" />
+        <activity
+            android:name=".recyclerview"
+            android:exported="false"
+            android:label="@string/title_activity_recyclerview"
+            android:theme="@style/Theme.FoodTracker" />
+        <activity
             android:name=".ocrScan"
             android:exported="false"
             android:label="@string/title_activity_ocr_scan"
