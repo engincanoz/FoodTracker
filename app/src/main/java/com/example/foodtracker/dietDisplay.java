@@ -25,14 +25,6 @@ public class dietDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
-        generateArea = findViewById(R.id.textGenerated);
-        generateArea.setText("PLEASE WAIT, YOUR PLAN IS BEING GENERATED...");
-
-        String promptText = intent.getStringExtra("PROMPT");
-        new GPTAsyncTask().execute(apiKey, promptText);
-
-        Log.d("GPTactivity", "Received prompt: " + promptText);
         //   binding = ActivityDietDisplayBinding.inflate(getLayoutInflater());
 //         setContentView(binding.getRoot());
 
@@ -45,6 +37,16 @@ public class dietDisplay extends AppCompatActivity {
 //         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_diet_display);
 //         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //         NavigationUI.setupWithNavController(binding.navView, navController);
+        
+        Intent intent = getIntent();
+        generateArea = findViewById(R.id.textGenerated);
+        generateArea.setText("PLEASE WAIT, YOUR PLAN IS BEING GENERATED...");
+
+        String promptText = intent.getStringExtra("PROMPT");
+        new GPTAsyncTask().execute(apiKey, promptText);
+
+        Log.d("GPTactivity", "Received prompt: " + promptText);
+
     }
     private class GPTAsyncTask extends AsyncTask<String, Void, String> {
         @Override
