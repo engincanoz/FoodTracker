@@ -11,23 +11,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FoodTracker"
+
         tools:targetApi="31">
         <activity
             android:name=".recylerviewrow"
             android:exported="false"
             android:label="@string/title_activity_recylerviewrow"
-            android:theme="@style/Theme.FoodTracker" />
+             />
         <activity
             android:name=".recyclerview"
             android:exported="false"
             android:label="@string/title_activity_recyclerview"
-            android:theme="@style/Theme.FoodTracker" />
+           />
         <activity
             android:name=".ocrScan"
             android:exported="false"
             android:label="@string/title_activity_ocr_scan"
-            android:theme="@style/Theme.FoodTracker" />
+           />
         <activity
             android:name=".addProduct"
             android:exported="false"
@@ -57,7 +57,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.FoodTracker.Fullscreen" />
+             />
         <activity
             android:name=".MainActivity"
             android:exported="true">
