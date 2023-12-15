@@ -37,8 +37,7 @@ public class UserController {
         }
 
     }
-    public User fillPersonalData(String name, String surname, int age, double weight, double height,
-                                                              String gender, String dailyActivityLevel, String allergens, String unwantedIngredients) {
+    public User fillPersonalData(String name, String surname, String allergens, String unwantedIngredients) {
 
         User newUser = new User(name, surname, allergens, unwantedIngredients);
 
@@ -46,7 +45,7 @@ public class UserController {
 
         return newUser;
     }
-    public void removeAllerge(User user, String allergen) {
+    public void removeAllergens(User user, String allergen) {
 
         if (user != null && user.getAllergens() != null && !user.getAllergens().isEmpty()) {
             String[] existingAllergens = user.getAllergens().split(", ");

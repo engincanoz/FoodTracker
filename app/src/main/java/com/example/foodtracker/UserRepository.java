@@ -1,5 +1,11 @@
 package com.example.foodtracker;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,53 +13,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserRepository {
+public class UserRepository extends SQLiteOpenHelper {
 
-    public void createDatabase() {
+    private Context context;
+    public static final String DATABASE_NAME = "foodTracker.db";
+    private static final int DATABASE_VERSION = 1;
 
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
-            // Create User table
-            String createUserTableQuery = "CREATE TABLE IF NOT EXISTS User (" +
-                    "  User_ID INTEGER," +
-                    "  Name TEXT NOT NULL," +
-                    "  Surname TEXT NOT NULL," +
-                    "  Age INTEGER NOT NULL," +
-                    "  Weight NUMERIC NOT NULL," +
-                    "  Height NUMERIC NOT NULL," +
-                    "  Gender TEXT NOT NULL," +
-                    "  Daily_Activity_Level TEXT NOT NULL," +
-                    "  Allergens TEXT," +
-                    "  Unwanted_Ingredients TEXT" +
-                    ")";
-            try (PreparedStatement userTableStatement = connection.prepareStatement(createUserTableQuery)) {
-                userTableStatement.executeUpdate();
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public UserRepository(Context context) {
+        super(context,DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
+    public void insertOrUpdateUserData(User user) {
 
-    public User insertOrUpdateUserData(User user) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
-            String insertOrUpdateDataQuery = "INSERT OR REPLACE INTO User " +
-                    "(User_ID, Name, Surname, Age, Weight, Height, Gender, Daily_Activity_Level, " +
-                    "Allergens, Unwanted_Ingredients) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(insertOrUpdateDataQuery)) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues cv = new ContentValues();
 
-                statement.setInt(1, 1);
-                statement.setString(2, user.getName());
-                statement.setString(3, user.getSurName());
+            cv.put("User_ID", 1);
+            cv.put("Name", user.getName());
+            cv.put("Surname", user.getSurName());
+            cv.put("Allergens", user.getAllergens());
+            cv.put("Unwanted_Ingredients", user.getUnwantedIngredients());
 
-                statement.setString(9, user.getAllergens());
-                statement.setString(10, user.getUnwantedIngredients());
-                statement.executeUpdate();
+            long result = db.insert("User", null, cv);
+            if( result == -1) {
+                Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return user;
     }
 
     public User retrieveUserInfo() {
@@ -77,5 +63,23 @@ public class UserRepository {
         }
 
         return user;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String createUserTableQuery = "CREATE TABLE IF NOT EXISTS User (" +
+                "  User_ID INTEGER," +
+                "  Name TEXT," +
+                "  Surname TEXT," +
+                "  Allergens TEXT," +
+                "  Unwanted_Ingredients TEXT" +
+                ")";
+        db.execSQL(createUserTableQuery);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXİSTS " + "User");
+        onCreate(db);
     }
 }

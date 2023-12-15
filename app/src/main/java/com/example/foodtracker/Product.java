@@ -9,18 +9,18 @@ import java.util.ArrayList;
 public class Product implements Parcelable {
     private String name;
     private Date expirationDate;
-    private String photo;
+
     private Date purchaseDate;
     private ArrayList<String> ingredients;
     private static int productID = 0;
     private static final int userID = 1;
 
-    public Product(String name, Date expirationDate, String photo, Date purchaseDate,
+    public Product(String name, Date expirationDate, Date purchaseDate,
                    ArrayList<String> ingredients) {
         this.name = name;
         this.expirationDate = expirationDate;
         this.ingredients = ingredients;
-        this.photo = photo;
+
         this.purchaseDate = purchaseDate;
         productID++;
     }
@@ -28,7 +28,7 @@ public class Product implements Parcelable {
     protected Product(Parcel in) {
         name = in.readString();
         expirationDate = (Date) in.readSerializable();
-        photo = in.readString();
+
         purchaseDate = (Date) in.readSerializable();
         ingredients = in.createStringArrayList();
         productID = in.readInt();
@@ -55,7 +55,6 @@ public class Product implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeSerializable(expirationDate);
-        dest.writeString(photo);
         dest.writeSerializable(purchaseDate);
         dest.writeStringList(ingredients);
         dest.writeInt(productID);
@@ -73,9 +72,6 @@ public class Product implements Parcelable {
         return name;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
 
     public static int getProductID() {
         return productID;
@@ -99,10 +95,6 @@ public class Product implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public static void setProductID(int productID) {

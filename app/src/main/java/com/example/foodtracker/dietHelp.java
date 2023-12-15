@@ -1,4 +1,11 @@
 package com.example.foodtracker;
+import android.Manifest;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,7 +24,20 @@ import android.widget.Toast;
 
 
 
-public class dietHelp extends AppCompatActivity {
+public class    dietHelp extends AppCompatActivity {
+    ProductController controller = new ProductController();
+    Product newProduct = new Product(null, null, null, null,null);
+    private Button saveIngredientsButton;
+    String ingredients;
+    //UI views
+    private MaterialButton inputImageBtn;
+    private MaterialButton recognizeTextBtn;
+    private ShapeableImageView imageIv;
+    private EditText recognizedTextEt;
+    private static final    String TAG = "MAIN_TAG";
+    private Uri imageUri = null;
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int STORAGE_REQUEST_CODE = 101;
 
     String promptText = "";
     String gender;

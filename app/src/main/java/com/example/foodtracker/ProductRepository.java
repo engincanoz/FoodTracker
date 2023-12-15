@@ -35,7 +35,6 @@ public class ProductRepository {
                     "User_ID INTEGER REFERENCES User(User_ID)," +
                     "Name TEXT NOT NULL," +
                     "Expiration_Date TEXT NOT NULL," +
-                    "Photo TEXT," +
                     "Purchase_Date TEXT NOT NULL," +
                     "Ingredients TEXT NOT NULL" +
                     ")";
@@ -56,17 +55,16 @@ public class ProductRepository {
         }
         ingredientsString += product.getIngredients().get(product.getIngredients().size() - 1);
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db")) {
-            String insertOrUpdateQuery = "INSERT OR REPLACE INTO Products (Product_ID, User_ID, Name, Expiration_Date, Photo, Purchase_Date, Ingredients) "
+            String insertOrUpdateQuery = "INSERT OR REPLACE INTO Products (Product_ID, User_ID, Name, Expiration_Date, Purchase_Date, Ingredients) "
                     +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    "VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement statement = connection.prepareStatement(insertOrUpdateQuery)) {
                 statement.setObject(1, Product.getProductID());
                 statement.setObject(2, 1);
                 statement.setString(3, product.getName());
                 statement.setDate(4, product.getExpirationDate());
-                statement.setString(5, product.getPhoto());
-                statement.setDate(6, product.getPurchaseDate());
-                statement.setString(7, ingredientsString);
+                statement.setDate(5, product.getPurchaseDate());
+                statement.setString(6, ingredientsString);
                 statement.executeUpdate();
             }
 
@@ -82,8 +80,7 @@ public class ProductRepository {
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:your_database.db")) {
             String query = "SELECT products.Product_ID, products.User_ID, products.Name AS ProductName, " +
                     "products.Expiration_Date, products.Ingredients, products.Purchase_Date, " +
-                    "products.Photo, users.Name AS UserName, users.Surname, users.Age, " +
-                    "users.Weight, users.Height, users.Gender, users.Daily_Activity_Level, " +
+                    "products.Photo, users.Name AS UserName, users.Surname, "+
                     "users.Allergens, users.Unwanted_Ingredients " +
                     "FROM products " +
                     "LEFT JOIN users ON products.User_ID = users.User_ID " +
@@ -108,7 +105,7 @@ public class ProductRepository {
     private Product mapResultSetToProduct(ResultSet resultSet) throws SQLException {
         String name = resultSet.getString("ProductName");
         Date expirationDate = resultSet.getDate("Expiration_Date");
-        String photo = resultSet.getString("Photo");
+
         Date purchaseDate = resultSet.getDate("Purchase_Date");
 
         String ingredientsString = resultSet.getString("Ingredients");
@@ -118,12 +115,12 @@ public class ProductRepository {
             ingredientsList.add(ingredient);
         }
 
-        Product product = new Product(name, expirationDate, photo, purchaseDate, ingredientsList);
+        Product product = new Product(name, expirationDate, purchaseDate, ingredientsList);
 
         return product;
     }
 
-    public ArrayList<ResultSet> retrieveShoppingListProducts() {
+    /*public ArrayList<ResultSet> retrieveShoppingListProducts() {
         ArrayList<ResultSet> shoppigtList = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:your_database.db")) {
@@ -149,7 +146,7 @@ public class ProductRepository {
         }
 
         return shoppigtList;
-    }
+    }*/
 
     public ArrayList<Product> retrieveAllProducts() {
         ArrayList<Product> productList = new ArrayList<>();

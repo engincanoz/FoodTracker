@@ -23,12 +23,12 @@ public class ProductController {
         productRepository.insertOrUpdateProductData(product);
     }
 
-    public void addImage(Product product, String photo) {
+/*    public void addImage(Product product, String photo) {
 
         product.setPhoto(photo);
 
         productRepository.insertOrUpdateProductData(product);
-    }
+    }*/
 
     public void addIngredient(Product product, String newIngredient) {
 
@@ -44,7 +44,7 @@ public class ProductController {
     public void addProduct(String name, Date expirationDate, String photo, Date purchaseDate,
                            ArrayList<String> ingredients) {
 
-        Product newProduct = new Product(name, expirationDate, photo, purchaseDate, ingredients);
+        Product newProduct = new Product(name, expirationDate, purchaseDate, ingredients);
 
         productRepository.insertOrUpdateProductData(newProduct);
     }
@@ -53,11 +53,11 @@ public class ProductController {
         return productRepository.retrieveExpiredProducts();
     }
 
-    public ArrayList<com.example..Product> removeProductById(int productID) {
-        ArrayList<com.example..Product> productList = productRepository.retrieveAllProducts();
-        ArrayList<com.example..Product> updatedList = new ArrayList<>();
+    public ArrayList<Product> removeProductById(int productID) {
+        ArrayList<Product> productList = productRepository.retrieveAllProducts();
+        ArrayList<Product> updatedList = new ArrayList<>();
 
-        for (com.example..Product product : productList) {
+        for (Product product : productList) {
             if (product.getProductID() != productID) {
                 updatedList.add(product);
             }
@@ -66,7 +66,7 @@ public class ProductController {
         return updatedList;
     }
 
-    public String determineFreshness(com.example..Product prd) {
+    public String determineFreshness(Product prd) {
         long allTime = prd.getExpirationDate().getTime() - prd.getPurchaseDate().getTime();
         long passedTime = System.currentTimeMillis() - prd.getPurchaseDate().getTime();
 

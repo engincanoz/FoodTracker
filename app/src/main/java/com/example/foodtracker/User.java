@@ -51,5 +51,4 @@ public class User {
     public void setUnwantedIngredients(String unwantedIngredients) {
         this.unwantedIngredients = unwantedIngredients;
     }
-
 }
