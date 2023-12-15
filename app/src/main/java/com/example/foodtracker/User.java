@@ -1,5 +1,7 @@
 package com.example.foodtracker;
 
+import android.database.Cursor;
+
 public class User {
     private String name;
     private String surName;
@@ -12,6 +14,8 @@ public class User {
         this.allergens = allergens;
         this.unwantedIngredients = unwantedIngredients;
     }
+
+
 
     public String getName() {
         return name;

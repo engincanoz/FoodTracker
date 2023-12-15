@@ -2,7 +2,9 @@ package com.example.foodtracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,11 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 
 
 public class    dietHelp extends AppCompatActivity {
-    ProductController controller = new ProductController();
-    Product newProduct = new Product(null, null, null, null,null);
+    Context context;
+    ProductController controller = new ProductController(context);
+    //Product newProduct = new Product(null, null, null, null,null);
     private Button saveIngredientsButton;
     String ingredients;
     //UI views

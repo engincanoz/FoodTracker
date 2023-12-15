@@ -2,6 +2,7 @@ package com.example.foodtracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -42,27 +43,15 @@ public class UserRepository extends SQLiteOpenHelper {
             }
     }
 
-    public User retrieveUserInfo() {
-        User user = null;
-        String retrieveUserDataQuery = "SELECT * FROM User LIMIT 1";
+    public Cursor retrieveUserInfo() {
+       String query = "SELECT * FROM " + "User";
+       SQLiteDatabase db = this.getReadableDatabase();
 
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(retrieveUserDataQuery)) {
-
-            if (resultSet.next()) {
-                user = new User(
-                        resultSet.getString("Name"),
-                        resultSet.getString("Surname"),
-                        resultSet.getString("Allergens"),
-                        resultSet.getString("Unwanted_Ingredients"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return user;
+       Cursor cursor = null;
+       if (db != null) {
+           cursor = db.rawQuery(query,null);
+       }
+       return cursor;
     }
 
     @Override

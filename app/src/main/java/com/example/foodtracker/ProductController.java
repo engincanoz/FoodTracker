@@ -1,13 +1,18 @@
 package com.example.foodtracker;
 
+import android.content.Context;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductController {
+    private ProductRepository productRepository;
 
-    ProductRepository productRepository = new ProductRepository();
+    public ProductController(Context context) {
+        this.productRepository = new ProductRepository(context);
+    }
 
     public void enterName(Product product, String name) {
 
@@ -23,12 +28,7 @@ public class ProductController {
         productRepository.insertOrUpdateProductData(product);
     }
 
-/*    public void addImage(Product product, String photo) {
 
-        product.setPhoto(photo);
-
-        productRepository.insertOrUpdateProductData(product);
-    }*/
 
     public void addIngredient(Product product, String newIngredient) {
 
@@ -79,7 +79,12 @@ public class ProductController {
         return "Expiring";
     }
 
+/*    public void addImage(Product product, String photo) {
 
+        product.setPhoto(photo);
+
+        productRepository.insertOrUpdateProductData(product);
+    }*/
 
 
 }

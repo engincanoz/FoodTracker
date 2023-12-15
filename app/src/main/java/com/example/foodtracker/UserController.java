@@ -1,10 +1,16 @@
 package com.example.foodtracker;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UserController {
-    private UserRepository userRepository = new UserRepository();
+    private UserRepository userRepository;
+    public UserController(Context context) {
+        this.userRepository = new UserRepository(context);
+    }
+
 
 
 
