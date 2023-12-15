@@ -12,6 +12,7 @@ import android.os.Bundle;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
@@ -50,11 +51,6 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 public class ocrScan extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityOcrScanBinding binding;
-
-
-
     private Button saveIngredientsButton;
     String ingredients;
     //UI views
@@ -71,27 +67,47 @@ public class ocrScan extends AppCompatActivity {
     private String[] storagePermissions;
     private ProgressDialog progressDialog;
     private TextRecognizer textRecognizer;
+
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /*binding = ActivityOcrScanBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.add_Product);
 
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_ocr_scan);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int selectedItemId = item.getItemId();
+
+                // Check if the selected item is already the current item
+                if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
+                    if (selectedItemId == R.id.diet_help) {
+                        startActivity(new Intent(getApplicationContext(), dietHelp.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.profile) {
+                        startActivity(new Intent(getApplicationContext(), login.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.my_products) {
+                        startActivity(new Intent(getApplicationContext(), myProducts.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.add_Product) {
+                        return true;
+                    }
+                }
+
+                return false;
             }
-        });*/
+        });
+
+
+
+
+
         saveIngredientsButton = findViewById(R.id.saveIngredients);
         inputImageBtn = findViewById(R.id.inputImageBtn);
         recognizeTextBtn = findViewById(R.id.recognizeTextBtn);
@@ -141,12 +157,7 @@ public class ocrScan extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_ocr_scan);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+
 
     private void recognizeTextFromImage() {
         Log.d(TAG, "recognizeTextFromImage: ");
