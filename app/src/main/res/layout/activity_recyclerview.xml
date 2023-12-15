@@ -7,21 +7,23 @@
     tools:ignore="ExtraText">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/upRect"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:background="@color/blue_201">
 
         <TextView
             android:id="@+id/textView"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Products"
-            android:textSize="23dp"
+            android:textSize="23sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -39,14 +41,14 @@
         android:layout_width="match_parent"
         android:layout_height="596dp"
         android:layout_above="@+id/bottom_navigator"
-        android:layout_below="@+id/null"
+        android:layout_below="@+id/upRect"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="1dp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_6"
+        app:layout_constraintTop_toBottomOf="@+id/upRect"
         tools:visibility="visible" />
 
 </RelativeLayout>

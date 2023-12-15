@@ -210,9 +210,7 @@
     <style name="groupStylecornerRadius_3">
         <item name="android:background">@drawable/rectangle_border_orange_300_radius_12_86</item>
     </style>
-    <style name="groupStylecornerRadius_2">
-        <item name="android:background">@drawable/rectangle_radius_19_77</item>
-    </style>
+
     <style name="btnSolidRounded">
         <item name="android:textSize">@dimen/_17pxh</item>
         <item name="android:textColor">@color/gray_900</item>

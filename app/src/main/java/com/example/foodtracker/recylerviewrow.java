@@ -50,4 +50,5 @@ public class recylerviewrow extends AppCompatActivity {
         //     return NavigationUI.navigateUp(navController, appBarConfiguration)
         //             || super.onSupportNavigateUp();
         // }
+    }
 }
