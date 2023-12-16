@@ -43,9 +43,9 @@ public class UserController {
         }
 
     }
-    public User fillPersonalData(String name, String surname, String allergens, String unwantedIngredients) {
+    public User fillPersonalData(String allergens, String unwantedIngredients) {
 
-        User newUser = new User(name, surname, allergens, unwantedIngredients);
+        User newUser = new User(allergens, unwantedIngredients);
 
         userRepository.insertOrUpdateUserData(newUser);
 

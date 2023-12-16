@@ -10,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.foodtracker.databinding.FragmentNotificationsBinding;
+/*import com.example.foodtracker.databinding.FragmentNotificationsBinding;*/
 
 public class NotificationsFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    /*private FragmentNotificationsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,5 +33,5 @@ public class NotificationsFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
+    }*/
 }

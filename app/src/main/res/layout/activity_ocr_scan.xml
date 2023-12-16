@@ -13,10 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@drawable/selector"
-        app:itemBackground="@color/blue_201"
-        app:itemTextColor="@drawable/selector"
-        app:menu="@menu/bottom_nav_menu" />
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +27,9 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:text="TAKE IMAGE"
-            app:backgroundTint="@color/blue_200"
-            app:cornerRadius="5dp"
-            app:icon="@drawable/baseline_add_a_photo_24" />
+            app:cornerRadius="5dp" />
+           <!-- app:icon="@drawable/baseline_add_a_photo_24" -->
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/recognizeTextBtn"
@@ -41,9 +38,10 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:text="SCAN IMAGE"
-            app:backgroundTint="@color/blue_201"
-            app:cornerRadius="5dp"
-            app:icon="@drawable/baseline_document_scanner_24" />
+            app:cornerRadius="5dp" />
+<!--
+            app:icon="@drawable/baseline_document_scanner_24"
+-->
     </LinearLayout>
 
     <ScrollView
@@ -61,8 +59,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/baseline_image_24"
                 app:strokeWidth="2dp" />
+                <!--android:src="@drawable/baseline_image_24"-->
+
 
             <TextView
                 style="@style/TextAppearance.MaterialComponents.Headline6"
@@ -85,7 +84,6 @@
                     android:id="@+id/saveIngredients"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_drawable"
 
 
                     android:backgroundTint="#05FF5722"

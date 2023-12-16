@@ -25,8 +25,8 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 
 public class    dietHelp extends AppCompatActivity {
-    Context context;
-    ProductController controller = new ProductController(context);
+   Context context;
+    ProductController controller;
     //Product newProduct = new Product(null, null, null, null,null);
     private Button saveIngredientsButton;
     String ingredients;
@@ -47,14 +47,16 @@ public class    dietHelp extends AppCompatActivity {
     String kgText ="";
 
     BottomNavigationView bottomNavigationView;
-
-    int kgValue = 0; // Initialize kgValue to a default value
+    Button button;
+    int kgValue = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_help);
+        context = this;
 
-        bottomNavigationView = findViewById(R.id.bottom_navigator);
+
+      /*  ottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.diet_help);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -83,7 +85,7 @@ public class    dietHelp extends AppCompatActivity {
 
                 return false;
             }
-        });
+        });*/
 
 
 
@@ -235,6 +237,22 @@ public class    dietHelp extends AppCompatActivity {
                     generateButton.setEnabled(false);
                 }
                 updatePromptText();
+            }
+        });
+
+        button = findViewById(R.id.button8);
+        button.setEnabled(true);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(dietHelp.this, dietDisplay.class);
+
+                // If you want to pass data to the new activity, you can use intent.putExtra()
+                // intent.putExtra("key", "value");
+
+                // Start the new activity
+                startActivity(intent);
             }
         });
     }

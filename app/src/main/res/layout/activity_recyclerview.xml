@@ -10,7 +10,7 @@
         android:id="@+id/upRect"
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:background="@color/blue_201">
+        >
 
         <TextView
             android:id="@+id/textView"
@@ -31,10 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@drawable/selector"
-        app:itemBackground="@color/blue_201"
-        app:itemTextColor="@drawable/selector"
-        app:menu="@menu/bottom_nav_menu" />
+         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

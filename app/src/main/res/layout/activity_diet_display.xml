@@ -7,11 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/groupStylewhite_A700">
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarToolbar"
-        style="@style/groupStyleblue_200"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentInsetStart="0dp">
@@ -21,14 +21,20 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="500dp">
 
         <TextView
             android:id="@+id/textGenerated"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:text="Please wait your plan is generating...." />
+            android:text="Please wait your plan is generating...."
+            android:textSize="22sp" />
     </ScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>

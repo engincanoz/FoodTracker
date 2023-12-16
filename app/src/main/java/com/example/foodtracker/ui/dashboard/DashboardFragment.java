@@ -10,13 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.foodtracker.databinding.FragmentDashboardBinding;
+/*import com.example.foodtracker.databinding.FragmentDashboardBinding;*/
 
 public class DashboardFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+   /* private FragmentDashboardBinding binding;*/
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
+  /*  public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         DashboardViewModel dashboardViewModel =
                 new ViewModelProvider(this).get(DashboardViewModel.class);
@@ -33,5 +33,5 @@ public class DashboardFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
+    }*/
 }

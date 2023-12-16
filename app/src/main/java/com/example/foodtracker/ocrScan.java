@@ -37,10 +37,10 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
+/*import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.navigation.ui.NavigationUI;*/
 
 import com.example.foodtracker.databinding.ActivityOcrScanBinding;
 import com.google.mlkit.vision.common.InputImage;
@@ -73,7 +73,7 @@ public class ocrScan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        /*bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.add_Product);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -303,10 +303,10 @@ public class ocrScan extends AppCompatActivity {
         return cameraResult && storageResult;
     }
 
-    /*private void launchAddProductActivity(){
+    *//*private void launchAddProductActivity(){
         Intent intent = new Intent(this, addproduct.class);
         intent.putExtra("new Product",newProduct);
-    }*/
+    }*//*
 
 
     private void requestCameraPermissions(){
@@ -348,7 +348,7 @@ public class ocrScan extends AppCompatActivity {
                 }
             }
             break;
-        }
+        }*/
     }
 
 }

@@ -30,8 +30,6 @@ public class UserRepository extends SQLiteOpenHelper {
             ContentValues cv = new ContentValues();
 
             cv.put("User_ID", 1);
-            cv.put("Name", user.getName());
-            cv.put("Surname", user.getSurName());
             cv.put("Allergens", user.getAllergens());
             cv.put("Unwanted_Ingredients", user.getUnwantedIngredients());
 
@@ -56,10 +54,8 @@ public class UserRepository extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createUserTableQuery = "CREATE TABLE IF NOT EXISTS User (" +
+        String createUserTableQuery = "CREATE TABLE User(" +
                 "  User_ID INTEGER," +
-                "  Name TEXT," +
-                "  Surname TEXT," +
                 "  Allergens TEXT," +
                 "  Unwanted_Ingredients TEXT" +
                 ")";

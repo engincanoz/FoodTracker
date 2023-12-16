@@ -3,27 +3,19 @@ package com.example.foodtracker;
 import android.database.Cursor;
 
 public class User {
-    private String name;
-    private String surName;
+
     private String allergens;
     private String unwantedIngredients;
 
-    public User(String name, String surName, String allergens, String unwantedIngredients) {
-        this.name = name;
-        this.surName = surName;
+    public User(String allergens, String unwantedIngredients) {
+
         this.allergens = allergens;
         this.unwantedIngredients = unwantedIngredients;
     }
 
 
 
-    public String getName() {
-        return name;
-    }
 
-    public String getSurName() {
-        return surName;
-    }
 
 
 
@@ -38,13 +30,7 @@ public class User {
 
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
 
 
 

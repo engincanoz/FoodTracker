@@ -10,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.foodtracker.databinding.FragmentHomeBinding;
+/*import com.example.foodtracker.databinding.FragmentHomeBinding;*/
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+/*    private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -33,5 +33,5 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
+    }*/
 }

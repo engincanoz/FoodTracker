@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.foodtracker.databinding.ActivityDietDisplayBinding;
@@ -18,13 +20,28 @@ import java.net.URL;
 
 public class dietDisplay extends AppCompatActivity {
     public TextView generateArea;
+    Button button;
     static final String apiKey = "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";
     private ActivityDietDisplayBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_diet_display);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(dietDisplay.this, myProducts.class);
+
+                // If you want to pass data to the new activity, you can use intent.putExtra()
+                // intent.putExtra("key", "value");
+
+                // Start the new activity
+                startActivity(intent);
+            }
+        });
         //   binding = ActivityDietDisplayBinding.inflate(getLayoutInflater());
 //         setContentView(binding.getRoot());
 
@@ -37,18 +54,19 @@ public class dietDisplay extends AppCompatActivity {
 //         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_diet_display);
 //         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //         NavigationUI.setupWithNavController(binding.navView, navController);
-        
-        Intent intent = getIntent();
+
+
+       /* Intent intent = getIntent();
         generateArea = findViewById(R.id.textGenerated);
         generateArea.setText("PLEASE WAIT, YOUR PLAN IS BEING GENERATED...");
 
         String promptText = intent.getStringExtra("PROMPT");
         new GPTAsyncTask().execute(apiKey, promptText);
 
-        Log.d("GPTactivity", "Received prompt: " + promptText);
+        Log.d("GPTactivity", "Received prompt: " + promptText);*/
 
     }
-    private class GPTAsyncTask extends AsyncTask<String, Void, String> {
+  private class GPTAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             String apiKey = params[0];

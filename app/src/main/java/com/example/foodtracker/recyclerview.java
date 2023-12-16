@@ -9,15 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
+/*import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.navigation.ui.NavigationUI;*/
 
 import com.example.foodtracker.databinding.ActivityRecyclerviewBinding;
 
 public class recyclerview extends AppCompatActivity {
-    private AppBarConfiguration appBarConfiguration;
+/*    private AppBarConfiguration appBarConfiguration;*/
     private ActivityRecyclerviewBinding binding;
 
     @Override
