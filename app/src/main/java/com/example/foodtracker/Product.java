@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 

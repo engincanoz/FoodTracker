@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -41,7 +42,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
+import com.example.foodtracker.databinding.ActivityOcrScanBinding;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
@@ -71,9 +72,9 @@ public class ocrScan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ocr_scan);
-       /* bottomNavigationView = findViewById(R.id.bottom_navigator);*//*
-*//*        bottomNavigationView.setSelectedItemId(R.id.add_Product);
+
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.add_Product);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -101,7 +102,7 @@ public class ocrScan extends AppCompatActivity {
 
                 return false;
             }
-        });*//*
+        });
 
 
 
@@ -111,7 +112,7 @@ public class ocrScan extends AppCompatActivity {
         inputImageBtn = findViewById(R.id.inputImageBtn);
         recognizeTextBtn = findViewById(R.id.recognizeTextBtn);
         imageIv = findViewById(R.id.imageIv);
-     *//*   recognizedTextEt = findViewById(R.id.recognizedTextEt);*//*
+        recognizedTextEt = findViewById(R.id.recognizedTextEt);
 
         cameraPermissions = new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -302,10 +303,10 @@ public class ocrScan extends AppCompatActivity {
         return cameraResult && storageResult;
     }
 
-    *//*private void launchAddProductActivity(){
+    /*private void launchAddProductActivity(){
         Intent intent = new Intent(this, addproduct.class);
         intent.putExtra("new Product",newProduct);
-    }*//*
+    }*/
 
 
     private void requestCameraPermissions(){
@@ -347,7 +348,7 @@ public class ocrScan extends AppCompatActivity {
                 }
             }
             break;
-        }*/
+        }
     }
 
 }

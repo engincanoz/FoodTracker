@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,10 +13,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.foodtracker.databinding.ActivityAddProductBinding;
 
 public class addProduct extends AppCompatActivity {
 
-   /* private ActivityAddProductBinding binding;*/
+    private ActivityAddProductBinding binding;
 
 
     @Override

@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -6,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-
+import com.example.foodtracker.databinding.ActivityDietDisplayBinding;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,12 +19,12 @@ import java.net.URL;
 public class dietDisplay extends AppCompatActivity {
     public TextView generateArea;
     static final String apiKey = "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";
-    /*private ActivityDietDisplayBinding binding;*/
+    private ActivityDietDisplayBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diet_display);
+
         //   binding = ActivityDietDisplayBinding.inflate(getLayoutInflater());
 //         setContentView(binding.getRoot());
 
@@ -37,14 +38,14 @@ public class dietDisplay extends AppCompatActivity {
 //         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 //         NavigationUI.setupWithNavController(binding.navView, navController);
         
-       /* Intent intent = getIntent();
+        Intent intent = getIntent();
         generateArea = findViewById(R.id.textGenerated);
         generateArea.setText("PLEASE WAIT, YOUR PLAN IS BEING GENERATED...");
 
         String promptText = intent.getStringExtra("PROMPT");
         new GPTAsyncTask().execute(apiKey, promptText);
 
-        Log.d("GPTactivity", "Received prompt: " + promptText);*/
+        Log.d("GPTactivity", "Received prompt: " + promptText);
 
     }
     private class GPTAsyncTask extends AsyncTask<String, Void, String> {

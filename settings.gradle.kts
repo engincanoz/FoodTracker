@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "finand"
+rootProject.name = "Food Tracker"
 include(":app")
- 

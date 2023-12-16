@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.database.Cursor;
 
 public class User {

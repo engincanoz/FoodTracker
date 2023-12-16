@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -13,12 +14,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
+import com.example.foodtracker.databinding.ActivityRecyclerviewBinding;
 
 public class recyclerview extends AppCompatActivity {
-
     private AppBarConfiguration appBarConfiguration;
-
+    private ActivityRecyclerviewBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,4 +50,5 @@ public class recyclerview extends AppCompatActivity {
         //             || super.onSupportNavigateUp();
         // }
     }
+
 }

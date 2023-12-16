@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -9,16 +10,16 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
+import com.example.foodtracker.databinding.ActivityExpiredProductsBinding;
 
 public class expiredProducts extends AppCompatActivity {
 
-   /* private ActivityExpiredProductsBinding binding;*/
+    private ActivityExpiredProductsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_expired_products);
+
         //    binding = ActivityExpiredProductsBinding.inflate(getLayoutInflater());
         //     setContentView(binding.getRoot());
 

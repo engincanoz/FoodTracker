@@ -1,4 +1,5 @@
 package com.example.foodtracker;
+
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -13,12 +14,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-
+import com.example.foodtracker.databinding.ActivityRecylerviewrowBinding;
 
 public class recylerviewrow extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-/*    private ActivityRecylerviewrowBinding binding;*/
+    private ActivityRecylerviewrowBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

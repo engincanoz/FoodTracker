@@ -1,13 +1,3 @@
 <resources>
-    <string name="app_name">finand</string>
-    <string name="title_activity_diethelp">diethelp</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_main2">MainActivity2</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_dietdisplay">dietdisplay</string>
-    <string name="title_activity_myproducts">myproducts</string>
-    <string name="title_activity_ocr">ocr</string>
+    <string name="app_name">Food Tracker</string>
 </resources>

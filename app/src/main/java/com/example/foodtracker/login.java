@@ -1,37 +1,29 @@
 package com.example.foodtracker;
 
+import android.annotation.SuppressLint;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.view.WindowInsets;
 
+import com.example.foodtracker.databinding.ActivityLoginBinding;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class login extends AppCompatActivity {
-    Button button;
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        button = findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an Intent to start a new activity
-                Intent intent = new Intent(login.this, productx.class);
-                startActivity(intent);
-            }
-        });
-        /**
-         *
-         *
-         //      * Whether or not the system UI should be auto-hidden after
-         //      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
-         //      */
+    /**
+     //      * Whether or not the system UI should be auto-hidden after
+     //      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
+     //      */
 //         private static final boolean AUTO_HIDE = true;
 
 //     /**
@@ -193,5 +185,4 @@ public class login extends AppCompatActivity {
 //         mHideHandler.removeCallbacks(mHideRunnable);
 //         mHideHandler.postDelayed(mHideRunnable, delayMillis);
 //     }
-    }
 }

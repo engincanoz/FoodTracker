@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigator"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/selector"
+        app:itemBackground="@color/blue_201"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/bottom_nav_menu" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -22,7 +30,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:background="@color/blue_201"
                 android:clickable="false"
                 android:orientation="vertical">
 
@@ -63,7 +71,7 @@
                     app:layout_constraintHorizontal_bias="0.087"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                     />
+                    app:srcCompat="@drawable/img_frame8" />
 
                 <TextView
                     android:id="@+id/textView6"
@@ -90,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="34dp"
-
+                android:fontFamily="@font/poppinsbold"
                 android:text="Maintenance Calorie Calculator"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
@@ -101,7 +109,7 @@
                 android:layout_width="376dp"
                 android:layout_height="217dp"
                 android:layout_gravity="center"
-              >
+                android:background="@color/gray_300">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="358dp"
@@ -264,7 +272,7 @@
                     android:layout_marginLeft="34dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
-
+                    android:fontFamily="@font/poppinsbold"
                     android:text="Diet Planner"
                     android:textSize="16dp"
                     android:textStyle="bold" />
@@ -279,7 +287,7 @@
                     android:layout_width="276dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
-
+                    android:background="@drawable/round_drawable"
                     android:backgroundTint="#27216EF3"
                     android:text="KetogenIc DIet"
                     android:textSize="15dp"
@@ -292,9 +300,9 @@
                     android:layout_width="276dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
-
+                    android:background="@drawable/round_drawable"
                     android:backgroundTint="#2196F3"
-
+                    android:fontFamily="@font/poppins"
                     android:text="ProteIn Based DIet"
                     android:textColor="#FBFBFB"
                     android:textColorHighlight="#3F51B5"
@@ -310,7 +318,7 @@
                     android:layout_width="276dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
-
+                    android:background="@drawable/round_drawable"
                     android:backgroundTint="#3121F3D3"
                     android:text="WeIght Loss DIet"
                     android:textSize="15dp"
@@ -324,7 +332,7 @@
                     android:layout_width="276dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
-
+                    android:background="@drawable/round_drawable"
                     android:backgroundTint="#0C21F387"
                     android:text="WeIght GaIn DIet"
                     android:textSize="15dp"
@@ -345,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-
+                android:background="@drawable/round_drawable"
                 android:backgroundTint="#514CAF50"
                 android:text="Prepare my DIet!"
                 app:layout_constraintBottom_toBottomOf="@+id/scrollView2"

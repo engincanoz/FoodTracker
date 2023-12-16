@@ -25,7 +25,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 
 public class    dietHelp extends AppCompatActivity {
-/*   Context context;
+    Context context;
     ProductController controller = new ProductController(context);
     //Product newProduct = new Product(null, null, null, null,null);
     private Button saveIngredientsButton;
@@ -48,16 +48,16 @@ public class    dietHelp extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 
-    int kgValue = 0; // Initialize kgValue to a default value**/
-
+    int kgValue = 0; // Initialize kgValue to a default value
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_help);
-    }
-      /* bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.diet_help);*/
 
-     /*   bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.diet_help);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int selectedItemId = item.getItemId();
@@ -76,19 +76,19 @@ public class    dietHelp extends AppCompatActivity {
                         return true;
                     } else if (selectedItemId == R.id.add_Product) {
                         startActivity(new Intent(getApplicationContext(), addProduct.class));
-
-                overridePendingTransition(0, 0);
+                        overridePendingTransition(0, 0);
                         return true;
                     }
                 }
 
                 return false;
             }
-        });*/
+        });
 
 
 
-       /* RadioGroup radioGroup1 = findViewById(R.id.radiogroupGENDER);
+
+        RadioGroup radioGroup1 = findViewById(R.id.radiogroupGENDER);
 
         RadioButton radioButton1 = findViewById(R.id.radioButton1);
         RadioButton radioButton2 = findViewById(R.id.radioButton2);
@@ -236,9 +236,9 @@ public class    dietHelp extends AppCompatActivity {
                 }
                 updatePromptText();
             }
-        });*/
+        });
     }
-  /*  private void updatePromptText() {
+    private void updatePromptText() {
         promptText = String.format("Generate a 200-word daily nutrition plan for morning, noon, and evening based on gender %s, lifestyle %s, diet plan %s, and weight %s. Calculate the basic calorie needs first." +
                 "Assume a serious approach as a helpful dietician.", gender, lifeStyle, dietPlan, kgText);
 
@@ -248,12 +248,11 @@ public class    dietHelp extends AppCompatActivity {
         Intent i = new Intent(this, dietDisplay.class);
         i.putExtra("PROMPT", promptText);
         startActivity(i);
-    }*/
+    }
 
 
 
-
-
+}
 
 
 

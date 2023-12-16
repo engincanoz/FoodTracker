@@ -1,4 +1,4 @@
-package com.example.foodtracker.ui.notifications;
+package com.example.foodtracker.ui.ui.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

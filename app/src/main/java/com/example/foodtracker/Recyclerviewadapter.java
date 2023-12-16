@@ -1,13 +1,16 @@
 package com.example.foodtracker;
+
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Recyclerviewadapter{
+public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
     ArrayList<ProductModel> list;
     public  Recyclerviewadapter(Context context, ArrayList<ProductModel> list) {
@@ -15,13 +18,13 @@ public class Recyclerviewadapter{
         this.context = context;
     }
 
-/*    public Recyclerviewadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Recyclerviewadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-     *//*   View view = inflater.inflate(R.layout.activity_recylerviewrow,parent,false);*//*
+        View view = inflater.inflate(R.layout.activity_recylerviewrow,parent,false);
         return new Recyclerviewadapter.MyViewHolder(view);
-    }*/
+    }
 
-/*    @Override
+    @Override
     public void onBindViewHolder(@NonNull Recyclerviewadapter.MyViewHolder holder, int position) {
         holder.name.setText(list.get(position).getProductName());
         holder.freshness.setText(list.get(position).getFreshness());
@@ -31,7 +34,7 @@ public class Recyclerviewadapter{
     @Override
     public int getItemCount() {
         return list.size();
-    }*/
+    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView freshness;
@@ -40,9 +43,9 @@ public class Recyclerviewadapter{
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-         /*   freshness = itemView.findViewById(R.id.Freshness);
+            freshness = itemView.findViewById(R.id.Freshness);
             expiratondate = itemView.findViewById(R.id.textView3);
-            name = itemView.findViewById(R.id.textView13);*/
+            name = itemView.findViewById(R.id.textView13);
         }
     }
 }
