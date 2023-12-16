@@ -1,4 +1,4 @@
-package com.example.finand.ui.dashboard;
+package com.example.foodtracker.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

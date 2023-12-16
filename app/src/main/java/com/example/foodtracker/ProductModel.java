@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 public class ProductModel {
     String productName;
     String freshness;

@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;

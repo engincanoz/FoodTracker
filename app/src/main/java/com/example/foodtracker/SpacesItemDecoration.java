@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 import android.graphics.Rect;
 import android.view.View;
 import androidx.recyclerview.widget.RecyclerView;

@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;

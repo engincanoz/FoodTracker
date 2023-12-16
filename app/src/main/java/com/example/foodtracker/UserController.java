@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 
 import android.content.Context;
 

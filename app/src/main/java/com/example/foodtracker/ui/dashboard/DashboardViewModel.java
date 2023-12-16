@@ -1,4 +1,4 @@
-package com.example.finand.ui.dashboard;
+package com.example.foodtracker.ui.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

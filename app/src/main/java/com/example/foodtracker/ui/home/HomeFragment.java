@@ -1,4 +1,4 @@
-package com.example.finand.ui.home;
+package com.example.foodtracker.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

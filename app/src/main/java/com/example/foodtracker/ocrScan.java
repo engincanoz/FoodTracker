@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;

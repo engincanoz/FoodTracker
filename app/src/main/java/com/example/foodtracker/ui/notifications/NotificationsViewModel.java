@@ -1,4 +1,4 @@
-package com.example.finand.ui.notifications;
+package com.example.foodtracker.ui.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

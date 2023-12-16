@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 

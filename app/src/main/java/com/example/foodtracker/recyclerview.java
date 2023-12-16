@@ -1,4 +1,4 @@
-package com.example.finand;
+package com.example.foodtracker;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
