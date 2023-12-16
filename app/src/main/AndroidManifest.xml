@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,55 +10,60 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
+        android:theme="@style/Theme.Finand"
         tools:targetApi="31">
         <activity
-            android:name=".recylerviewrow"
-            android:exported="false"
-            android:label="@string/title_activity_recylerviewrow"
-             />
-        <activity
-            android:name=".recyclerview"
-            android:exported="false"
-            android:label="@string/title_activity_recyclerview"
-           />
-        <activity
             android:name=".ocrScan"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:label="@string/title_activity_ocr_scan"
-           />
+            android:label="@string/title_activity_ocr"
+            android:theme="@style/Theme.Finand.Fullscreen" />
         <activity
-            android:name=".addProduct"
+            android:name=".myProducts"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:label="@string/title_activity_add_product" />
-        <activity
-            android:name=".dietDisplay"
-            android:exported="false"
-            android:label="@string/title_activity_diet_display" />
-        <activity
-            android:name=".dietHelp"
-            android:exported="false"
-            android:label="@string/title_activity_diet_help" />
+            android:label="@string/title_activity_ocr"
+            android:theme="@style/Theme.Finand.Fullscreen" />
         <activity
             android:name=".productx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:label="@string/title_activity_product" />
+            android:label="@string/title_activity_ocr"
+            android:theme="@style/Theme.Finand.Fullscreen" />
+        <activity
+            android:name=".recyclerview"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_ocr"
+            android:theme="@style/Theme.Finand.Fullscreen" />
+        <activity
+            android:name=".recylerviewrow"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_ocr"
+            android:theme="@style/Theme.Finand.Fullscreen" />
         <activity
             android:name=".expiredProducts"
             android:exported="false"
-            android:label="@string/title_activity_expired_products" />
+            android:label="@string/title_activity_myproducts" />
         <activity
-            android:name=".myProducts"
-            android:exported="false"
-            android:label="@string/title_activity_my_products" />
-        <activity
-            android:name=".login"
+            android:name=".dietHelp"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
-            android:label="@string/title_activity_login"
-             />
+            android:label="@string/title_activity_dietdisplay"
+            android:theme="@style/Theme.Finand.Fullscreen" />
         <activity
-            android:name=".MainActivity"
+            android:name=".dietDisplay"
+            android:exported="false"
+            android:label="@string/title_activity_main2" />
+        <activity
+            android:name=".addProduct"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_diethelp"
+            android:theme="@style/Theme.Finand.Fullscreen" />
+        <activity
+            android:name=".login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

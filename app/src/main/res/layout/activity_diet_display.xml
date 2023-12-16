@@ -7,11 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/groupStylewhite_A700">
+  >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarToolbar"
-        style="@style/groupStyleblue_200"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentInsetStart="0dp">

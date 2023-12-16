@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.foodtracker"
+    namespace = "com.example.finand"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.foodtracker"
+        applicationId = "com.example.finand"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -41,9 +41,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
-    implementation("androidx.navigation:navigation-fragment:2.7.3")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.navigation:navigation-ui:2.7.3")
+    implementation("androidx.navigation:navigation-fragment:2.7.6")
+    implementation("androidx.navigation:navigation-ui:2.7.6")
+    implementation("com.google.android.gms:play-services-tasks:18.0.2")
+    implementation("com.google.mlkit:vision-common:17.3.0")
     implementation("com.google.android.gms:play-services-mlkit-text-recognition-common:19.0.0")
     implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
     testImplementation("junit:junit:4.13.2")
