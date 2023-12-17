@@ -17,6 +17,8 @@ import android.view.WindowInsets;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 /*import com.example.foodtracker.databinding.ActivityLogin2Binding;*/
 
 /**
@@ -44,10 +46,11 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String allergens = allergensditText.getText().toString();
+                ArrayList<String> alergens = ocrScan.getList(allergens);
                 String unwanteds = (unwantedEditText.getText().toString());
                 User user = new User(allergens, unwanteds);
 
-                Intent intent = new Intent(login.this, dietHelp.class);
+                Intent intent = new Intent(login.this,ocrScan.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
                 // intent.putExtra("key", "value");
