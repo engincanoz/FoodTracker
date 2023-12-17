@@ -1,5 +1,4 @@
 package com.example.foodtracker;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,16 +7,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -55,7 +49,8 @@ public class    dietHelp extends AppCompatActivity {
         setContentView(R.layout.activity_diet_help);
         context = this;
 
-
+        Button generateButton = findViewById(R.id.generateButton);
+        generateButton.setEnabled(false);
       /*  ottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.diet_help);
 
@@ -100,6 +95,11 @@ public class    dietHelp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gender = radioButton1.getText().toString(); // Set the selected option to a specific value
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -108,6 +108,11 @@ public class    dietHelp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gender = radioButton2.getText().toString(); // Set the selected option to a specific value
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -117,15 +122,20 @@ public class    dietHelp extends AppCompatActivity {
 
         RadioButton radioButton3 = findViewById(R.id.radioButton3); // Replace with your RadioButton IDs
         RadioButton radioButton4 = findViewById(R.id.radioButton4);
-        RadioButton radioButton5 = findViewById(R.id.radioButton5);
+
         RadioButton radioButton6 = findViewById(R.id.radioButton6);
-        RadioButton radioButton7 = findViewById(R.id.radioButton7);
+
 
         // Create custom OnClickListener for each RadioButton
         radioButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lifeStyle = "Current lifestyle is sedentary"; // Set the selected option to a specific value
+                lifeStyle = "Current lifestyle is moderately active"; // Set the selected option to a specific value
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -134,30 +144,25 @@ public class    dietHelp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 lifeStyle = "current lifestyle is lightly active"; // Set the selected option to a specific value
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
 
-        radioButton5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lifeStyle = "current lifestyle is moderately active"; // Set the selected option to a specific value
-                updatePromptText();
-            }
-        });
 
-        radioButton6.setOnClickListener(new View.OnClickListener() {
+        radioButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 lifeStyle = "current lifestyle is highly active"; // Set the selected option to a specific value
-                updatePromptText();
-            }
-        });
-
-        radioButton7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                lifeStyle = "current lifestyle is super active"; // Set the selected option to a specific value
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -175,6 +180,11 @@ public class    dietHelp extends AppCompatActivity {
                 buttonDiet2.setEnabled(true);
                 buttonDiet3.setEnabled(true);
                 buttonDiet4.setEnabled(true);
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -186,6 +196,11 @@ public class    dietHelp extends AppCompatActivity {
                 buttonDiet2.setEnabled(false);
                 buttonDiet3.setEnabled(true);
                 buttonDiet4.setEnabled(true);
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -197,6 +212,11 @@ public class    dietHelp extends AppCompatActivity {
                 buttonDiet2.setEnabled(true);
                 buttonDiet3.setEnabled(false);
                 buttonDiet4.setEnabled(true);
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
@@ -208,14 +228,18 @@ public class    dietHelp extends AppCompatActivity {
                 buttonDiet2.setEnabled(true);
                 buttonDiet3.setEnabled(true);
                 buttonDiet4.setEnabled(false);
+                if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
+                    generateButton.setEnabled(true);
+                } else {
+                    generateButton.setEnabled(false);
+                }
                 updatePromptText();
             }
         });
 
 
         EditText kgInput = findViewById(R.id.kgInput);
-        Button generateButton = findViewById(R.id.button8);
-        generateButton.setEnabled(false);
+
         kgInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -240,7 +264,7 @@ public class    dietHelp extends AppCompatActivity {
             }
         });
 
-        button = findViewById(R.id.button8);
+        /*button = findViewById(R.id.button8);
         button.setEnabled(true);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,7 +278,7 @@ public class    dietHelp extends AppCompatActivity {
                 // Start the new activity
                 startActivity(intent);
             }
-        });
+        });*/
     }
     private void updatePromptText() {
         promptText = String.format("Generate a 200-word daily nutrition plan for morning, noon, and evening based on gender %s, lifestyle %s, diet plan %s, and weight %s. Calculate the basic calorie needs first." +
@@ -264,7 +288,7 @@ public class    dietHelp extends AppCompatActivity {
     public void launchGenerate(View v){
 
         Intent i = new Intent(this, dietDisplay.class);
-        i.putExtra("PROMPT", promptText);
+        //i.putExtra("PROMPT", promptText);
         startActivity(i);
     }
 
