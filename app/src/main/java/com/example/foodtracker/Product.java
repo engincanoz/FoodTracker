@@ -6,16 +6,16 @@ import android.os.Parcelable;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Product implements Parcelable {
+public class Product {//implements Parcelable {
     private String name;
-    private Date expirationDate;
-
+    private String expirationDate;
+    public String date;
     private Date purchaseDate;
     private ArrayList<String> ingredients;
     private static int productID = 0;
     private static final int userID = 1;
 
-    public Product(String name, Date expirationDate, Date purchaseDate,
+    public Product(String name, String expirationDate, Date purchaseDate,
                    ArrayList<String> ingredients) {
         this.name = name;
         this.expirationDate = expirationDate;
@@ -24,17 +24,21 @@ public class Product implements Parcelable {
         this.purchaseDate = purchaseDate;
         productID++;
     }
+    public Product(String name, String expirationDate) {
+        this.name = name;
+        this.expirationDate = expirationDate;
+    }
 
-    protected Product(Parcel in) {
+   /* protected Product(Parcel in) {
         name = in.readString();
         expirationDate = (Date) in.readSerializable();
 
         purchaseDate = (Date) in.readSerializable();
         ingredients = in.createStringArrayList();
         productID = in.readInt();
-    }
+    }*/
 
-    public static final Creator<Product> CREATOR = new Creator<Product>() {
+  /*  public static final Creator<Product> CREATOR = new Creator<Product>() {
         @Override
         public Product createFromParcel(Parcel in) {
             return new Product(in);
@@ -58,9 +62,9 @@ public class Product implements Parcelable {
         dest.writeSerializable(purchaseDate);
         dest.writeStringList(ingredients);
         dest.writeInt(productID);
-    }
+    }*/
 
-    public Date getExpirationDate() {
+    public String getExpirationDate() {
         return expirationDate;
     }
 
@@ -85,7 +89,7 @@ public class Product implements Parcelable {
         return userID;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
 

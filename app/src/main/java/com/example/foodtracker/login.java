@@ -28,13 +28,13 @@ public class login extends AppCompatActivity {
     private EditText allergensditText;
     private EditText unwantedEditText;
 
-    UserRepository userRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         button = findViewById(R.id.button2);
-        UserRepository userRepository = new UserRepository(login.this);
+
         allergensditText = findViewById(R.id.editTextTextAllergens);
         unwantedEditText = findViewById(R.id.editTextTextUnwanteds);
 
@@ -46,7 +46,7 @@ public class login extends AppCompatActivity {
                 String allergens = allergensditText.getText().toString();
                 String unwanteds = (unwantedEditText.getText().toString());
                 User user = new User(allergens, unwanteds);
-                userRepository.insertOrUpdateUserData(user);
+
                 Intent intent = new Intent(login.this, dietHelp.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
@@ -54,9 +54,9 @@ public class login extends AppCompatActivity {
 
                 // Start the new activity
                 startActivity(intent);
-            }
-        });
 
+}
+        });
     }
 
 
@@ -65,7 +65,7 @@ public class login extends AppCompatActivity {
 
     /*protected void onDestroy() {
         super.onDestroy();
-        userRepository.close();
+        .close();
     }*/
     /*   private static final int AUTO_HIDE_DELAY_MILLIS = 3000;*/
 

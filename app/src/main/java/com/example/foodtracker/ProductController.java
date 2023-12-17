@@ -22,7 +22,7 @@ public class ProductController {
         productRepository.insertOrUpdateProductData(product);
     }
 
-    public void enterExpirationDate(Product product, Date date) {
+/*    public void enterExpirationDate(Product product, Date date) {
 
         product.setExpirationDate(date);
 
@@ -78,7 +78,7 @@ public class ProductController {
             return "Good";
         }
         return "Expiring";
-    }
+    }*/
 
 /*    public void addImage(Product product, String photo) {
 

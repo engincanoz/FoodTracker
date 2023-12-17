@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UserController {
-    private UserRepository userRepository;
+    /*private ProductRepository productRepository;
     public UserController(Context context) {
-        this.userRepository = new UserRepository(context);
+        this.productRepository = new ProductRepository(context);
     }
 
 
@@ -18,13 +18,13 @@ public class UserController {
 
         user.setUnwantedIngredients(unwantedIngredients);
 
-        userRepository.insertOrUpdateUserData(user);
+        .insertOrUpdateUserData(user);
     }
     public void fillAllergens(User user, String allergens) {
 
         user.setUnwantedIngredients(allergens);
 
-        userRepository.insertOrUpdateUserData(user);
+        .insertOrUpdateUserData(user);
     }
     public void removeUnwantedIngredient(User user, String ingredientToRemove) {
 
@@ -39,7 +39,7 @@ public class UserController {
 
             user.setUnwantedIngredients(updatedUnwantedIngredients);
 
-            userRepository.insertOrUpdateUserData(user);
+            .insertOrUpdateUserData(user);
         }
 
     }
@@ -47,7 +47,7 @@ public class UserController {
 
         User newUser = new User(allergens, unwantedIngredients);
 
-        userRepository.insertOrUpdateUserData(newUser);
+        .insertOrUpdateUserData(newUser);
 
         return newUser;
     }
@@ -64,8 +64,8 @@ public class UserController {
 
             user.setAllergens(updatedAllergensString);
 
-            userRepository.insertOrUpdateUserData(user);
-        }
+            productRepository.insertOrUpdateProductData(user);
+        }*/
 
-    }
-}
+    }/*
+}*/

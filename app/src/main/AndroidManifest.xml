@@ -13,6 +13,14 @@
         android:theme="@style/Theme.FoodTracker"
         tools:targetApi="31">
         <activity
+            android:name=".recycle"
+            android:exported="false"
+            android:label="@string/title_activity_recycle" />
+        <activity
+            android:name=".addProduct"
+            android:exported="false"
+            android:label="@string/title_activity_recycle" />
+        <activity
             android:name=".myProducts"
             android:exported="false"
             android:label="@string/title_activity_my_products" />

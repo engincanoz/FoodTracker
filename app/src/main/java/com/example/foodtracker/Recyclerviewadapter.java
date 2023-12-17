@@ -13,39 +13,43 @@ import java.util.ArrayList;
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
     ArrayList<ProductModel> list;
-    public  Recyclerviewadapter(Context context, ArrayList<ProductModel> list) {
-        this.list = list;
+
+    ArrayList name, expiration;
+    public  Recyclerviewadapter(Context context, ArrayList name,ArrayList expiration ) {
         this.context = context;
+        this.name = name;
+        this.expiration = expiration;
+
     }
 
-    public Recyclerviewadapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.activity_recylerviewrow,parent,false);
-        return new Recyclerviewadapter.MyViewHolder(view);
+        View view = inflater.inflate(R.layout.recyclerviewrow,parent,false);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Recyclerviewadapter.MyViewHolder holder, int position) {
-        holder.name.setText(list.get(position).getProductName());
-        holder.freshness.setText(list.get(position).getFreshness());
-        holder.expiratondate.setText(list.get(position).getExpirationdate());
+        holder.nameText.setText(String.valueOf(name.get(position)));
+       /* holder.freshness.setText(list.get(position).getFreshness());*/
+        holder.expiratondateText.setText(String.valueOf(expiration.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return name.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView freshness;
-        TextView expiratondate;
-        TextView name;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        /*TextView freshness;*/
+        TextView expiratondateText;
+        TextView nameText;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            freshness = itemView.findViewById(R.id.Freshness);
-            expiratondate = itemView.findViewById(R.id.textView3);
-            name = itemView.findViewById(R.id.textView13);
+           /* freshness = itemView.findViewById(R.id.Freshness);*/
+            expiratondateText = itemView.findViewById(R.id.exp);
+            nameText = itemView.findViewById(R.id.name);
         }
     }
 }
