@@ -113,6 +113,7 @@ public class    ocrScan extends AppCompatActivity {
     public void launchNextPage(View v) {
         Intent intent = new Intent(this, addProduct.class);
         intent.putExtra("Ingredients", ingredients);
+         
         startActivity(intent);
         Toast.makeText(this, "Ingredients are: " + ingredients, Toast.LENGTH_SHORT).show();
     }
