@@ -40,7 +40,7 @@ public class addProduct extends AppCompatActivity {
 
                 String nameText = name.getText().toString();
                 String dateText = date.getText().toString();
-                Product product = new Product(nameText, dateText);
+                Product product = new Product(nameText, null, null, null);
 
                 productRepository.insertOrUpdateProductData(product);
             }

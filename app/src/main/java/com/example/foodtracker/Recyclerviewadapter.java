@@ -14,12 +14,12 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     Context context;
     ArrayList<ProductModel> list;
 
-    ArrayList name, expiration;
-    public  Recyclerviewadapter(Context context, ArrayList name,ArrayList expiration ) {
+    ArrayList name, id, freshness;
+    public  Recyclerviewadapter(Context context, ArrayList name,ArrayList id, ArrayList freshness ) {
         this.context = context;
         this.name = name;
-        this.expiration = expiration;
-
+        this.id = id;
+        this.freshness = freshness;
     }
 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,8 +31,9 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     @Override
     public void onBindViewHolder(@NonNull Recyclerviewadapter.MyViewHolder holder, int position) {
         holder.nameText.setText(String.valueOf(name.get(position)));
-       /* holder.freshness.setText(list.get(position).getFreshness());*/
-        holder.expiratondateText.setText(String.valueOf(expiration.get(position)));
+        holder.idText.setText(String.valueOf(id.get(position)));
+        holder.freshmessText.setText(String.valueOf(freshness.get(position)));
+
     }
 
     @Override
@@ -41,15 +42,18 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        /*TextView freshness;*/
-        TextView expiratondateText;
+
+        TextView freshmessText;
         TextView nameText;
+
+        TextView idText;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-           /* freshness = itemView.findViewById(R.id.Freshness);*/
-            expiratondateText = itemView.findViewById(R.id.exp);
+            freshmessText = itemView.findViewById(R.id.freshness);
             nameText = itemView.findViewById(R.id.name);
+            idText = itemView.findViewById(R.id.ID);
+
         }
     }
 }

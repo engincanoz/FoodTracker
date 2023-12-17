@@ -28,7 +28,7 @@ public class recycle extends AppCompatActivity {
     FloatingActionButton addButton;
     Recyclerviewadapter recyclerviewadapter;
     ProductRepository productRepository;
-    ArrayList<String> name, expiration;
+    ArrayList<String> name, id, freshness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +51,14 @@ public class recycle extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         productRepository = new ProductRepository(recycle.this);
         name = new ArrayList<>();
-        expiration = new ArrayList<>();
+        id = new ArrayList<>();
+        freshness = new ArrayList<>();
         storeData();
 
-        recyclerviewadapter = new Recyclerviewadapter(recycle.this, name, expiration);
+        recyclerviewadapter = new Recyclerviewadapter(recycle.this, name, id, freshness);
         recyclerView.setAdapter(recyclerviewadapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(recycle.this));
 
@@ -69,7 +71,8 @@ public class recycle extends AppCompatActivity {
         } else {
             while( cursor.moveToNext()) {
                 name.add(cursor.getString(0));
-                expiration.add(cursor.getString(1));
+                id.add(cursor.getString(1));
+                freshness.add(cursor.getString(2));
             }
 
         }

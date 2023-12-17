@@ -47,7 +47,7 @@ public class login extends AppCompatActivity {
                 String unwanteds = (unwantedEditText.getText().toString());
                 User user = new User(allergens, unwanteds);
 
-                Intent intent = new Intent(login.this, ocrScan.class);
+                Intent intent = new Intent(login.this, dietHelp.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
                 // intent.putExtra("key", "value");

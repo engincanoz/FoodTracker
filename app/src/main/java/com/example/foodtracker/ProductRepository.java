@@ -24,9 +24,12 @@ public class ProductRepository extends SQLiteOpenHelper {
 
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues cv = new ContentValues();
-
+            cv.put("ProductID", product.productID);
             cv.put("Name", product.getName());
-            cv.put("Expiration", product.getExpirationDate());
+            cv.put("ExpirationDate", product.getExpirationDate().getTime());
+            cv.put("PurchaseDate", product.getPurchaseDate().getTime());
+            String ingredientsString = String.join(", ", product.getIngredients());
+            cv.put("Ingredients", ingredientsString);
 
             long result = db.insert("Product", null, cv);
             if( result == -1) {
@@ -50,10 +53,13 @@ public class ProductRepository extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-            String createProductTableQuery = "CREATE TABLE Product(" +
-                    " Name TEXT," +
-                    " Expiration TEXT" +
-                    ")";
+        String createProductTableQuery = "CREATE TABLE Product(" +
+                " ProductID INT PRIMARY KEY," +
+                " Name TEXT," +
+                " ExpirationDate DATE," +
+                " PurchaseDate DATE," +
+                " Ingredients TEXT" +
+                ")";
 
             db.execSQL(createProductTableQuery);
     }
