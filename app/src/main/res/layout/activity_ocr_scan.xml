@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:text="TAKE IMAGE"
             app:cornerRadius="5dp" />
-           <!-- app:icon="@drawable/baseline_add_a_photo_24" -->
+
 
 
         <com.google.android.material.button.MaterialButton
@@ -54,14 +54,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageIv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
+                android:src="@drawable/baseline_image_24"
                 app:strokeWidth="2dp" />
-                <!--android:src="@drawable/baseline_image_24"-->
-
 
             <TextView
                 style="@style/TextAppearance.MaterialComponents.Headline6"
