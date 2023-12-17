@@ -1,21 +1,5 @@
 package com.example.foodtracker;
-
 import android.Manifest;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Bundle;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.imageview.ShapeableImageView;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -23,42 +7,52 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.WindowCompat;
-/*import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;*/
-
-import com.example.foodtracker.databinding.ActivityOcrScanBinding;
+import com.example.foodtracker.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.mlkit.vision.common.InputImage;
 import com.google.mlkit.vision.text.Text;
 import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
-public class ocrScan extends AppCompatActivity {
+import java.io.IOException;
 
-    private Button saveIngredientsButton;
-    String ingredients;
+public class    ocrScan extends AppCompatActivity {
+
     //UI views
     private MaterialButton inputImageBtn;
     private MaterialButton recognizeTextBtn;
+    private MaterialButton saveIngredientsButton;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
-    private static final String TAG = "MAIN_TAG";
+    private static final    String TAG = "MAIN_TAG";
     private Uri imageUri = null;
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
@@ -67,20 +61,18 @@ public class ocrScan extends AppCompatActivity {
     private String[] storagePermissions;
     private ProgressDialog progressDialog;
     private TextRecognizer textRecognizer;
-
-    BottomNavigationView bottomNavigationView;
+    public String ingredients;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ocr_scan);
 
-        saveIngredientsButton = findViewById(R.id.saveIngredients);
         inputImageBtn = findViewById(R.id.inputImageBtn);
         recognizeTextBtn = findViewById(R.id.recognizeTextBtn);
         imageIv = findViewById(R.id.imageIv);
         recognizedTextEt = findViewById(R.id.recognizedTextEt);
 
-        cameraPermissions = new String[]{android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
         progressDialog = new ProgressDialog(this);
@@ -88,7 +80,7 @@ public class ocrScan extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(false);
 
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
-
+        saveIngredientsButton = findViewById(R.id.saveIngredients);
 
         saveIngredientsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,15 +108,14 @@ public class ocrScan extends AppCompatActivity {
             }
 
         });
+
     }
-    public void launchNextPage(View v){
+    public void launchNextPage(View v) {
         Intent intent = new Intent(this, addProduct.class);
         intent.putExtra("Ingredients", ingredients);
         startActivity(intent);
+        Toast.makeText(this, "Ingredients are: " + ingredients, Toast.LENGTH_SHORT).show();
     }
-
-
-
     private void recognizeTextFromImage() {
         Log.d(TAG, "recognizeTextFromImage: ");
         progressDialog.setMessage("Loading image...");
@@ -142,8 +133,7 @@ public class ocrScan extends AppCompatActivity {
                             String recognizedText = text.getText();
                             Log.d(TAG, "onSuccess: recognizedText: " + recognizedText);
                             recognizedTextEt.setText(recognizedText);
-                            ingredients = recognizedText;
-
+                            ingredients = recognizedText.toString();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -269,6 +259,7 @@ public class ocrScan extends AppCompatActivity {
         return cameraResult && storageResult;
     }
 
+
     private void requestCameraPermissions(){
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE);
     }
@@ -311,41 +302,5 @@ public class ocrScan extends AppCompatActivity {
         }
     }
 
-        }
 
-
-
-
-
-
- /*bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.add_Product);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int selectedItemId = item.getItemId();
-
-                // Check if the selected item is already the current item
-                if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
-                    if (selectedItemId == R.id.diet_help) {
-                        startActivity(new Intent(getApplicationContext(), dietHelp.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.profile) {
-                        startActivity(new Intent(getApplicationContext(), login.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.my_products) {
-                        startActivity(new Intent(getApplicationContext(), myProducts.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.add_Product) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }*/
-
-
+}

@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".ocrScan">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigator"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
-        />
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,33 +20,42 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:text="TAKE IMAGE"
-            app:cornerRadius="5dp" />
-
-
+            android:textSize="10dp"
+            app:cornerRadius="5dp"
+            app:icon="@drawable/baseline_add_a_photo_24" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/recognizeTextBtn"
             android:layout_width="match_parent"
+            app:cornerRadius="5dp"
+            android:text="SCAN IMAGE"
+            android:textSize="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:icon="@drawable/baseline_document_scanner_24"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveIngredients"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:text="SCAN IMAGE"
-            app:cornerRadius="5dp" />
-<!--
-            app:icon="@drawable/baseline_document_scanner_24"
--->
+            android:text="SAVE"
+            android:textSize="10dp"
+            app:cornerRadius="5dp"
+            app:icon="@drawable/addbutton" />
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="401dp"
-        android:layout_height="721dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageIv"
@@ -68,36 +70,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Text From The Image" />
-
+                android:text="Text From The Image"/>
             <EditText
                 android:id="@+id/recognizedTextEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12sp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp">
-
-                <Button
-                    android:id="@+id/saveIngredients"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-                    android:backgroundTint="#05FF5722"
-                    android:onClick="launchAddProductActivity"
-                    android:text="Save IngredIents"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textSize="12sp"/>
 
 
         </LinearLayout>
     </ScrollView>
 
 
-</RelativeLayout>
+</LinearLayout>
