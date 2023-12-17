@@ -49,7 +49,7 @@ public class    ocrScan extends AppCompatActivity {
     //UI views
     private MaterialButton inputImageBtn;
     private MaterialButton recognizeTextBtn;
-    private Button saveIngredientsButton;
+    private MaterialButton saveIngredientsButton;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
     private static final    String TAG = "MAIN_TAG";
