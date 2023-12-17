@@ -112,9 +112,9 @@ public class    ocrScan extends AppCompatActivity {
         });
 
     }
-    public static ArrayList<String> getIngredientsList(String ingredients) {
+    public static ArrayList<String> getList(String ingredients) {
         // Split the ingredients string using commas as the delimiter
-        String[] ingredientsArray = ingredients.split(",");
+        String[] ingredientsArray = ingredients.split(", ");
 
         // Convert the array to an ArrayList
         ArrayList<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
@@ -128,7 +128,8 @@ public class    ocrScan extends AppCompatActivity {
     }
     public void launchNextPage(View v) {
         Intent intent = new Intent(this, addProduct.class);
-        ArrayList<String> ingredientsList = getIngredientsList(ingredients);
+        ingredients = recognizedTextEt.getText().toString();
+        ArrayList<String> ingredientsList = getList(ingredients);
         intent.putExtra("IngredientsList", ingredientsList);
         startActivity(intent);
         Toast.makeText(this, "Ingredients are: " + ingredientsList, Toast.LENGTH_SHORT).show();
