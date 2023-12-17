@@ -26,6 +26,10 @@ public class ProductRepository extends SQLiteOpenHelper {
             ContentValues cv = new ContentValues();
             cv.put("ProductID", product.productID);
             cv.put("Name", product.getName());
+<<<<<<< Updated upstream
+=======
+            cv.put("Freshness", product.freshness);
+>>>>>>> Stashed changes
             cv.put("ExpirationDate", product.getExpirationDate().getTime());
             cv.put("PurchaseDate", product.getPurchaseDate().getTime());
             String ingredientsString = String.join(", ", product.getIngredients());
@@ -56,6 +60,10 @@ public class ProductRepository extends SQLiteOpenHelper {
         String createProductTableQuery = "CREATE TABLE Product(" +
                 " ProductID INT PRIMARY KEY," +
                 " Name TEXT," +
+<<<<<<< Updated upstream
+=======
+                " Freshness TEXT," +
+>>>>>>> Stashed changes
                 " ExpirationDate DATE," +
                 " PurchaseDate DATE," +
                 " Ingredients TEXT" +

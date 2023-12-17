@@ -13,12 +13,19 @@
         android:layout_marginEnd="16dp"
         android:background="?attr/selectableItemBackgroundBorderless">
 
+<<<<<<< Updated upstream
         <!-- Placeholder for the image, you can add ImageView here if needed -->
         <FrameLayout
             android:id="@+id/image_placeholder"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+=======
+        <TextView
+            android:id="@+id/IDnum"
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
+>>>>>>> Stashed changes
     </FrameLayout>
 
     <LinearLayout
@@ -41,6 +48,10 @@
             android:orientation="horizontal">
 
             <TextView
+<<<<<<< Updated upstream
+=======
+                android:id="@+id/freshnessText"
+>>>>>>> Stashed changes
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Freshness: "

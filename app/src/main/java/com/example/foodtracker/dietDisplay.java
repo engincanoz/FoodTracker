@@ -33,7 +33,7 @@ public class dietDisplay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(dietDisplay.this, recycle.class);
+                Intent intent = new Intent(dietDisplay.this, RecycleActivity.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
                 // intent.putExtra("key", "value");
