@@ -55,9 +55,9 @@ public class myProducts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_products);
+        /*setContentView(R.layout.activity_my_products);
         button = findViewById(R.id.button4); // Replace with the ID of your CardView
-
+*/
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

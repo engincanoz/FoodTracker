@@ -51,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textAppearance="?attr/textAppearanceListItemSmall" />
+                android:textAppearance="?attr/textAppearanceListItemSmall"
+                />
 
         </LinearLayout>
     </LinearLayout>

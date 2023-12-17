@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,28 +52,28 @@ public class    dietHelp extends AppCompatActivity {
 
         Button generateButton = findViewById(R.id.generateButton);
         generateButton.setEnabled(false);
-      /*  ottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.diet_help);
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.dietHelp_icon);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(MenuItem item) {
                 int selectedItemId = item.getItemId();
 
                 // Check if the selected item is already the current item
                 if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
-                    if (selectedItemId == R.id.diet_help) {
+                    if (selectedItemId == R.id.dietHelp_icon) {
                         return true;
-                    } else if (selectedItemId == R.id.profile) {
+                    } else if (selectedItemId == R.id.profile_icon) {
                         startActivity(new Intent(getApplicationContext(), login.class));
                         overridePendingTransition(0, 0);
                         return true;
-                    } else if (selectedItemId == R.id.my_products) {
+                    } else if (selectedItemId == R.id.myProducts_icon) {
                         startActivity(new Intent(getApplicationContext(), myProducts.class));
                         overridePendingTransition(0, 0);
                         return true;
-                    } else if (selectedItemId == R.id.add_Product) {
-                        startActivity(new Intent(getApplicationContext(), addProduct.class));
+                    } else if (selectedItemId == R.id.addProduct_icon) {
+                        startActivity(new Intent(getApplicationContext(), ocrScan.class));
                         overridePendingTransition(0, 0);
                         return true;
                     }
@@ -80,7 +81,7 @@ public class    dietHelp extends AppCompatActivity {
 
                 return false;
             }
-        });*/
+        });
 
 
 

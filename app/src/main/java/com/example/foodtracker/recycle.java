@@ -3,6 +3,7 @@ package com.example.foodtracker;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,14 +31,14 @@ public class recycle extends AppCompatActivity {
     ProductRepository productRepository;
     ArrayList<String> name, freshness;
     ArrayList<Integer> id;
-
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
 
         recyclerView = findViewById(R.id.recycler);
-        addButton = findViewById(R.id.addbutton);
+        /*addButton = findViewById(R.id.addbutton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +51,36 @@ public class recycle extends AppCompatActivity {
 
                 // Start the new activity
                 startActivity(intent);
+            }
+        });*/
+        bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.myProducts_icon);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                int selectedItemId = item.getItemId();
+
+                // Check if the selected item is already the current item
+                if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
+                    if (selectedItemId == R.id.dietHelp_icon) {
+                        startActivity(new Intent(getApplicationContext(), dietHelp.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.profile_icon) {
+                        startActivity(new Intent(getApplicationContext(), login.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.myProducts_icon) {
+                        return true;
+                    } else if (selectedItemId == R.id.addProduct_icon) {
+                        startActivity(new Intent(getApplicationContext(), ocrScan.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    }
+                }
+
+                return false;
             }
         });
         productRepository = new ProductRepository(recycle.this);
