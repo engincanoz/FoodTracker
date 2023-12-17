@@ -112,6 +112,7 @@ public class    ocrScan extends AppCompatActivity {
     }
     public void launchNextPage(View v) {
         Intent intent = new Intent(this, addProduct.class);
+        ingredients = recognizedTextEt.getText().toString();
         intent.putExtra("Ingredients", ingredients);
         startActivity(intent);
         Toast.makeText(this, "Ingredients are: " + ingredients, Toast.LENGTH_SHORT).show();
@@ -133,7 +134,7 @@ public class    ocrScan extends AppCompatActivity {
                             String recognizedText = text.getText();
                             Log.d(TAG, "onSuccess: recognizedText: " + recognizedText);
                             recognizedTextEt.setText(recognizedText);
-                            ingredients = recognizedText.toString();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
