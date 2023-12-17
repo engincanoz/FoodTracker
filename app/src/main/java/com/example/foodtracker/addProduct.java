@@ -37,19 +37,20 @@ public class addProduct extends AppCompatActivity {
     String dateString;
     ArrayList<String> target = new ArrayList<>();
     String nameText;
-    Intent i = getIntent();
-    ArrayList<String> ingredientsList = i.getStringArrayListExtra("IngredientsList");
+    ArrayList<String> ingredientsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addproduct);
-        target.add("yulaf");
-        target.add("buğday ruşeymi");
+        target.add("süt");
+        target.add("ceviz");
         name = findViewById(R.id.nameAdd);
         date = findViewById(R.id.dateAdd);
         add = findViewById(R.id.add);
         productRepository = new ProductRepository(addProduct.this);
-
+        Intent i = getIntent();
+        ingredientsList = i.getStringArrayListExtra("IngredientsList");
         add.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

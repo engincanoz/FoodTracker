@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.sql.Date;
+
 public class ProductRepository extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "foodTracker.db";
@@ -29,10 +31,13 @@ public class ProductRepository extends SQLiteOpenHelper {
 
         cv.put("Freshness", product.freshness);
 
-       /* cv.put("ExpirationDate", product.getExpirationDate().getTime());
-        cv.put("PurchaseDate", product.getPurchaseDate().getTime());
+        cv.put("ExpirationDate", product.getExpirationDate().getTime());
+        Date purchaseDate = product.getPurchaseDate();
+        if (purchaseDate != null) {
+            cv.put("PurchaseDate", purchaseDate.getTime());
+        }
         String ingredientsString = String.join(", ", product.getIngredients());
-        cv.put("Ingredients", ingredientsString);*/
+        cv.put("Ingredients", ingredientsString);
 
         long result = db.insert("Product", null, cv);
         if( result == -1) {
