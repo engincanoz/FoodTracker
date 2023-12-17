@@ -1,51 +1,15 @@
 package com.example.foodtracker;
 
-import android.os.Bundle;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-/*import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;*/
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-
-
-import java.util.ArrayList;
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.MenuItem;
-import android.widget.TextView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.sql.Date;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
 public class myProducts extends AppCompatActivity {
@@ -138,10 +102,10 @@ public class myProducts extends AppCompatActivity {
 
 
 
-           /* setContentView(R.layout.activity_recyclerview);
-            RecyclerView recView = findViewById(R.id.recyclerView);
+           /* setContentView(R.layout.activity_RecyclerView);
+            RecyclerView recView = findViewById(R.id.RecyclerView);
             setProductModels();
-            Recyclerviewadapter adapter = new Recyclerviewadapter(this,models);
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,models);
             recView.setAdapter(adapter);
             recView.setLayoutManager(new LinearLayoutManager(this));
             // Add space between items

@@ -56,14 +56,10 @@ public class ProductRepository extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String createProductTableQuery = "CREATE TABLE Product(" +
-                " ProductID INT PRIMARY KEY," +
-                " Name TEXT," +
-                " Freshness TEXT," +
-                " ExpirationDate DATE," +
-                " PurchaseDate DATE," +
-                " Ingredients TEXT" +
-                ")";
+            String createProductTableQuery = "CREATE TABLE Product(" +
+                    " Name TEXT," +
+                    " Expiration TEXT" +
+                    ")";
 
         db.execSQL(createProductTableQuery);
     }

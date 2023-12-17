@@ -43,6 +43,8 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class    ocrScan extends AppCompatActivity {
 
@@ -61,7 +63,7 @@ public class    ocrScan extends AppCompatActivity {
     private String[] storagePermissions;
     private ProgressDialog progressDialog;
     private TextRecognizer textRecognizer;
-    public String ingredients;
+    public String ingredients = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,12 +112,27 @@ public class    ocrScan extends AppCompatActivity {
         });
 
     }
+    public static ArrayList<String> getIngredientsList(String ingredients) {
+        // Split the ingredients string using commas as the delimiter
+        String[] ingredientsArray = ingredients.split(", ");
+
+        // Convert the array to an ArrayList
+        ArrayList<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
+
+        // Remove leading and trailing whitespaces from each ingredient
+        for (int i = 0; i < ingredientsList.size(); i++) {
+            ingredientsList.set(i, ingredientsList.get(i).trim());
+        }
+
+        return ingredientsList;
+    }
     public void launchNextPage(View v) {
         Intent intent = new Intent(this, addProduct.class);
-        intent.putExtra("Ingredients", ingredients);
-         
+        ingredients = recognizedTextEt.getText().toString();
+        ArrayList<String> ingredientsList = getIngredientsList(ingredients);
+        intent.putExtra("Ingredients List", ingredientsList);
         startActivity(intent);
-        Toast.makeText(this, "Ingredients are: " + ingredients, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Ingredients are: " + ingredientsList, Toast.LENGTH_SHORT).show();
     }
     private void recognizeTextFromImage() {
         Log.d(TAG, "recognizeTextFromImage: ");
@@ -134,7 +151,7 @@ public class    ocrScan extends AppCompatActivity {
                             String recognizedText = text.getText();
                             Log.d(TAG, "onSuccess: recognizedText: " + recognizedText);
                             recognizedTextEt.setText(recognizedText);
-                            ingredients = recognizedText.toString();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
