@@ -72,41 +72,7 @@ public class ocrScan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.add_Product);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int selectedItemId = item.getItemId();
-
-                // Check if the selected item is already the current item
-                if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
-                    if (selectedItemId == R.id.diet_help) {
-                        startActivity(new Intent(getApplicationContext(), dietHelp.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.profile) {
-                        startActivity(new Intent(getApplicationContext(), login.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.my_products) {
-                        startActivity(new Intent(getApplicationContext(), myProducts.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.add_Product) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-        });
-
-
-
-
+        setContentView(R.layout.activity_ocr_scan);
 
         saveIngredientsButton = findViewById(R.id.saveIngredients);
         inputImageBtn = findViewById(R.id.inputImageBtn);
@@ -303,12 +269,6 @@ public class ocrScan extends AppCompatActivity {
         return cameraResult && storageResult;
     }
 
-    *//*private void launchAddProductActivity(){
-        Intent intent = new Intent(this, addproduct.class);
-        intent.putExtra("new Product",newProduct);
-    }*//*
-
-
     private void requestCameraPermissions(){
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE);
     }
@@ -348,7 +308,44 @@ public class ocrScan extends AppCompatActivity {
                 }
             }
             break;
-        }*/
+        }
     }
 
-}
+        }
+
+
+
+
+
+
+ /*bottomNavigationView = findViewById(R.id.bottom_navigator);
+        bottomNavigationView.setSelectedItemId(R.id.add_Product);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int selectedItemId = item.getItemId();
+
+                // Check if the selected item is already the current item
+                if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
+                    if (selectedItemId == R.id.diet_help) {
+                        startActivity(new Intent(getApplicationContext(), dietHelp.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.profile) {
+                        startActivity(new Intent(getApplicationContext(), login.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.my_products) {
+                        startActivity(new Intent(getApplicationContext(), myProducts.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    } else if (selectedItemId == R.id.add_Product) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }*/
+
+
