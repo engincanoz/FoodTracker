@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +34,7 @@ public class addProduct extends AppCompatActivity {
 
     EditText name, date;
     Button add;
+    String tag = "SECOND_TAG";
     ProductRepository productRepository;
     String dateString;
     ArrayList<String> target = new ArrayList<>();
@@ -43,8 +45,7 @@ public class addProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addproduct);
-        target.add("süt");
-        target.add("ceviz");
+        target = login.getArrayList();
         name = findViewById(R.id.nameAdd);
         date = findViewById(R.id.dateAdd);
         add = findViewById(R.id.add);
@@ -57,7 +58,8 @@ public class addProduct extends AppCompatActivity {
 
                 String nameText = name.getText().toString();
                 /*String dateText = date.getText().toString();*/
-
+                Log.d(tag, target.toString());
+                Log.d(tag, ingredientsList.toString());
                 dateString = "01-12-2023";
                 // Parse the date string and obtain java.sql.Date
                 Date sqlDate = parseSqlDate(dateString);
@@ -67,8 +69,6 @@ public class addProduct extends AppCompatActivity {
                     Product product = new Product(nameText,sqlDate,null,ingredientsList);
                     productRepository.insertOrUpdateProductData(product);
                 }
-
-
             }
         });
 
@@ -83,7 +83,6 @@ public class addProduct extends AppCompatActivity {
         }
         return false;
     }
-
     public static void showErrorDialog(Context context, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Error");

@@ -29,7 +29,7 @@ public class login extends AppCompatActivity {
     Button button;
     private EditText allergensditText;
     private EditText unwantedEditText;
-
+   static ArrayList<String> alergensList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,13 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String allergens = allergensditText.getText().toString();
-                ArrayList<String> alergens = ocrScan.getList(allergens);
+                alergensList = ocrScan.getList(allergens);
                 String unwanteds = (unwantedEditText.getText().toString());
+                ArrayList<String> unwanted = ocrScan.getList(unwanteds);
                 User user = new User(allergens, unwanteds);
-
+                for(int i = 0; i < unwanted.size(); i++){
+                    alergensList.add(unwanted.get(i));
+                }
                 Intent intent = new Intent(login.this,ocrScan.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
@@ -61,7 +64,9 @@ public class login extends AppCompatActivity {
 }
         });
     }
-
+    public static ArrayList<String> getArrayList(){
+        return alergensList;
+    }
 
 
 
