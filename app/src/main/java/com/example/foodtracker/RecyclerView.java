@@ -2,6 +2,7 @@ package com.example.foodtracker;
 
 import android.os.Bundle;
 
+import com.example.foodtracker.databinding.ActivityRecyclerviewBinding;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import androidx.navigation.ui.NavigationUI;*/
 
 import com.example.foodtracker.databinding.ActivityRecyclerviewBinding;
 
-public class recyclerview extends AppCompatActivity {
+public class RecyclerView extends AppCompatActivity {
 /*    private AppBarConfiguration appBarConfiguration;*/
     private ActivityRecyclerviewBinding binding;
 
@@ -24,12 +25,12 @@ public class recyclerview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //  binding = ActivityRecyclerviewBinding.inflate(getLayoutInflater());
+        //  binding = ActivityRecyclerViewBinding.inflate(getLayoutInflater());
         //     setContentView(binding.getRoot());
 
         //     setSupportActionBar(binding.toolbar);
 
-        //     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_recyclerview);
+        //     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_RecyclerView);
         //     appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         //     NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
@@ -45,7 +46,7 @@ public class recyclerview extends AppCompatActivity {
 
         // @Override
         // public boolean onSupportNavigateUp() {
-        //     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_recyclerview);
+        //     NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_RecyclerView);
         //     return NavigationUI.navigateUp(navController, appBarConfiguration)
         //             || super.onSupportNavigateUp();
         // }

@@ -1,39 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="#FFE2C8">
 
+    <FrameLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <!-- Placeholder for the image, you can add ImageView here if needed -->
+        <FrameLayout
+            android:id="@+id/image_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    </androidx.cardview.widget.CardView>
+    </FrameLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/exp"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvProductName"
+            android:layout_width="188dp"
             android:layout_height="wrap_content"
-            android:text="exp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/name"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Sample product 1"
+            android:textAppearance="?attr/textAppearanceListItem" />
 
-        <TextView
-            android:id="@+id/name"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            android:text="name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Freshness: "
+                android:textAppearance="?attr/textAppearanceListItemSmall" />
+
+            <TextView
+                android:id="@+id/tvFreshnessValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAppearance="?attr/textAppearanceListItemSmall" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

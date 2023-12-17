@@ -5,30 +5,21 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.foodtracker.databinding.ActivityRecycleBinding;
+import com.example.foodtracker.databinding.AddproductBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
-import java.util.Currency;
 
-public class recycle extends AppCompatActivity {
+public class RecycleActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    FloatingActionButton addButton;
-    Recyclerviewadapter recyclerviewadapter;
-    ProductRepository productRepository;
-    ArrayList<String> name, expiration;
+    private RecyclerView recyclerView;
+    private FloatingActionButton addButton;
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private ProductRepository productRepository;
+    private ArrayList<String> name, expiration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +31,19 @@ public class recycle extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                Intent intent = new Intent(recycle.this, addProduct.class);
-
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
+                Intent intent = new Intent(RecycleActivity.this, AddproductBinding.class);
                 startActivity(intent);
             }
         });
-        productRepository = new ProductRepository(recycle.this);
+
+        productRepository = new ProductRepository(this);
         name = new ArrayList<>();
         expiration = new ArrayList<>();
         storeData();
 
-        recyclerviewadapter = new Recyclerviewadapter(recycle.this, name, expiration);
-        recyclerView.setAdapter(recyclerviewadapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(recycle.this));
-
+        recyclerViewAdapter = new RecyclerViewAdapter(this, name, expiration);
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     void storeData() {
@@ -67,12 +51,10 @@ public class recycle extends AppCompatActivity {
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         } else {
-            while( cursor.moveToNext()) {
+            while (cursor.moveToNext()) {
                 name.add(cursor.getString(0));
                 expiration.add(cursor.getString(1));
             }
-
         }
     }
-
 }
