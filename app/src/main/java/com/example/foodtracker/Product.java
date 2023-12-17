@@ -8,14 +8,17 @@ import java.util.ArrayList;
 
 public class Product {//implements Parcelable {
     private String name;
-    private String expirationDate;
-    public String date;
+    private Date expirationDate;
+
+    public String freshness;
+
+
     private Date purchaseDate;
     private ArrayList<String> ingredients;
-    private static int productID = 0;
+    public static int productID = 0;
     private static final int userID = 1;
 
-    public Product(String name, String expirationDate, Date purchaseDate,
+    public Product(String name, Date expirationDate, Date purchaseDate,
                    ArrayList<String> ingredients) {
         this.name = name;
         this.expirationDate = expirationDate;
@@ -24,10 +27,7 @@ public class Product {//implements Parcelable {
         this.purchaseDate = purchaseDate;
         productID++;
     }
-    public Product(String name, String expirationDate) {
-        this.name = name;
-        this.expirationDate = expirationDate;
-    }
+
 
    /* protected Product(Parcel in) {
         name = in.readString();
@@ -64,7 +64,7 @@ public class Product {//implements Parcelable {
         dest.writeInt(productID);
     }*/
 
-    public String getExpirationDate() {
+    public Date getExpirationDate() {
         return expirationDate;
     }
 
@@ -89,7 +89,7 @@ public class Product {//implements Parcelable {
         return userID;
     }
 
-    public void setExpirationDate(String expirationDate) {
+    public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 
