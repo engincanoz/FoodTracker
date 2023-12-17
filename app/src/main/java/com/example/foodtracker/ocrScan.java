@@ -114,7 +114,7 @@ public class    ocrScan extends AppCompatActivity {
     }
     public static ArrayList<String> getList(String ingredients) {
         // Split the ingredients string using commas as the delimiter
-        String[] ingredientsArray = ingredients.split(", ");
+        String[] ingredientsArray = ingredients.split("[,\\s]+");
 
         // Convert the array to an ArrayList
         ArrayList<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
