@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +7,6 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".ocrScan">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigator"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +20,8 @@
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:text="TAKE IMAGE"
-            app:cornerRadius="5dp" />
+            app:cornerRadius="5dp"
+            app:icon="@drawable/baseline_add_a_photo_24"/>
 
 
 
@@ -38,10 +32,9 @@
             android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:text="SCAN IMAGE"
-            app:cornerRadius="5dp" />
-<!--
-            app:icon="@drawable/baseline_document_scanner_24"
--->
+            app:cornerRadius="5dp"
+            app:icon="@drawable/baseline_document_scanner_24"/>
+
     </LinearLayout>
 
     <ScrollView
@@ -58,7 +51,8 @@
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageIv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="362dp"
+                android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_image_24"
                 app:strokeWidth="2dp" />
@@ -70,34 +64,33 @@
                 android:layout_marginTop="10dp"
                 android:text="Text From The Image" />
 
+            <Button
+                android:id="@+id/saveIngredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_item"
+                android:backgroundTint="#05FF5722"
+                android:onClick="launchAddProductActivity"
+                android:text="Save Ingredients" />
+
             <EditText
                 android:id="@+id/recognizedTextEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!--<com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigator"
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
-
-                <Button
-                    android:id="@+id/saveIngredients"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-
-                    android:backgroundTint="#05FF5722"
-                    android:onClick="launchAddProductActivity"
-                    android:text="Save IngredIents"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                app:layout_constraintBottom_toBottomOf="parent" />-->
 
 
         </LinearLayout>
     </ScrollView>
 
 
-</RelativeLayout>
+</LinearLayout>
