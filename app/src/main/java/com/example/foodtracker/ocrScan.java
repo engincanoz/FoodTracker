@@ -63,7 +63,7 @@ public class    ocrScan extends AppCompatActivity {
     private String[] storagePermissions;
     private ProgressDialog progressDialog;
     private TextRecognizer textRecognizer;
-    public String ingredients;
+    public String ingredients = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,7 +152,7 @@ public class    ocrScan extends AppCompatActivity {
                             String recognizedText = text.getText();
                             Log.d(TAG, "onSuccess: recognizedText: " + recognizedText);
                             recognizedTextEt.setText(recognizedText);
-                            ingredients = recognizedText.toString();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
