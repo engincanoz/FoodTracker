@@ -22,54 +22,46 @@ public class ProductRepository extends SQLiteOpenHelper {
     }
     public void insertOrUpdateProductData(Product product) {
 
-            SQLiteDatabase db = this.getWritableDatabase();
-            ContentValues cv = new ContentValues();
-            cv.put("ProductID", product.productID);
-            cv.put("Name", product.getName());
-<<<<<<< Updated upstream
-=======
-            cv.put("Freshness", product.freshness);
->>>>>>> Stashed changes
-            cv.put("ExpirationDate", product.getExpirationDate().getTime());
-            cv.put("PurchaseDate", product.getPurchaseDate().getTime());
-            String ingredientsString = String.join(", ", product.getIngredients());
-            cv.put("Ingredients", ingredientsString);
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("ProductID", product.productID);
+        cv.put("Name", product.getName());
 
-            long result = db.insert("Product", null, cv);
-            if( result == -1) {
-                Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
-            }
+        cv.put("Freshness", product.freshness);
+
+       /* cv.put("ExpirationDate", product.getExpirationDate().getTime());
+        cv.put("PurchaseDate", product.getPurchaseDate().getTime());
+        String ingredientsString = String.join(", ", product.getIngredients());
+        cv.put("Ingredients", ingredientsString);*/
+
+        long result = db.insert("Product", null, cv);
+        if( result == -1) {
+            Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public Cursor retrieveProductInfo() {
-       String query = "SELECT * FROM " + "Product";
-       SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + "Product";
+        SQLiteDatabase db = this.getReadableDatabase();
 
-       Cursor cursor = null;
-       if (db != null) {
-           cursor = db.rawQuery(query,null);
-       }
-       return cursor;
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query,null);
+        }
+        return cursor;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String createProductTableQuery = "CREATE TABLE Product(" +
-                " ProductID INT PRIMARY KEY," +
-                " Name TEXT," +
-<<<<<<< Updated upstream
-=======
-                " Freshness TEXT," +
->>>>>>> Stashed changes
-                " ExpirationDate DATE," +
-                " PurchaseDate DATE," +
-                " Ingredients TEXT" +
-                ")";
+            String createProductTableQuery = "CREATE TABLE Product(" +
+                    " Name TEXT," +
+                    " Expiration TEXT" +
+                    ")";
 
-            db.execSQL(createProductTableQuery);
+        db.execSQL(createProductTableQuery);
     }
 
     @Override

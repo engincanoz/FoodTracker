@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class Product {//implements Parcelable {
     private String name;
     private Date expirationDate;
-<<<<<<< Updated upstream
 
-=======
     public String freshness;
->>>>>>> Stashed changes
+
+
     private Date purchaseDate;
     private ArrayList<String> ingredients;
     public static int productID = 0;

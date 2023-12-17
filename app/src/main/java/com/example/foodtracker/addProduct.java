@@ -39,7 +39,7 @@ public class addProduct extends AppCompatActivity {
             public void onClick(View v) {
 
                 String nameText = name.getText().toString();
-                String dateText = date.getText().toString();
+                /*String dateText = date.getText().toString();*/
                 Product product = new Product(nameText, null, null, null);
 
                 productRepository.insertOrUpdateProductData(product);

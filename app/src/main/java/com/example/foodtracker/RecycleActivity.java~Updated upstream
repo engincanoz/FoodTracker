@@ -18,8 +18,8 @@ public class RecycleActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addButton;
     ProductRepository productRepository;
-    ArrayList<String> name, id, freshness;
-    Recyclerviewadapter recyclerviewadapter;
+    ArrayList<String> name, freshness;
+    ArrayList<Integer> id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,9 @@ public class RecycleActivity extends AppCompatActivity {
             }
         });
         productRepository = new ProductRepository(recycle.this);
-        name = new ArrayList<>();
         id = new ArrayList<>();
-        freshness = new ArrayList<>();
+        name = new ArrayList<>();
+        expiration = new ArrayList<>();
         storeData();
 
         recyclerviewadapter = new Recyclerviewadapter(recycle.this, name, id, freshness);
@@ -51,10 +51,9 @@ public class RecycleActivity extends AppCompatActivity {
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
         } else {
-            while (cursor.moveToNext()) {
+            while( cursor.moveToNext()) {
                 name.add(cursor.getString(0));
-                id.add(cursor.getString(1));
-                freshness.add(cursor.getString(2));
+                expiration.add(cursor.getString(1));
             }
         }
     }

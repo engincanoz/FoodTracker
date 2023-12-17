@@ -10,18 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapter.MyViewHolder> {
+public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
-   /* ArrayList<ProductModel> list;*/
+    /* ArrayList<ProductModel> list;*/
 
-<<<<<<< Updated upstream:app/src/main/java/com/example/foodtracker/RecyclerViewAdapter.java
-    ArrayList name, id, freshness;
-    public  Recyclerviewadapter(Context context, ArrayList name,ArrayList id, ArrayList freshness ) {
-=======
+
     ArrayList<String> name, freshness;
     ArrayList<Integer> id;
-    public RecyclerviewAdapter(Context context, ArrayList<String> name, ArrayList<Integer> id, ArrayList<String> freshness ) {
->>>>>>> Stashed changes:app/src/main/java/com/example/foodtracker/Recyclerviewadapter.java
+    public Recyclerviewadapter(Context context, ArrayList<String> name, ArrayList<Integer> id, ArrayList<String> freshness ) {
+
         this.context = context;
         this.name = name;
         this.id = id;
@@ -39,10 +36,7 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
         holder.nameText.setText(String.valueOf(name.get(position)));
         holder.idText.setText(String.valueOf(id.get(position)));
         holder.freshmessText.setText(String.valueOf(freshness.get(position)));
-<<<<<<< Updated upstream:app/src/main/java/com/example/foodtracker/RecyclerViewAdapter.java
 
-=======
->>>>>>> Stashed changes:app/src/main/java/com/example/foodtracker/Recyclerviewadapter.java
     }
 
     @Override
@@ -59,16 +53,10 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-<<<<<<< Updated upstream:app/src/main/java/com/example/foodtracker/RecyclerViewAdapter.java
-            freshmessText = itemView.findViewById(R.id.freshness);
-            nameText = itemView.findViewById(R.id.name);
-            idText = itemView.findViewById(R.id.ID);
 
-=======
-            freshmessText = itemView.findViewById(R.id.freshnessText);
+            freshmessText = itemView.findViewById(R.id.tvFreshness);
             nameText = itemView.findViewById(R.id.tvProductName);
-            idText = itemView.findViewById(R.id.IDnum);
->>>>>>> Stashed changes:app/src/main/java/com/example/foodtracker/Recyclerviewadapter.java
+            idText = itemView.findViewById(R.id.ID);
         }
     }
 }
