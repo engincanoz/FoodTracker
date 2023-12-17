@@ -22,7 +22,7 @@ public class dietDisplay extends AppCompatActivity {
     public TextView generateArea;
     Button button;
     static final String apiKey = "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";
-    private ActivityDietDisplayBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class dietDisplay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(dietDisplay.this, RecycleActivity.class);
+                Intent intent = new Intent(dietDisplay.this, RecyclerView.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
                 // intent.putExtra("key", "value");

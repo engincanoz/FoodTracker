@@ -2,7 +2,7 @@ package com.example.foodtracker;
 
 import android.os.Bundle;
 
-import com.example.foodtracker.databinding.ActivityRecyclerviewBinding;
+
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
