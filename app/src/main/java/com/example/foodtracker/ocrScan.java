@@ -43,6 +43,8 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class    ocrScan extends AppCompatActivity {
 
@@ -110,11 +112,28 @@ public class    ocrScan extends AppCompatActivity {
         });
 
     }
+    public static ArrayList<String> getIngredientsList(String ingredients) {
+        // Split the ingredients string using commas as the delimiter
+        String[] ingredientsArray = ingredients.split(", ");
+
+        // Convert the array to an ArrayList
+        ArrayList<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
+
+        // Remove leading and trailing whitespaces from each ingredient
+        for (int i = 0; i < ingredientsList.size(); i++) {
+            ingredientsList.set(i, ingredientsList.get(i).trim());
+        }
+
+        return ingredientsList;
+    }
     public void launchNextPage(View v) {
         Intent intent = new Intent(this, addProduct.class);
-        intent.putExtra("Ingredients", ingredients);
+        String editedIngredients = recognizedTextEt.getText().toString();
+        ArrayList<String> ingredientsList = getIngredientsList(editedIngredients);
+        intent.putExtra("Ingredients List", ingredientsList);
         startActivity(intent);
-        Toast.makeText(this, "Ingredients are: " + ingredients, Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "ingredients: "+ingredientsList);
+        Toast.makeText(this, "Ingredients are: " + ingredientsList, Toast.LENGTH_SHORT).show();
     }
     private void recognizeTextFromImage() {
         Log.d(TAG, "recognizeTextFromImage: ");
