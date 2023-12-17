@@ -12,6 +12,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 /*import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -39,6 +41,8 @@ public class addProduct extends AppCompatActivity {
             public void onClick(View v) {
 
                 String nameText = name.getText().toString();
+
+
                 /*String dateText = date.getText().toString();*/
                 Product product = new Product(nameText, null, null, null);
 
