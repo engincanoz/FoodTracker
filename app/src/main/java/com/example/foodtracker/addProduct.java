@@ -16,11 +16,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 /*import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -55,7 +55,7 @@ public class addProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                nameText = name.getText().toString();
+                String nameText = name.getText().toString();
                 /*String dateText = date.getText().toString();*/
 
                 dateString = "01-12-2023";
