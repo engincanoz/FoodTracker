@@ -71,15 +71,49 @@ public class ProductRepository extends SQLiteOpenHelper {
                 ")";
 
         db.execSQL(createProductTableQuery);
+
+        String createUserTableQuery = "CREATE TABLE User(" +
+                " Allergens TEXT" +
+                ")";
+        db.execSQL(createUserTableQuery);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + "User");
         db.execSQL("DROP TABLE IF EXISTS " + "Products");
         onCreate(db);
     }
 
+    public Cursor getProductData(int productId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] projection = {
+                "ProductID",
+                "Name",
+                "Freshness",
+                "ExpirationDate",
+                "PurchaseDate",
+                "Ingredients"
+        };
+
+        String selection = "ProductID = ?";
+        String[] selectionArgs = {String.valueOf(productId)};
+
+        Cursor cursor = db.query(
+                "Product",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+
+
+        return cursor;
+    }
 
 
 

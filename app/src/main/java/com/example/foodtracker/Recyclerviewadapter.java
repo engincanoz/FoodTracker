@@ -2,6 +2,7 @@ package com.example.foodtracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
     /* ArrayList<ProductModel> list;*/
-
+    ProductRepository productRepository;
     private View.OnClickListener onItemClickListener;
 
     public void setOnItemClickListener(View.OnClickListener listener) {
@@ -32,6 +34,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         this.name = name;
         this.id = id;
         this.freshness = freshness;
+        productRepository = new ProductRepository(context);
     }
 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,29 +52,71 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             @Override
             public void onClick(View v) {
                 int clickedPosition = holder.getAdapterPosition();
-
-
-                String clickedName = name.get(clickedPosition);
+                String name = "";
+                String freshness = "";
                 int clickedId = id.get(clickedPosition);
-                String clickedFreshness = freshness.get(clickedPosition);
+
+                Cursor cursor = productRepository.getProductData(clickedId);
+                int nameIndex = cursor.getColumnIndex("Name");
+                int freshnessIndex = cursor.getColumnIndex("Freshness");
+                if (cursor.moveToFirst()) {
+
+                    if (nameIndex != -1) {
+                        name = cursor.getString(nameIndex);
+                    }
+
+                    if (freshnessIndex != -1) {
+                        freshness = cursor.getString(freshnessIndex);
+                    }
+                    String ingredients = "";
+                    Date expirationDate = null;
+                    Date purchaseDate = null;
+
+                    int ingredientsIndex = cursor.getColumnIndex("Ingredients");
+                    int expirationDateIndex = cursor.getColumnIndex("ExpirationDate");
+                    int purchaseDateIndex = cursor.getColumnIndex("PurchaseDate");
+
+// Check if the cursor has a valid index for "Ingredients"
+                    if (ingredientsIndex != -1) {
+                        // Retrieve the ingredients value from the cursor
+                        ingredients = cursor.getString(ingredientsIndex);
+
+                    }
+
+// Check if the cursor has valid indices for "ExpirationDate" and "PurchaseDate"
+                    if (expirationDateIndex != -1 && purchaseDateIndex != -1) {
+
+                        long expirationDateMillis = cursor.getLong(expirationDateIndex);
+                        long purchaseDateMillis = cursor.getLong(purchaseDateIndex);
 
 
-                Intent intent = new Intent(context, dietHelp.class);
+                        // Check if the expiration date is not 0 (indicating null in millis) and convert to Date
+                        if (expirationDateMillis != 0) {
+                            expirationDate = new Date(expirationDateMillis);
+                        }
+
+                        // Check if the purchase date is not 0 (indicating null in millis) and convert to Date
+                        if (purchaseDateMillis != 0) {
+                            purchaseDate = new Date(purchaseDateMillis);
+                        }
+                    }
 
 
-                intent.putExtra("name", clickedName);
-                intent.putExtra("id", clickedId);
-                intent.putExtra("freshness", clickedFreshness);
 
+                    Intent intent = new Intent(context, productx.class);
 
-                ProductRepository productRepository = new ProductRepository(context);
+                    // Pass the product data as extras to the new activity
+                    intent.putExtra("productId", clickedId);
+                    intent.putExtra("productName", name);
+                    intent.putExtra("productFreshness", freshness);
+                    intent.putExtra("expirationDate", expirationDate);
+                    intent.putExtra("purchaseDate", purchaseDate);
+                    intent.putExtra("ingredients", ingredients);
+                    context.startActivity(intent);
+                }
 
-
-
-             /*   intent.putExtra("additionalInfo", additionalInfo);*/
-
-
-                context.startActivity(intent);
+                // Don't forget to close the cursor when you're done with it
+                cursor.close();
             }
         });
 
