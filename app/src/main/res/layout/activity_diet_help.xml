@@ -253,7 +253,7 @@
                     android:layout_marginTop="2dp"
                     android:background="@drawable/rounded_item"
                     android:backgroundTint="#27216EF3"
-                    android:text="KetogenIc DIet"
+                    android:text="Ketogenic DIet"
                     android:textSize="15dp"
                     app:iconTint="#2196F3"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -266,7 +266,7 @@
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
                     android:backgroundTint="#2196F3"
-                    android:text="ProteIn Based DIet"
+                    android:text="Protein Based DIet"
                     android:textColor="#FBFBFB"
                     android:textColorHighlight="#3F51B5"
                     android:textColorHint="@color/white"
@@ -281,8 +281,8 @@
                     android:layout_width="276dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
-                    android:backgroundTint="#3121F3D3"
-                    android:text="WeIght Loss DIet"
+                    android:backgroundTint="#A421F3D3"
+                    android:text="WeIght Loss Diet"
                     android:textSize="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.503"
@@ -294,8 +294,8 @@
                     android:layout_width="276dp"
                     android:layout_height="38dp"
                     android:layout_marginTop="2dp"
-                    android:backgroundTint="#0C21F387"
-                    android:text="WeIght GaIn DIet"
+                    android:backgroundTint="#A121F387"
+                    android:text="Weight Gain Diet"
                     android:textSize="15dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -318,7 +318,7 @@
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#514CAF50"
                 android:onClick="launchGenerate"
-                android:text="Prepare my DIet!"
+                android:text="Prepare my Diet!"
                 app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -331,12 +331,13 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="73dp"
 
-        android:background="@color/light_blue_A400"
+        android:background="#5400BCD4"
         app:itemTextColor="@drawable/selector_xx"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:menu="@menu/bottom_navigation">
+        app:menu="@menu/bottom_navigation"
+        tools:layout_editor_absoluteX="0dp">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
