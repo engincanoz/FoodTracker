@@ -77,14 +77,23 @@ public class ProductRepository extends SQLiteOpenHelper {
         cv.put("Allergens", allergens);
         cv.put("Unwanteds", unwanteds);
 
-        long result = db.insertWithOnConflict("User", null, cv, SQLiteDatabase.CONFLICT_REPLACE);
 
-        if (result == -1) {
-            Toast.makeText(context, "User Data Insert/Update Failed", Toast.LENGTH_SHORT).show();
+        int rowsAffected = db.update("User", cv, null, null);
+
+        if (rowsAffected == 0) {
+
+            long result = db.insert("User", null, cv);
+
+            if (result == -1) {
+                Toast.makeText(context, "User Data Insert Failed", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "New User Data Added successfully", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(context, "User Data Added/Updated successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "User Data Updated successfully", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public Cursor retrieveUserInfo() {
         String query = "SELECT * FROM " + "User";
