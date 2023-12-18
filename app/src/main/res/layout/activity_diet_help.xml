@@ -331,13 +331,13 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigator"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
+        android:layout_height="61dp"
 
         android:background="#5400BCD4"
         app:itemTextColor="@drawable/selector_xx"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
         app:menu="@menu/bottom_navigation"
-        tools:layout_editor_absoluteX="0dp">
+        tools:layout_editor_absoluteX="2dp">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
