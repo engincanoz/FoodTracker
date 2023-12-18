@@ -19,6 +19,9 @@ public class update extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        allergensText = findViewById(R.id.editTextTextAllergens);
+        unwantedsText = findViewById(R.id.editTextTextUnwanteds);
+        okButton = findViewById(R.id.button2);
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,9 +31,9 @@ public class update extends AppCompatActivity {
                 String allergens = allergensText.getText().toString();
                 String unwanteds = unwantedsText.getText().toString();
 
-                productRepository.insertOrUpdateUserData(user);
+                productRepository.insertOrUpdateUserData(allergens, unwanteds);
 
-                Intent intent = new Intent(login.this,dietHelp.class);
+                Intent intent = new Intent(update.this,dietHelp.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
                 // intent.putExtra("key", "value");

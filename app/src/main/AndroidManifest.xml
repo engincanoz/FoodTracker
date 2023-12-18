@@ -18,15 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodTracker"
         tools:targetApi="31">
-        <activity
-            android:name=".update"
-            android:exported="false" />
-        <activity
-            android:name=".ui.update"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="false"
-            android:label="@string/title_activity_update"
-            android:theme="@style/Theme.FoodTracker.Fullscreen" />
+
         <activity
             android:name=".recycle"
             android:exported="false"
@@ -53,6 +45,10 @@
             android:label="@string/title_activity_my_products" />
         <activity
             android:name=".ocrScan"
+            android:exported="false"
+            android:label="@string/title_activity_my_products" />
+        <activity
+            android:name=".update"
             android:exported="false"
             android:label="@string/title_activity_my_products" />
         <activity
