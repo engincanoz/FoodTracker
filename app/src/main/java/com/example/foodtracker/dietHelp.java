@@ -69,7 +69,7 @@ public class    dietHelp extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     } else if (selectedItemId == R.id.myProducts_icon) {
-                        startActivity(new Intent(getApplicationContext(), myProducts.class));
+                        startActivity(new Intent(getApplicationContext(), recycle.class));
                         overridePendingTransition(0, 0);
                         return true;
                     } else if (selectedItemId == R.id.addProduct_icon) {

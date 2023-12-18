@@ -1,11 +1,14 @@
 package com.example.foodtracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -13,6 +16,12 @@ import java.util.ArrayList;
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
     /* ArrayList<ProductModel> list;*/
+
+    private View.OnClickListener onItemClickListener;
+
+    public void setOnItemClickListener(View.OnClickListener listener) {
+        this.onItemClickListener = listener;
+    }
 
 
     ArrayList<String> name, freshness;
@@ -36,6 +45,35 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         holder.nameText.setText(String.valueOf(name.get(position)));
         holder.idText.setText(String.valueOf(id.get(position)));
         holder.freshmessText.setText(String.valueOf(freshness.get(position)));
+        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int clickedPosition = holder.getAdapterPosition();
+
+
+                String clickedName = name.get(clickedPosition);
+                int clickedId = id.get(clickedPosition);
+                String clickedFreshness = freshness.get(clickedPosition);
+
+
+                Intent intent = new Intent(context, dietHelp.class);
+
+
+                intent.putExtra("name", clickedName);
+                intent.putExtra("id", clickedId);
+                intent.putExtra("freshness", clickedFreshness);
+
+
+                ProductRepository productRepository = new ProductRepository(context);
+
+
+
+             /*   intent.putExtra("additionalInfo", additionalInfo);*/
+
+
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -50,9 +88,12 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         TextView nameText;
 
         TextView idText;
+        LinearLayout parentLayout; // Update to LinearLayout
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            parentLayout = itemView.findViewById(R.id.parentLayout); // Update to new ID
 
             freshmessText = itemView.findViewById(R.id.tvFreshness);
             nameText = itemView.findViewById(R.id.tvProductName);
