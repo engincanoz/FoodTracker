@@ -1,4 +1,3 @@
-package com.example.foodtracker;
 
 import android.content.ContentValues;
 import android.content.Context;
