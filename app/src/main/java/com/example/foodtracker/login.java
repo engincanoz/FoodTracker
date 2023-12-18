@@ -31,6 +31,8 @@ public class login extends AppCompatActivity {
     private EditText unwantedEditText;
    static ArrayList<String> alergensList;
 
+   ProductRepository productRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +47,15 @@ public class login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                productRepository = new ProductRepository(login.this);
                 String allergens = allergensditText.getText().toString();
                 alergensList = ocrScan.getList(allergens);
                 String unwanteds = (unwantedEditText.getText().toString());
                 ArrayList<String> unwanted = ocrScan.getList(unwanteds);
                 User user = new User(allergens, unwanteds);
+                productRepository.insertOrUpdateUserData(user);
+
                 for(int i = 0; i < unwanted.size(); i++){
                     alergensList.add(unwanted.get(i));
                 }

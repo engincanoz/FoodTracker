@@ -58,6 +58,31 @@ public class ProductRepository extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public void insertOrUpdateUserData(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("Allergens", user.getAllergens());
+        cv.put("Unwanteds", user.getUnwantedIngredients());
+
+        long result = db.insert("User", null, cv);
+        if (result == -1) {
+            Toast.makeText(context, "User Data Insert Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "User Data Added successfully", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public Cursor retrieveUserInfo() {
+        String query = "SELECT * FROM " + "User";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -73,7 +98,8 @@ public class ProductRepository extends SQLiteOpenHelper {
         db.execSQL(createProductTableQuery);
 
         String createUserTableQuery = "CREATE TABLE User(" +
-                " Allergens TEXT" +
+                " Allergens TEXT," +
+                " Unwanteds TEXT" +
                 ")";
         db.execSQL(createUserTableQuery);
     }
@@ -109,8 +135,6 @@ public class ProductRepository extends SQLiteOpenHelper {
                 null,
                 null
         );
-
-
 
         return cursor;
     }
