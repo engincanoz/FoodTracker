@@ -54,6 +54,8 @@ public class    dietHelp extends AppCompatActivity {
         generateButton.setEnabled(false);
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.dietHelp_icon);
+        MenuItem selectedItem = bottomNavigationView.getMenu().findItem(R.id.dietHelp_icon);
+        selectedItem.setChecked(true); 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -78,7 +80,6 @@ public class    dietHelp extends AppCompatActivity {
                         return true;
                     }
                 }
-
                 return false;
             }
         });

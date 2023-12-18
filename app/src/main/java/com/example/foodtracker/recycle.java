@@ -55,6 +55,8 @@ public class recycle extends AppCompatActivity {
         });*/
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.myProducts_icon);
+        MenuItem selectedItem = bottomNavigationView.getMenu().findItem(R.id.myProducts_icon);
+        selectedItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
