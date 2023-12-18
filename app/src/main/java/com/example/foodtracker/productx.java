@@ -18,7 +18,7 @@ import java.sql.Date;
 
 public class productx extends AppCompatActivity {
 
-    TextView id, name, freshness, expiration, purchase;
+    TextView id, name, freshness, expiration, purchase, ingredient;
     private ActivityProductBinding binding;
 
     @Override
@@ -30,6 +30,7 @@ public class productx extends AppCompatActivity {
         freshness = findViewById(R.id.tvFreshness);
         expiration = findViewById(R.id.expView);
         purchase = findViewById(R.id.purchView);
+        ingredient = findViewById(R.id.ingred);
 
         Intent intent = getIntent();
 
@@ -55,6 +56,7 @@ public class productx extends AppCompatActivity {
         freshness.setText(productFreshness);
         expiration.setText(expirationDate.toString()); // Adjust format as needed
         purchase.setText(purchaseDate.toString());
+        ingredient.setText(ingredients.toString());
 
     }
 
