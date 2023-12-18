@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.foodtracker.databinding.ActivityDietDisplayBinding;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,52 +27,29 @@ import java.net.URL;
 public class dietDisplay extends AppCompatActivity {
     public TextView generateArea;
     Button button;
-    static final String apiKey = "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";
+    static final String apiKey = "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";
     private ActivityDietDisplayBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_display);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(dietDisplay.this, recycle.class);
-
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
-                startActivity(intent);
-            }
-        });
-        //   binding = ActivityDietDisplayBinding.inflate(getLayoutInflater());
-//         setContentView(binding.getRoot());
-
-//         BottomNavigationView navView = findViewById(R.id.nav_view);
-//         // Passing each menu ID as a set of Ids because each
-//         // menu should be considered as top level destinations.
-//         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-//                 .build();
-//         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_diet_display);
-//         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
-       /* Intent intent = getIntent();
+
+        Intent intent = getIntent();
         generateArea = findViewById(R.id.textGenerated);
         generateArea.setText("PLEASE WAIT, YOUR PLAN IS BEING GENERATED...");
+        generateArea.setMovementMethod(new ScrollingMovementMethod());
+        generateArea.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
 
         String promptText = intent.getStringExtra("PROMPT");
         new GPTAsyncTask().execute(apiKey, promptText);
 
-        Log.d("GPTactivity", "Received prompt: " + promptText);*/
+        Log.d("GPTactivity", "Received prompt: " + promptText);
 
     }
-  private class GPTAsyncTask extends AsyncTask<String, Void, String> {
+    private class GPTAsyncTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params) {
             String apiKey = params[0];
@@ -104,21 +87,26 @@ public class dietDisplay extends AppCompatActivity {
                     StringBuilder response = new StringBuilder();
                     String responseLine;
                     while ((responseLine = br.readLine()) != null) {
-                        response.append(responseLine.trim());
+                        response.append(responseLine);
                     }
-                    return response.toString();
+
+                    // Parse the JSON response
+                    JSONObject jsonResponse = new JSONObject(response.toString());
+
+                    // Extract the relevant content
+                    JSONArray choicesArray = jsonResponse.getJSONArray("choices");
+                    JSONObject firstChoice = choicesArray.getJSONObject(0);
+                    JSONObject message = firstChoice.getJSONObject("message");
+                    String content = message.getString("content");
+
+                    runOnUiThread(() -> generateArea.setText(content));
                 }
 
-            } catch (IOException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
-                return "Error: " + e.getMessage();
+                runOnUiThread(() -> generateArea.setText("Error: " + e.getMessage()));
             }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            // Update the TextView with the API response
-            generateArea.setText(result);
+            return null;
         }
     }
 

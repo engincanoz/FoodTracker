@@ -282,14 +282,14 @@ public class    dietHelp extends AppCompatActivity {
         });*/
     }
     private void updatePromptText() {
-        promptText = String.format("Generate a 200-word daily nutrition plan for morning, noon, and evening based on gender %s, lifestyle %s, diet plan %s, and weight %s. Calculate the basic calorie needs first." +
-                "Assume a serious approach as a helpful dietician.", gender, lifeStyle, dietPlan, kgText);
+        promptText = String.format("Generate a small(not much detailed) daily nutrition plan for morning, noon, and evening(by saying only the food not any advice in table structure) based on gender %s, lifestyle %s, diet plan %s, and weight %s. Give advices on what the user gonna eat in a day in standard. Emphasize the gender, kilo, diet pla and lifestyle" +
+                "Assume a serious approach as a helpful dietician,at the end emphasize gender, lifestyle, dietplan and kilogram in humane way. Do not mention that this is a general suggestion to keep it as short as possible. ", gender, lifeStyle, dietPlan, kgText);
 
     }
     public void launchGenerate(View v){
 
         Intent i = new Intent(this, dietDisplay.class);
-        //i.putExtra("PROMPT", promptText);
+        i.putExtra("PROMPT", promptText);
         startActivity(i);
     }
 
