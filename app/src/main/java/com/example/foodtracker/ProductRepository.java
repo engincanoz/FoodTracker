@@ -37,11 +37,11 @@ public class ProductRepository extends SQLiteOpenHelper {
 
         // Parse the expiration date string and store it as milliseconds
         String expirationDate = product.getExpirationDate();
-        cv.put("ExpirationDate", expirationDate != null);
+        cv.put("ExpirationDate", expirationDate);
 
         // Parse the purchase date string and store it as milliseconds
         String purchaseDate = product.getPurchaseDate();
-        cv.put("PurchaseDate", purchaseDate != null ? purchaseDate.getTime() : 0);
+        cv.put("PurchaseDate", purchaseDate);
 
         String ingredientsString = String.join(", ", product.getIngredients());
         cv.put("Ingredients", ingredientsString);
@@ -182,8 +182,8 @@ public class ProductRepository extends SQLiteOpenHelper {
 
             while (cursor.moveToNext()) {
                 // Assuming "Allergens" and "Unwanteds" are columns in the "User" table
-                String allergens = cursor.getString(1);
-                String unwanteds = cursor.getString(2);
+                String allergens = cursor.getString(0);
+                String unwanteds = cursor.getString(1);
                 ArrayList<String> allergensList = ocrScan.getList(allergens);
                 ArrayList<String> unwantedList = ocrScan.getList(unwanteds);
 

@@ -48,11 +48,12 @@ public class addProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addproduct);
-        target = productRepository.retrieveUserList();
+
         name = findViewById(R.id.nameAdd);
         date = findViewById(R.id.dateAdd);
         add = findViewById(R.id.add);
         productRepository = new ProductRepository(addProduct.this);
+        target = productRepository.retrieveUserList();
         Intent i = getIntent();
         ingredientsList = i.getStringArrayListExtra("IngredientsList");
         add.setOnClickListener(new View.OnClickListener(){
@@ -60,10 +61,10 @@ public class addProduct extends AppCompatActivity {
             public void onClick(View v) {
 
                 String nameText = name.getText().toString();
-                /*String dateText = date.getText().toString();*/
+                String dateText = date.getText().toString();
                 Log.d(tag, target.toString());
                 Log.d(tag, ingredientsList.toString());
-                String dateText = date.getText().toString();
+
                 // Parse the date string and obtain java.sql.Date
 
                 if (dateText != null) {
@@ -72,8 +73,8 @@ public class addProduct extends AppCompatActivity {
                         showErrorDialog(addProduct.this, "ALERT! Unwanted-Alergic ingredients found: "+ unwanteds);
                     } else {
                         if (isValidDate(dateText)) {
-                            Date sqlDate = parseSqlDate(dateText);
-                            Product product = new Product(nameText, sqlDate, null, ingredientsList);
+
+                            Product product = new Product(nameText, dateText, null, ingredientsList);
                             productRepository.insertOrUpdateProductData(product, addProduct.this);
                         } else {
                             // Invalid date
