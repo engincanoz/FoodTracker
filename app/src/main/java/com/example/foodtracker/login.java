@@ -50,25 +50,16 @@ public class login extends AppCompatActivity {
 
                 productRepository = new ProductRepository(login.this);
                 String allergens = allergensditText.getText().toString();
-                alergensList = ocrScan.getList(allergens);
                 String unwanteds = (unwantedEditText.getText().toString());
-                ArrayList<String> unwanted = ocrScan.getList(unwanteds);
-
                 productRepository.insertOrUpdateUserData(allergens, unwanteds);
 
-                for(int i = 0; i < unwanted.size(); i++){
-                    alergensList.add(unwanted.get(i));
-                }
                 Intent intent = new Intent(login.this,recycle.class);
-
                 startActivity(intent);
 
 }
         });
     }
-    public static ArrayList<String> getArrayList(){
-        return alergensList;
-    }
+
 
 
 

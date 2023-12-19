@@ -67,9 +67,9 @@ public class ProductRepository extends SQLiteOpenHelper {
         }
         return cursor;
     }
-    public Pair<String, String> retrieveUserAllergensAndUnwanteds() {
-        String allergens = "";
-        String unwanteds = "";
+    public Pair<ArrayList<String>, ArrayList<String>> retrieveUserAllergensAndUnwanteds() {
+        ArrayList<String> allergensList = new ArrayList<>();
+        ArrayList<String> unwantedsList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         if (db != null) {
@@ -77,16 +77,20 @@ public class ProductRepository extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery(query, null);
 
             if (cursor.moveToFirst()) {
-                allergens = cursor.getString(0);
-                unwanteds = cursor.getString(1);
+                String allergens = cursor.getString(0);
+                String unwanteds = cursor.getString(1);
+
+                allergensList = ocrScan.getList(allergens);
+                unwantedsList = ocrScan.getList(unwanteds);
             }
 
             cursor.close();
             db.close();
         }
 
-        return new Pair<>(allergens, unwanteds);
+        return new Pair<>(allergensList, unwantedsList);
     }
+
 
     public void insertOrUpdateUserData(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
