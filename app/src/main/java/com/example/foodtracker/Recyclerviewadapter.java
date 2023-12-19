@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
-    /* ArrayList<ProductModel> list;*/
+
     ProductRepository productRepository;
     private View.OnClickListener onItemClickListener;
 
@@ -61,6 +61,10 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                 Cursor cursor = productRepository.getProductData(clickedId);
                 int nameIndex = cursor.getColumnIndex("Name");
                 int freshnessIndex = cursor.getColumnIndex("Freshness");
+                int ingredientsIndex = cursor.getColumnIndex("Ingredients");
+                int expirationDateIndex = cursor.getColumnIndex("ExpirationDate");
+                int purchaseDateIndex = cursor.getColumnIndex("PurchaseDate");
+
                 if (cursor.moveToFirst()) {
 
                     if (nameIndex != -1) {
@@ -71,19 +75,18 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                         freshness = cursor.getString(freshnessIndex);
                     }
                     String ingredients = "";
-                    Date expirationDate = null;
-                    Date purchaseDate = null;
+                    String expirationDate = cursor.getString(expirationDateIndex);
+                    String purchaseDate = null;
 
-                    int ingredientsIndex = cursor.getColumnIndex("Ingredients");
-                    int expirationDateIndex = cursor.getColumnIndex("ExpirationDate");
-                    int purchaseDateIndex = cursor.getColumnIndex("PurchaseDate");
+
+
 
                     if (ingredientsIndex != -1) {
                         ingredients = cursor.getString(ingredientsIndex);
 
                     }
 
-                    if (expirationDateIndex != -1 && purchaseDateIndex != -1) {
+                  /*  if (expirationDateIndex != -1 && purchaseDateIndex != -1) {
 
                         long expirationDateMillis = cursor.getLong(expirationDateIndex);
                         long purchaseDateMillis = cursor.getLong(purchaseDateIndex);
@@ -98,7 +101,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                         if (purchaseDateMillis != 0) {
                             purchaseDate = new Date(purchaseDateMillis);
                         }
-                    }
+                    }*/
 
 
 
