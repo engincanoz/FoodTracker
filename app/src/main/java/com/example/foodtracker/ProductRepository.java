@@ -16,6 +16,7 @@ public class ProductRepository extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private Context context;
+
     private static final long DELAY_MILLIS = 0; // Initial delay before the first execution
     private static final long PERIOD_MILLIS = 3600000; // 1 hour in milliseconds
 
@@ -45,8 +46,8 @@ public class ProductRepository extends SQLiteOpenHelper {
             Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(context,recycle.class);
-            context.startActivity(intent);
+            Intent intent = new Intent(contetxt,recycle.class);
+            contetxt.startActivity(intent);
         }
     }
 

@@ -8,19 +8,19 @@
 
     <item
         android:id="@+id/addProduct_icon"
-        android:title="Add Product"
+        android:title=""
         android:icon="@drawable/addbutton">
     </item>
 
     <item
         android:id="@+id/dietHelp_icon"
-        android:title="Diet Help"
+        android:title=""
         android:icon="@drawable/img_user">
     </item>
 
     <item
         android:id="@+id/profile_icon"
-        android:title="Profile"
+        android:title=""
         android:icon="@drawable/baseline_person_24">
     </item>
 
