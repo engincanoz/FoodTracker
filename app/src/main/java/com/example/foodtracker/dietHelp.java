@@ -142,7 +142,7 @@ public class    dietHelp extends AppCompatActivity {
             }
         });
 
-        radioButton4.setOnClickListener(new View.OnClickListener() {
+        radioButton6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 lifeStyle = "current lifestyle is lightly active"; // Set the selected option to a specific value
