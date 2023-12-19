@@ -114,7 +114,6 @@ public class recycle extends AppCompatActivity {
                 id.add(cursor.getInt(0));
                 name.add(cursor.getString(1));
                 freshness.add(cursor.getString(2));
-
         }
     }
 

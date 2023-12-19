@@ -41,8 +41,7 @@ public class ProductRepository extends SQLiteOpenHelper {
         cv.put("ExpirationDate", expirationDate);
 
         // Parse the purchase date string and store it as milliseconds
-        String purchaseDate = product.getPurchaseDate();
-        cv.put("PurchaseDate", purchaseDate);
+
 
         String ingredientsString = String.join(", ", product.getIngredients());
         cv.put("Ingredients", ingredientsString);

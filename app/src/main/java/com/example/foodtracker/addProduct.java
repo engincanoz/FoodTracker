@@ -62,42 +62,81 @@ public class addProduct extends AppCompatActivity {
         unwanteds = userAllergensAndUnwanteds.second;
         Intent i = getIntent();
         ingredientsList = i.getStringArrayListExtra("IngredientsList");
-        add.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
 
-                String nameText = name.getText().toString();
-                String dateText = date.getText().toString();
-                Log.d(tag, target.toString());
-                Log.d(tag, ingredientsList.toString());
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                        String nameText = name.getText().toString();
+                        String dateText = date.getText().toString();
+                        Log.d(tag, target.toString());
+                        Log.d(tag, ingredientsList.toString());
+                        String freshness = determineFreshness(date.getText().toString());
 
-                if (dateText != null) {
-                    if (checkContains(target)) {
-                        ArrayList<String> allergicOver = containedElementAllergic(target);
-                        ArrayList<String> unwantedOver = containedElementUnwanted(target);
-                        showErrorDialog(addProduct.this, "ALERT! Unwanted-Alergic ingredients found.\nAlergics: "+ allergicOver+"\nUnwanteds: " + unwantedOver);
-                    } else {
-                        if (isValidDate(dateText)) {
+                        if (dateText != null) {
+                            if (checkContains(target)) {
+                                ArrayList<String> allergicOver = containedElementAllergic(target);
+                                ArrayList<String> unwantedOver = containedElementUnwanted(target);
+                                showErrorDialog(addProduct.this, "ALERT! Unwanted-Alergic ingredients found.\nAlergics: " + allergicOver + "\nUnwanteds: " + unwantedOver);
+                            } else {
+                                if (isValidDate(dateText)) {
 
-                            Product product = new Product(nameText, dateText, null, ingredientsList);
-                            productRepository.insertOrUpdateProductData(product, addProduct.this);
+                                    Product product = new Product(nameText, dateText, freshness, ingredientsList);
+                                    productRepository.insertOrUpdateProductData(product, addProduct.this);
+                                } else {
+                                    // Invalid date
+                                    // Show a warning to the user
+                                    Toast.makeText(addProduct.this, "Invalid date format. Please enter a date in the format dd/MM/yyyy", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         } else {
-                            // Invalid date
-                            // Show a warning to the user
-                            Toast.makeText(addProduct.this, "Invalid date format. Please enter a date in the format dd/MM/yyyy", Toast.LENGTH_SHORT).show();
+                            // Handle the case where dateText is null
+                            Toast.makeText(addProduct.this, "Date is null", Toast.LENGTH_SHORT).show();
                         }
+
+
                     }
-                } else {
-                    // Handle the case where dateText is null
-                    Toast.makeText(addProduct.this, "Date is null", Toast.LENGTH_SHORT).show();
-                }
+                });
+
+    }
 
 
-                }
-            });
+    private String determineFreshness(String expirationDate) {
+        java.sql.Date expiration = parseSqlDate1(expirationDate);
 
-}
+        if (expiration == null) {
+            // Handle parsing error
+            return "Unknown";
+        }
+
+        long oneDayMillis = 24 * 60 * 60 * 1000; // One day in milliseconds
+        long fiveDaysMillis = 5 * oneDayMillis; // Five days in milliseconds
+
+        long remaining = expiration.getTime() - System.currentTimeMillis();
+        if (remaining < oneDayMillis && remaining > 0) {
+            return "Expiring";
+        } else if (oneDayMillis <= remaining && remaining <= fiveDaysMillis) {
+            return "Good";
+        } else {
+            if (remaining <= 0){
+                return "Expired";
+            }
+            return "Fresh";
+        }
+    }
+
+
+    private java.sql.Date parseSqlDate1(String dateString) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        try {
+            java.util.Date utilDate = inputFormat.parse(dateString);
+            return new java.sql.Date(utilDate.getTime());
+        } catch (ParseException e) {
+            // Handle parsing exception
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static boolean isValidDate(String date) {
 

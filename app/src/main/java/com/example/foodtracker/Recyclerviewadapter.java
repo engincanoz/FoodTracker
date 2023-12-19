@@ -116,11 +116,14 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         long fiveDaysMillis = 5 * oneDayMillis; // Five days in milliseconds
 
         long remaining = expiration.getTime() - System.currentTimeMillis();
-        if (remaining < oneDayMillis) {
+        if (remaining < oneDayMillis && remaining > 0) {
             return "Expiring";
         } else if (oneDayMillis <= remaining && remaining <= fiveDaysMillis) {
             return "Good";
         } else {
+            if (remaining <= 0){
+                return "Expired";
+            }
             return "Fresh";
         }
     }
@@ -149,8 +152,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         TextView nameText;
 
         TextView idText;
-        LinearLayout parentLayout; // Update to LinearLayout
-
+        LinearLayout parentLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 

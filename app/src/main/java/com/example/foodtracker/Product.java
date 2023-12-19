@@ -13,18 +13,17 @@ public class Product {//implements Parcelable {
     public String freshness;
 
 
-    private String purchaseDate;
+
     private ArrayList<String> ingredients;
     public static int productID = 0;
     private static final int userID = 1;
 
-    public Product(String name, String expirationDate, String purchaseDate,
+    public Product(String name, String expirationDate, String freshness,
                    ArrayList<String> ingredients) {
         this.name = name;
         this.expirationDate = expirationDate;
         this.ingredients = ingredients;
-
-        this.purchaseDate = purchaseDate;
+        this.freshness= freshness;
         productID++;
     }
 
@@ -81,9 +80,6 @@ public class Product {//implements Parcelable {
         return productID;
     }
 
-    public String getPurchaseDate() {
-        return purchaseDate;
-    }
 
     public static int getUserid() {
         return userID;

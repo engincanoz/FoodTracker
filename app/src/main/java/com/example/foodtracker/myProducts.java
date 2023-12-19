@@ -50,7 +50,6 @@ import java.util.ArrayList;
 
 public class myProducts extends AppCompatActivity {
     Button button;
-    ArrayList<ProductModel> models = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -74,58 +73,7 @@ public class myProducts extends AppCompatActivity {
             }
         });
     }
-    private void setProductModels() {
 
-        ArrayList<String> productnames = new ArrayList<>();
-        ArrayList<String> productFreshness = new ArrayList<>();
-        ArrayList<String> expirationDate = new ArrayList<>();
-
-        productFreshness.add("4");productFreshness.add("5");productFreshness.add("6");
-        productnames.add("p1");productnames.add("p2");productnames.add("p3");
-        expirationDate.add("date1");expirationDate.add("date2");expirationDate.add("date3");
-
-
-
-
-
-        for (int i = 0;i<productnames.size();i++) {
-            models.add(new ProductModel(productnames.get(i),productFreshness.get(i),expirationDate.get(i)));
-        }
-    }
-
-
-    BottomNavigationView bottomNavigationView;
-
-/*    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);*/
-
-      /*  bottomNavigationView = findViewById(R.id.bottom_navigator);
-        bottomNavigationView.setSelectedItemId(R.id.my_products);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override*/
-    /*  public boolean onNavigationItemSelected(@NonNull MenuItem item) {*/
-          /*      int selectedItemId = item.getItemId();
-
-                // Check if the selected item is already the current item
-                if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
-                    if (selectedItemId == R.id.diet_help) {
-                        startActivity(new Intent(getApplicationContext(), dietHelp.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.profile) {
-                        startActivity(new Intent(getApplicationContext(), login.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    } else if (selectedItemId == R.id.my_products) {
-                        return true;
-                    } else if (selectedItemId == R.id.add_Product) {
-                    startActivity(new Intent(getApplicationContext(), addProduct.class));
-                    overridePendingTransition(0, 0);
-                    }
-                }
-                return false;
-            }
-        });*/
 
 
 
