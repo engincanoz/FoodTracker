@@ -118,8 +118,8 @@
                         android:id="@+id/kgInput"
                         android:layout_width="126dp"
                         android:layout_height="42dp"
+                        android:hint="kg"
                         android:imeOptions="actionDone"
-                        android:text="Your kg:"
                         android:textSize="15dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
@@ -322,7 +322,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
-
 
 
         </LinearLayout>

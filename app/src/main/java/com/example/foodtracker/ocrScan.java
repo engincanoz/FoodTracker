@@ -52,6 +52,8 @@ public class    ocrScan extends AppCompatActivity {
     private MaterialButton inputImageBtn;
     private MaterialButton recognizeTextBtn;
     private MaterialButton saveIngredientsButton;
+
+    private Button cancelButton;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
     private static final    String TAG = "MAIN_TAG";
@@ -68,7 +70,7 @@ public class    ocrScan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ocr_scan);
-
+        cancelButton = findViewById(R.id.cancelocr);
         inputImageBtn = findViewById(R.id.inputImageBtn);
         recognizeTextBtn = findViewById(R.id.recognizeTextBtn);
         imageIv = findViewById(R.id.imageIv);
@@ -109,6 +111,23 @@ public class    ocrScan extends AppCompatActivity {
 
             }
 
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                Intent intent = new Intent(ocrScan.this,recycle.class);
+
+                // If you want to pass data to the new activity, you can use intent.putExtra()
+                // intent.putExtra("key", "value");
+
+                // Start the new activity
+                startActivity(intent);
+
+            }
         });
 
     }

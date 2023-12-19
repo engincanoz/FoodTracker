@@ -2,6 +2,7 @@ package com.example.foodtracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,7 +23,7 @@ public class ProductRepository extends SQLiteOpenHelper {
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
-    public void insertOrUpdateProductData(Product product) {
+    public void insertOrUpdateProductData(Product product, Context contetxt) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -44,6 +45,8 @@ public class ProductRepository extends SQLiteOpenHelper {
             Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context,recycle.class);
+            context.startActivity(intent);
         }
     }
 

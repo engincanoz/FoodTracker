@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class update extends AppCompatActivity {
     ProductRepository productRepository;
     EditText allergensText, unwantedsText;
-    Button okButton;
+    Button okButton, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class update extends AppCompatActivity {
         allergensText = findViewById(R.id.editTextTextAllergens);
         unwantedsText = findViewById(R.id.editTextTextUnwanteds);
         okButton = findViewById(R.id.button2);
+        cancelButton = findViewById(R.id.cancel);
 
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +35,23 @@ public class update extends AppCompatActivity {
                 productRepository.insertOrUpdateUserData(allergens, unwanteds);
 
                 Intent intent = new Intent(update.this,dietHelp.class);
+
+                // If you want to pass data to the new activity, you can use intent.putExtra()
+                // intent.putExtra("key", "value");
+
+                // Start the new activity
+                startActivity(intent);
+
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                Intent intent = new Intent(update.this,recycle.class);
 
                 // If you want to pass data to the new activity, you can use intent.putExtra()
                 // intent.putExtra("key", "value");

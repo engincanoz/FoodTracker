@@ -1,5 +1,6 @@
 package com.example.foodtracker;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,6 +22,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     ProductRepository productRepository;
     private View.OnClickListener onItemClickListener;
 
+    Activity activity;
     public void setOnItemClickListener(View.OnClickListener listener) {
         this.onItemClickListener = listener;
     }
@@ -28,8 +30,8 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
 
     ArrayList<String> name, freshness;
     ArrayList<Integer> id;
-    public Recyclerviewadapter(Context context, ArrayList<String> name, ArrayList<Integer> id, ArrayList<String> freshness ) {
-
+    public Recyclerviewadapter(Activity activity, Context context, ArrayList<String> name, ArrayList<Integer> id, ArrayList<String> freshness ) {
+        this.activity = activity;
         this.context = context;
         this.name = name;
         this.id = id;
@@ -76,14 +78,11 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                     int expirationDateIndex = cursor.getColumnIndex("ExpirationDate");
                     int purchaseDateIndex = cursor.getColumnIndex("PurchaseDate");
 
-// Check if the cursor has a valid index for "Ingredients"
                     if (ingredientsIndex != -1) {
-                        // Retrieve the ingredients value from the cursor
                         ingredients = cursor.getString(ingredientsIndex);
 
                     }
 
-// Check if the cursor has valid indices for "ExpirationDate" and "PurchaseDate"
                     if (expirationDateIndex != -1 && purchaseDateIndex != -1) {
 
                         long expirationDateMillis = cursor.getLong(expirationDateIndex);
@@ -112,10 +111,9 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                     intent.putExtra("expirationDate", expirationDate);
                     intent.putExtra("purchaseDate", purchaseDate);
                     intent.putExtra("ingredients", ingredients);
-                    context.startActivity(intent);
+                    activity.startActivityForResult(intent, 1);
                 }
 
-                // Don't forget to close the cursor when you're done with it
                 cursor.close();
             }
         });

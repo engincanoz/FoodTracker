@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -70,7 +71,7 @@ public class recycle extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     } else if (selectedItemId == R.id.profile_icon) {
-                        startActivity(new Intent(getApplicationContext(), login.class));
+                        startActivity(new Intent(getApplicationContext(), update.class));
                         overridePendingTransition(0, 0);
                         return true;
                     } else if (selectedItemId == R.id.myProducts_icon) {
@@ -92,10 +93,18 @@ public class recycle extends AppCompatActivity {
         freshness = new ArrayList<>();
         storeData();
 
-        recyclerviewadapter = new Recyclerviewadapter(recycle.this, name, id, freshness);
+        recyclerviewadapter = new Recyclerviewadapter(recycle.this, this, name, id, freshness);
         recyclerView.setAdapter(recyclerviewadapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(recycle.this));
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode ==1) {
+            recreate();
+        }
     }
 
     void storeData() {

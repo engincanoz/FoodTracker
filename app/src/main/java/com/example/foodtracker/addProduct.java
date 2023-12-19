@@ -67,7 +67,8 @@ public class addProduct extends AppCompatActivity {
                     showErrorDialog(addProduct.this, "Alert! Unwanted-Alergic ingredients found");
                 }else{
                     Product product = new Product(nameText,sqlDate,null,ingredientsList);
-                    productRepository.insertOrUpdateProductData(product);
+                    productRepository.insertOrUpdateProductData(product, addProduct.this);
+
                 }
             }
         });
