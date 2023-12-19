@@ -54,7 +54,7 @@ public class login extends AppCompatActivity {
                 String unwanteds = (unwantedEditText.getText().toString());
                 ArrayList<String> unwanted = ocrScan.getList(unwanteds);
                 User user = new User(allergens, unwanteds);
-                productRepository.insertOrUpdateUserData(user);
+                productRepository.insertOrUpdateUserData(allergens, unwanteds);
 
                 for(int i = 0; i < unwanted.size(); i++){
                     alergensList.add(unwanted.get(i));

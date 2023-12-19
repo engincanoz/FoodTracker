@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,8 +21,14 @@ public class update extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        productRepository = new ProductRepository(this);
+        Pair<String, String> userAllergensAndUnwanteds = productRepository.retrieveUserAllergensAndUnwanteds();
+        String allergens = userAllergensAndUnwanteds.first;
+        String unwanteds = userAllergensAndUnwanteds.second;
         allergensText = findViewById(R.id.editTextTextAllergens);
+        allergensText.setText(allergens);
         unwantedsText = findViewById(R.id.editTextTextUnwanteds);
+        unwantedsText.setText(unwanteds);
         okButton = findViewById(R.id.button2);
         cancelButton = findViewById(R.id.cancel);
 
@@ -28,8 +36,9 @@ public class update extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                productRepository = new ProductRepository(update.this);
+
                 String allergens = allergensText.getText().toString();
+                Toast.makeText(update.this, allergens, Toast.LENGTH_SHORT).show();
                 String unwanteds = unwantedsText.getText().toString();
 
                 productRepository.insertOrUpdateUserData(allergens, unwanteds);
