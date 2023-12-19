@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Pair;
 import android.widget.Toast;
 
 import java.sql.Date;
@@ -65,6 +66,26 @@ public class ProductRepository extends SQLiteOpenHelper {
             cursor = db.rawQuery(query,null);
         }
         return cursor;
+    }
+    public Pair<String, String> retrieveUserAllergensAndUnwanteds() {
+        String allergens = "";
+        String unwanteds = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (db != null) {
+            String query = "SELECT Allergens, Unwanteds FROM User";
+            Cursor cursor = db.rawQuery(query, null);
+
+            if (cursor.moveToFirst()) {
+                allergens = cursor.getString(0);
+                unwanteds = cursor.getString(1);
+            }
+
+            cursor.close();
+            db.close();
+        }
+
+        return new Pair<>(allergens, unwanteds);
     }
 
     public void insertOrUpdateUserData(User user) {
@@ -205,7 +226,7 @@ public class ProductRepository extends SQLiteOpenHelper {
 
 
 
-/*    private void initializeTimer() {
+        /* private void initializeTimer() {
         expirationTimer = new Timer();
         expirationTimer.scheduleAtFixedRate(new ExpirationCheckTask(), DELAY_MILLIS, PERIOD_MILLIS);
     }*/
