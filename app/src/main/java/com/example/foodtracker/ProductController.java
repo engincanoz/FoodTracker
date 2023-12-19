@@ -15,12 +15,12 @@ public class ProductController {
         this.productRepository = new ProductRepository(context);
     }
 
-    public void enterName(Product product, String name) {
+    /*public void enterName(Product product, String name) {
 
         product.setName(name);
 
         productRepository.insertOrUpdateProductData(product);
-    }
+    }*/
 
 /*    public void enterExpirationDate(Product product, Date date) {
 

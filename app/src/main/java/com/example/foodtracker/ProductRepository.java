@@ -1,6 +1,7 @@
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,6 +15,7 @@ public class ProductRepository extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private Context context;
+
     private static final long DELAY_MILLIS = 0; // Initial delay before the first execution
     private static final long PERIOD_MILLIS = 3600000; // 1 hour in milliseconds
 
@@ -21,7 +23,7 @@ public class ProductRepository extends SQLiteOpenHelper {
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
-    public void insertOrUpdateProductData(Product product) {
+    public void insertOrUpdateProductData(Product product, Context contetxt) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -43,6 +45,8 @@ public class ProductRepository extends SQLiteOpenHelper {
             Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(contetxt,recycle.class);
+            contetxt.startActivity(intent);
         }
     }
 

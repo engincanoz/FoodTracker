@@ -59,12 +59,8 @@ public class login extends AppCompatActivity {
                 for(int i = 0; i < unwanted.size(); i++){
                     alergensList.add(unwanted.get(i));
                 }
-                Intent intent = new Intent(login.this,dietHelp.class);
+                Intent intent = new Intent(login.this,recycle.class);
 
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
                 startActivity(intent);
 
 }
