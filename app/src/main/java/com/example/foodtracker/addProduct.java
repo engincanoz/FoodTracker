@@ -68,7 +68,8 @@ public class addProduct extends AppCompatActivity {
 
                 if (dateText != null) {
                     if (checkContains(target)) {
-                        showErrorDialog(addProduct.this, "Alert! Unwanted-Alergic ingredients found");
+                        ArrayList<String> unwanteds = containedElement(target);
+                        showErrorDialog(addProduct.this, "ALERT! Unwanted-Alergic ingredients found: "+ unwanteds);
                     } else {
                         if (isValidDate(dateText)) {
                             Date sqlDate = parseSqlDate(dateText);
@@ -108,6 +109,15 @@ public class addProduct extends AppCompatActivity {
             }
         }
         return false;
+    }
+    public ArrayList<String> containedElement(ArrayList<String> unwanted){
+        ArrayList<String> containedElements = new ArrayList<>();
+        for(int i = 0; i < unwanted.size();i++){
+            if(ingredientsList.contains(unwanted.get(i))){
+                containedElements.add(unwanted.get(i));
+            }
+        }
+        return containedElements;
     }
     public static void showErrorDialog(Context context, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
