@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class ProductRepository extends SQLiteOpenHelper {
 
@@ -24,30 +27,32 @@ public class ProductRepository extends SQLiteOpenHelper {
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
-    public void insertOrUpdateProductData(Product product, Context contetxt) {
+    public void insertOrUpdateProductData(Product product, Context context) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("ProductID", product.productID);
         cv.put("Name", product.getName());
-
         cv.put("Freshness", product.freshness);
 
-        cv.put("ExpirationDate", product.getExpirationDate().getTime());
-        Date purchaseDate = product.getPurchaseDate();
-        if (purchaseDate != null) {
-            cv.put("PurchaseDate", purchaseDate.getTime());
-        }
+        // Parse the expiration date string and store it as milliseconds
+        String expirationDate = product.getExpirationDate();
+        cv.put("ExpirationDate", expirationDate != null);
+
+        // Parse the purchase date string and store it as milliseconds
+        String purchaseDate = product.getPurchaseDate();
+        cv.put("PurchaseDate", purchaseDate != null ? purchaseDate.getTime() : 0);
+
         String ingredientsString = String.join(", ", product.getIngredients());
         cv.put("Ingredients", ingredientsString);
 
         long result = db.insert("Product", null, cv);
-        if( result == -1) {
+        if (result == -1) {
             Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(contetxt,recycle.class);
-            contetxt.startActivity(intent);
+            Intent intent = new Intent(context, recycle.class);
+            context.startActivity(intent);
         }
     }
 
@@ -117,8 +122,8 @@ public class ProductRepository extends SQLiteOpenHelper {
                 " ProductID INT PRIMARY KEY," +
                 " Name TEXT," +
                 " Freshness TEXT," +
-                " ExpirationDate DATE," +
-                " PurchaseDate DATE," +
+                " ExpirationDate TEXT," +
+                " PurchaseDate TEXT," +
                 " Ingredients TEXT" +
                 ")";
 
@@ -130,6 +135,7 @@ public class ProductRepository extends SQLiteOpenHelper {
                 ")";
         db.execSQL(createUserTableQuery);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -164,6 +170,37 @@ public class ProductRepository extends SQLiteOpenHelper {
         );
 
         return cursor;
+    }
+
+    public ArrayList<String> retrieveUserList() {
+        ArrayList<String> userList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (db != null) {
+            String query = "SELECT * FROM User";
+            Cursor cursor = db.rawQuery(query, null);
+
+            while (cursor.moveToNext()) {
+                // Assuming "Allergens" and "Unwanteds" are columns in the "User" table
+                String allergens = cursor.getString(1);
+                String unwanteds = cursor.getString(2);
+                ArrayList<String> allergensList = ocrScan.getList(allergens);
+                ArrayList<String> unwantedList = ocrScan.getList(unwanteds);
+
+                for (int i = 0; i < allergensList.size(); i++) {
+                    userList.add(allergensList.get(i));
+                }
+                for (int i = 0; i < unwantedList.size(); i++) {
+                    userList.add(unwantedList.get(i));
+                }
+
+            }
+
+            cursor.close();
+            db.close();
+        }
+
+        return userList;
     }
 
 

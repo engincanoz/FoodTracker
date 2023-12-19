@@ -48,7 +48,7 @@ public class addProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addproduct);
-        target = login.getArrayList();
+        target = productRepository.retrieveUserList();
         name = findViewById(R.id.nameAdd);
         date = findViewById(R.id.dateAdd);
         add = findViewById(R.id.add);
@@ -146,5 +146,7 @@ public class addProduct extends AppCompatActivity {
             return null;
         }
     }
+
+
 
 }

@@ -54,7 +54,7 @@ public class productx extends AppCompatActivity {
         id.setText(String.valueOf(productId));
         name.setText(productName);
         freshness.setText(productFreshness);
-        expiration.setText(expirationDate.toString()); // Adjust format as needed
+        expiration.setText(expirationDate.toString());
         purchase.setText(purchaseDate.toString());
         ingredient.setText(ingredients.toString());
 
