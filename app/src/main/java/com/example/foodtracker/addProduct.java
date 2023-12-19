@@ -65,7 +65,6 @@ public class addProduct extends AppCompatActivity {
                 Log.d(tag, target.toString());
                 Log.d(tag, ingredientsList.toString());
 
-                // Parse the date string and obtain java.sql.Date
 
                 if (dateText != null) {
                     if (checkContains(target)) {
