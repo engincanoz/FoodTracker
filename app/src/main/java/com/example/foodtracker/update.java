@@ -22,13 +22,22 @@ public class update extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
         productRepository = new ProductRepository(this);
-        Pair<String, String> userAllergensAndUnwanteds = productRepository.retrieveUserAllergensAndUnwanteds();
-        String allergens = userAllergensAndUnwanteds.first;
-        String unwanteds = userAllergensAndUnwanteds.second;
+        Pair<ArrayList<String>, ArrayList<String>> userAllergensAndUnwanteds = productRepository.retrieveUserAllergensAndUnwanteds();
+        ArrayList<String> allergens = userAllergensAndUnwanteds.first;
+        ArrayList<String> unwanteds = userAllergensAndUnwanteds.second;
         allergensText = findViewById(R.id.editTextTextAllergens);
-        allergensText.setText(allergens);
+        String text1 = "";
+        String text2 = "";
+        for(int i = 0; i < allergens.size();i++){
+            text1 += allergens.get(i)+ ", ";
+        }
         unwantedsText = findViewById(R.id.editTextTextUnwanteds);
-        unwantedsText.setText(unwanteds);
+        for(int i = 0; i < unwanteds.size();i++){
+            text2 += unwanteds.get(i)+ ", ";
+        }
+        allergensText.setText(text1);
+        unwantedsText.setText(text2);
+
         okButton = findViewById(R.id.button2);
         cancelButton = findViewById(R.id.cancel);
 

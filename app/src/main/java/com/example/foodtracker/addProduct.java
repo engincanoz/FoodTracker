@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +44,8 @@ public class addProduct extends AppCompatActivity {
     ArrayList<String> target = new ArrayList<>();
     String nameText;
     ArrayList<String> ingredientsList;
+    ArrayList<String> allergens;
+    ArrayList<String> unwanteds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,9 @@ public class addProduct extends AppCompatActivity {
         add = findViewById(R.id.add);
         productRepository = new ProductRepository(addProduct.this);
         target = productRepository.retrieveUserList();
+        Pair<ArrayList<String>, ArrayList<String>> userAllergensAndUnwanteds = productRepository.retrieveUserAllergensAndUnwanteds();
+        allergens = userAllergensAndUnwanteds.first;
+        unwanteds = userAllergensAndUnwanteds.second;
         Intent i = getIntent();
         ingredientsList = i.getStringArrayListExtra("IngredientsList");
         add.setOnClickListener(new View.OnClickListener(){
@@ -69,8 +75,9 @@ public class addProduct extends AppCompatActivity {
 
                 if (dateText != null) {
                     if (checkContains(target)) {
-                        ArrayList<String> unwanteds = containedElement(target);
-                        showErrorDialog(addProduct.this, "ALERT! Unwanted-Alergic ingredients found: "+ unwanteds);
+                        ArrayList<String> allergicOver = containedElementAllergic(target);
+                        ArrayList<String> unwantedOver = containedElementUnwanted(target);
+                        showErrorDialog(addProduct.this, "ALERT! Unwanted-Alergic ingredients found.\nAlergics: "+ allergicOver+"\nUnwanteds: " + unwantedOver);
                     } else {
                         if (isValidDate(dateText)) {
 
@@ -111,14 +118,27 @@ public class addProduct extends AppCompatActivity {
         }
         return false;
     }
-    public ArrayList<String> containedElement(ArrayList<String> unwanted){
-        ArrayList<String> containedElements = new ArrayList<>();
-        for(int i = 0; i < unwanted.size();i++){
-            if(ingredientsList.contains(unwanted.get(i))){
-                containedElements.add(unwanted.get(i));
+    public ArrayList<String> containedElementAllergic(ArrayList<String> target){
+        ArrayList<String> containedElementsAlergic = new ArrayList<>();
+        for(int i = 0; i < target.size();i++){
+            if(ingredientsList.contains(target.get(i))){
+                if(allergens.contains(target.get(i))){
+                    containedElementsAlergic.add(target.get(i));
+                }
             }
         }
-        return containedElements;
+        return containedElementsAlergic;
+    }
+    public ArrayList<String> containedElementUnwanted(ArrayList<String> target){
+        ArrayList<String> containedElementsUnwanted = new ArrayList<>();
+        for(int i = 0; i < target.size();i++){
+            if(ingredientsList.contains(target.get(i))){
+                if(unwanteds.contains(target.get(i))){
+                    containedElementsUnwanted.add(target.get(i));
+                }
+            }
+        }
+        return containedElementsUnwanted;
     }
     public static void showErrorDialog(Context context, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
