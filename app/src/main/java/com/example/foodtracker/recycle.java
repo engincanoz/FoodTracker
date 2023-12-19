@@ -109,15 +109,11 @@ public class recycle extends AppCompatActivity {
 
     void storeData() {
         Cursor cursor = productRepository.retrieveProductInfo();
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No data", Toast.LENGTH_SHORT).show();
-        } else {
+
             while( cursor.moveToNext()) {
                 id.add(cursor.getInt(0));
                 name.add(cursor.getString(1));
                 freshness.add(cursor.getString(2));
-
-            }
 
         }
     }

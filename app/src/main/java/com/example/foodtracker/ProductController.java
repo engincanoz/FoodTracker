@@ -67,18 +67,7 @@ public class ProductController {
         return updatedList;
     }
 
-    public String determineFreshness(Product prd) {
-        long allTime = prd.getExpirationDate().getTime() - prd.getPurchaseDate().getTime();
-        long passedTime = System.currentTimeMillis() - prd.getPurchaseDate().getTime();
 
-        if (passedTime <= allTime * 0.2) {
-            return "Fresh";
-        }
-        else if (allTime * 0.2 < passedTime && passedTime <= allTime * 0.8){
-            return "Good";
-        }
-        return "Expiring";
-    }*/
 
 /*    public void addImage(Product product, String photo) {
 

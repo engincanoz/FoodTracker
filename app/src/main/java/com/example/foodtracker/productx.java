@@ -17,7 +17,10 @@ import androidx.navigation.ui.NavigationUI;*/
 import com.example.foodtracker.databinding.ActivityProductBinding;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class productx extends AppCompatActivity {
 
@@ -46,6 +49,8 @@ public class productx extends AppCompatActivity {
         String expirationText = intent.getStringExtra("expirationDate");
         String purchaseDate = intent.getStringExtra("purchaseDate");
         String ingredientsList = intent.getStringExtra("ingredients");
+
+
      /*   long expirationDateMillis = intent.getLongExtra("expirationDateMillis", 0);
 
 
@@ -76,5 +81,7 @@ public class productx extends AppCompatActivity {
         ingredient.setText(ingredientsList);
 
     }
+
+
 
 }

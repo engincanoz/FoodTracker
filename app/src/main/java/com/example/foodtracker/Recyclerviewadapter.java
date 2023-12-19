@@ -14,7 +14,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
@@ -55,7 +58,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             public void onClick(View v) {
                 int clickedPosition = holder.getAdapterPosition();
                 String name = "";
-                String freshness = "";
+
                 int clickedId = id.get(clickedPosition);
 
                 Cursor cursor = productRepository.getProductData(clickedId);
@@ -63,7 +66,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                 int freshnessIndex = cursor.getColumnIndex("Freshness");
                 int ingredientsIndex = cursor.getColumnIndex("Ingredients");
                 int expirationDateIndex = cursor.getColumnIndex("ExpirationDate");
-                int purchaseDateIndex = cursor.getColumnIndex("PurchaseDate");
+
 
                 if (cursor.moveToFirst()) {
 
@@ -71,48 +74,27 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                         name = cursor.getString(nameIndex);
                     }
 
-                    if (freshnessIndex != -1) {
-                        freshness = cursor.getString(freshnessIndex);
-                    }
+
                     String ingredients = "";
                     String expirationDate = cursor.getString(expirationDateIndex);
-                    String purchaseDate = null;
+
 
 
 
 
                     if (ingredientsIndex != -1) {
                         ingredients = cursor.getString(ingredientsIndex);
-
                     }
 
-                  /*  if (expirationDateIndex != -1 && purchaseDateIndex != -1) {
-
-                        long expirationDateMillis = cursor.getLong(expirationDateIndex);
-                        long purchaseDateMillis = cursor.getLong(purchaseDateIndex);
-
-
-                        // Check if the expiration date is not 0 (indicating null in millis) and convert to Date
-                        if (expirationDateMillis != 0) {
-                            expirationDate = new Date(expirationDateMillis);
-                        }
-
-                        // Check if the purchase date is not 0 (indicating null in millis) and convert to Date
-                        if (purchaseDateMillis != 0) {
-                            purchaseDate = new Date(purchaseDateMillis);
-                        }
-                    }*/
-
-
-
+                    String calculatedFreshness = determineFreshness(expirationDate);
                     Intent intent = new Intent(context, productx.class);
 
                     // Pass the product data as extras to the new activity
                     intent.putExtra("productId", clickedId);
                     intent.putExtra("productName", name);
-                    intent.putExtra("productFreshness", freshness);
+                    intent.putExtra("productFreshness", calculatedFreshness);
                     intent.putExtra("expirationDate", expirationDate);
-                    intent.putExtra("purchaseDate", purchaseDate);
+
                     intent.putExtra("ingredients", ingredients);
                     activity.startActivityForResult(intent, 1);
                 }
@@ -121,6 +103,39 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             }
         });
 
+    }
+    private String determineFreshness(String expirationDate) {
+        java.sql.Date expiration = parseSqlDate(expirationDate);
+
+        if (expiration == null) {
+            // Handle parsing error
+            return "Unknown";
+        }
+
+        long oneDayMillis = 24 * 60 * 60 * 1000; // One day in milliseconds
+        long fiveDaysMillis = 5 * oneDayMillis; // Five days in milliseconds
+
+        long remaining = expiration.getTime() - System.currentTimeMillis();
+        if (remaining < oneDayMillis) {
+            return "Expiring";
+        } else if (oneDayMillis <= remaining && remaining <= fiveDaysMillis) {
+            return "Good";
+        } else {
+            return "Fresh";
+        }
+    }
+
+
+    private java.sql.Date parseSqlDate(String dateString) {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        try {
+            java.util.Date utilDate = inputFormat.parse(dateString);
+            return new java.sql.Date(utilDate.getTime());
+        } catch (ParseException e) {
+            // Handle parsing exception
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
