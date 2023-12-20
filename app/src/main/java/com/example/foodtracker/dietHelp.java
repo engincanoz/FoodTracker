@@ -109,7 +109,7 @@ public class    dietHelp extends AppCompatActivity {
         radioButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender = radioButton2.getText().toString(); // Set the selected option to a specific value
+                gender = radioButton2.getText().toString();
                 if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
                     generateButton.setEnabled(true);
                 } else {
@@ -120,15 +120,15 @@ public class    dietHelp extends AppCompatActivity {
         });
 
 
-        RadioGroup radioGroup = findViewById(R.id.radiogroupLIFESTYLE); // Replace with your RadioGroup's ID
+        RadioGroup radioGroup = findViewById(R.id.radiogroupLIFESTYLE);
 
-        RadioButton radioButton3 = findViewById(R.id.radioButton3); // Replace with your RadioButton IDs
+        RadioButton radioButton3 = findViewById(R.id.radioButton3);
         RadioButton radioButton4 = findViewById(R.id.radioButton4);
 
         RadioButton radioButton6 = findViewById(R.id.radioButton6);
 
 
-        // Create custom OnClickListener for each RadioButton
+
         radioButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -253,10 +253,8 @@ public class    dietHelp extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                // Update the instance variable kgText instead of the local variable
                 kgText = kgInput.getText().toString();
 
-                // Check if all choices are made and the input field is not empty
                 if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
                     generateButton.setEnabled(true);
                 } else {
@@ -266,21 +264,7 @@ public class    dietHelp extends AppCompatActivity {
             }
         });
 
-        /*button = findViewById(R.id.button8);
-        button.setEnabled(true);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(dietHelp.this, dietDisplay.class);
-
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
-                startActivity(intent);
-            }
-        });*/
     }
     private void updatePromptText() {
         promptText = String.format("Generate a small(not much detailed) daily nutrition plan for morning, noon, and evening(by saying only the food not any advice in table structure) based on gender %s, lifestyle %s, diet plan %s, and weight %s. Give advices on what the user gonna eat in a day in standard. Emphasize the gender, kilo, diet pla and lifestyle" +

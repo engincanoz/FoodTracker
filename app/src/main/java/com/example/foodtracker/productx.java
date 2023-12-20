@@ -40,7 +40,7 @@ public class productx extends AppCompatActivity {
         name = findViewById(R.id.tvProductName);
         freshness = findViewById(R.id.tvFreshness);
         expiration = findViewById(R.id.expView);
-        //purchase = findViewById(R.id.purchView);
+
         ingredient = findViewById(R.id.ingred);
         back = findViewById(R.id.back);
         dlt = findViewById(R.id.delete);
@@ -51,22 +51,9 @@ public class productx extends AppCompatActivity {
         String productName = intent.getStringExtra("productName");
         String productFreshness = intent.getStringExtra("productFreshness");
         String expirationText = intent.getStringExtra("expirationDate");
-        //String purchaseDate = intent.getStringExtra("purchaseDate");
+
         String ingredientsList = intent.getStringExtra("ingredients");
 
-
-     /*   long expirationDateMillis = intent.getLongExtra("expirationDateMillis", 0);
-
-
-        java.sql.Date expirationDate = new java.sql.Date(expirationDateMillis);
-
-        long purchaseDateMillis = intent.getLongExtra("purchaseDateMillis", 0);
-
-
-        java.sql.Date purchaseDate = new java.sql.Date(purchaseDateMillis);
-
-
-        String ingredients = intent.getStringExtra("ingredients");*/
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,9 +75,11 @@ public class productx extends AppCompatActivity {
             public void onClick(View v) {
                 productRepository = new ProductRepository(productx.this);
 
-                    productRepository.deleteProductById(productId);
+                productRepository.deleteProductById(productId);
 
+                Intent intent = new Intent(productx.this,recycle.class);
 
+                startActivity(intent);
 
 
             }

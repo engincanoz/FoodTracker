@@ -28,41 +28,6 @@ public class Product {//implements Parcelable {
     }
 
 
-   /* protected Product(Parcel in) {
-        name = in.readString();
-        expirationDate = (Date) in.readSerializable();
-
-        purchaseDate = (Date) in.readSerializable();
-        ingredients = in.createStringArrayList();
-        productID = in.readInt();
-    }*/
-
-  /*  public static final Creator<Product> CREATOR = new Creator<Product>() {
-        @Override
-        public Product createFromParcel(Parcel in) {
-            return new Product(in);
-        }
-
-        @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeSerializable(expirationDate);
-        dest.writeSerializable(purchaseDate);
-        dest.writeStringList(ingredients);
-        dest.writeInt(productID);
-    }*/
-
     public String getExpirationDate() {
         return expirationDate;
     }

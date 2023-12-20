@@ -84,13 +84,11 @@ public class addProduct extends AppCompatActivity {
                                     Product product = new Product(nameText, dateText, freshness, ingredientsList);
                                     productRepository.insertOrUpdateProductData(product, addProduct.this);
                                 } else {
-                                    // Invalid date
-                                    // Show a warning to the user
+
                                     Toast.makeText(addProduct.this, "Invalid date format. Please enter a date in the format dd/MM/yyyy", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         } else {
-                            // Handle the case where dateText is null
                             Toast.makeText(addProduct.this, "Date is null", Toast.LENGTH_SHORT).show();
                         }
 
@@ -105,12 +103,12 @@ public class addProduct extends AppCompatActivity {
         java.sql.Date expiration = parseSqlDate1(expirationDate);
 
         if (expiration == null) {
-            // Handle parsing error
+
             return "Unknown";
         }
 
-        long oneDayMillis = 24 * 60 * 60 * 1000; // One day in milliseconds
-        long fiveDaysMillis = 5 * oneDayMillis; // Five days in milliseconds
+        long oneDayMillis = 24 * 60 * 60 * 1000;
+        long fiveDaysMillis = 5 * oneDayMillis;
 
         long remaining = expiration.getTime() - System.currentTimeMillis();
         if (remaining < oneDayMillis && remaining > 0) {
@@ -191,26 +189,19 @@ public class addProduct extends AppCompatActivity {
         builder.show();
     }
 
-    /*public void launchAdd(TextView v){
 
-        if(checkContains(target)){
-            showErrorDialog(this, "Alert! Unwanted-Alergic ingredients found");
-        }else{
-            Product product = new Product()
-        }
-    }*/
     private Date parseSqlDate(String dateString) {
-        // Define the format of your input date string
+
         SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            // Parse the string and convert it to java.util.Date
+
             java.util.Date utilDate = inputFormat.parse(dateString);
 
-            // Convert java.util.Date to java.sql.Date
+
             return new Date(utilDate.getTime());
         } catch (ParseException e) {
-            // Handle parsing exception
+
             e.printStackTrace();
             return null;
         }

@@ -39,21 +39,7 @@ public class recycle extends AppCompatActivity {
         setContentView(R.layout.activity_recycle);
 
         recyclerView = findViewById(R.id.recycler);
-        /*addButton = findViewById(R.id.addbutton);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                Intent intent = new Intent(recycle.this, addProduct.class);
-
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
-                startActivity(intent);
-            }
-        });*/
         bottomNavigationView = findViewById(R.id.bottom_navigator);
         bottomNavigationView.setSelectedItemId(R.id.myProducts_icon);
         MenuItem selectedItem = bottomNavigationView.getMenu().findItem(R.id.myProducts_icon);
@@ -64,7 +50,6 @@ public class recycle extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 int selectedItemId = item.getItemId();
 
-                // Check if the selected item is already the current item
                 if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
                     if (selectedItemId == R.id.dietHelp_icon) {
                         startActivity(new Intent(getApplicationContext(), dietHelp.class));

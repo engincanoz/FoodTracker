@@ -110,7 +110,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         java.sql.Date expiration = parseSqlDate(expirationDate);
 
         if (expiration == null) {
-            // Handle parsing error
+
             return "Unknown";
         }
 
@@ -137,7 +137,6 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             java.util.Date utilDate = inputFormat.parse(dateString);
             return new java.sql.Date(utilDate.getTime());
         } catch (ParseException e) {
-            // Handle parsing exception
             e.printStackTrace();
             return null;
         }

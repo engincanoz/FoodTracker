@@ -54,10 +54,6 @@ public class update extends AppCompatActivity {
 
                 Intent intent = new Intent(update.this,dietHelp.class);
 
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
                 startActivity(intent);
 
             }
@@ -71,10 +67,6 @@ public class update extends AppCompatActivity {
 
                 Intent intent = new Intent(update.this,recycle.class);
 
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
                 startActivity(intent);
 
             }
