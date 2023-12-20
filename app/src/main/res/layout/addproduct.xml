@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f2f3ff">
 
     <EditText
         android:id="@+id/nameAdd"
@@ -13,7 +14,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="188dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="Enter the name of product"
         android:inputType="text"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
@@ -26,7 +27,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
         android:ems="10"
-        android:hint="Date"
+        android:hint="Enter Expiration Date"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/add"
         tools:layout_editor_absoluteX="16dp" />
