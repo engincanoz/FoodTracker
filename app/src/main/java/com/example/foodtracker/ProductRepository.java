@@ -56,6 +56,37 @@ public class ProductRepository extends SQLiteOpenHelper {
         }
     }
 
+    public boolean isDatabaseEmpty() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM User", null);
+
+        int count = 0;
+        if (cursor != null) {
+            cursor.moveToFirst();
+            count = cursor.getInt(0);
+            cursor.close();
+        }
+
+        db.close();
+        return count == 0;
+    }
+
+
+    public void deleteProductById(int productId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete("Product", "ProductID=?", new String[]{String.valueOf(productId)});
+        db.close();
+
+        if (result != -1) {
+            // Deletion successful
+            Toast.makeText(context, "Successfully deleted product: " + productId, Toast.LENGTH_SHORT).show();
+        } else {
+            // Deletion failed
+            Toast.makeText(context, "Failed to delete product: " + productId, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     public Cursor retrieveProductInfo() {
         String query = "SELECT * FROM " + "Product";
         SQLiteDatabase db = this.getReadableDatabase();

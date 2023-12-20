@@ -1,9 +1,11 @@
 package com.example.foodtracker;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,9 +28,10 @@ public class productx extends AppCompatActivity {
 
     TextView id, name, freshness, expiration, purchase, ingredient;
     private ActivityProductBinding binding;
-
+    ProductRepository productRepository;
     Button back;
 
+    Button dlt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class productx extends AppCompatActivity {
         //purchase = findViewById(R.id.purchView);
         ingredient = findViewById(R.id.ingred);
         back = findViewById(R.id.back);
+        dlt = findViewById(R.id.delete);
         Intent intent = getIntent();
 
 
@@ -79,7 +83,18 @@ public class productx extends AppCompatActivity {
         expiration.setText(expirationText);
         //purchase.setText(purchaseDate);
         ingredient.setText(ingredientsList);
+        dlt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productRepository = new ProductRepository(productx.this);
 
+                    productRepository.deleteProductById(productId);
+
+
+
+
+            }
+        });
     }
 
 

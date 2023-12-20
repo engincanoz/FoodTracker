@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     }
 
 
+
     ArrayList<String> name, freshness;
     ArrayList<Integer> id;
     public Recyclerviewadapter(Activity activity, Context context, ArrayList<String> name, ArrayList<Integer> id, ArrayList<String> freshness ) {
@@ -45,7 +47,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recyclerviewrow,parent,false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, onItemClickListener);
     }
 
     @Override
@@ -150,10 +152,10 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
 
         TextView freshmessText;
         TextView nameText;
-
+        ImageView img;
         TextView idText;
         LinearLayout parentLayout;
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, View.OnClickListener listener) {
             super(itemView);
 
             parentLayout = itemView.findViewById(R.id.parentLayout); // Update to new ID
@@ -161,6 +163,8 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             freshmessText = itemView.findViewById(R.id.tvFreshness);
             nameText = itemView.findViewById(R.id.tvProductName);
             idText = itemView.findViewById(R.id.ID);
+
+
         }
     }
 }
