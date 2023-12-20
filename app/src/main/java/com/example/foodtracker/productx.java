@@ -37,7 +37,7 @@ public class productx extends AppCompatActivity {
         name = findViewById(R.id.tvProductName);
         freshness = findViewById(R.id.tvFreshness);
         expiration = findViewById(R.id.expView);
-        purchase = findViewById(R.id.purchView);
+        //purchase = findViewById(R.id.purchView);
         ingredient = findViewById(R.id.ingred);
         back = findViewById(R.id.back);
         Intent intent = getIntent();
@@ -47,7 +47,7 @@ public class productx extends AppCompatActivity {
         String productName = intent.getStringExtra("productName");
         String productFreshness = intent.getStringExtra("productFreshness");
         String expirationText = intent.getStringExtra("expirationDate");
-        String purchaseDate = intent.getStringExtra("purchaseDate");
+        //String purchaseDate = intent.getStringExtra("purchaseDate");
         String ingredientsList = intent.getStringExtra("ingredients");
 
 
@@ -77,7 +77,7 @@ public class productx extends AppCompatActivity {
         name.setText(productName);
         freshness.setText(productFreshness);
         expiration.setText(expirationText);
-        purchase.setText(purchaseDate);
+        //purchase.setText(purchaseDate);
         ingredient.setText(ingredientsList);
 
     }
