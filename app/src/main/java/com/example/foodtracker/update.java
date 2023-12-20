@@ -29,11 +29,11 @@ public class update extends AppCompatActivity {
         String text1 = "";
         String text2 = "";
         for(int i = 0; i < allergens.size();i++){
-            text1 += allergens.get(i)+ ", ";
+            text1 += allergens.get(i)+ " ";
         }
         unwantedsText = findViewById(R.id.editTextTextUnwanteds);
         for(int i = 0; i < unwanteds.size();i++){
-            text2 += unwanteds.get(i)+ ", ";
+            text2 += unwanteds.get(i)+ " ";
         }
         allergensText.setText(text1);
         unwantedsText.setText(text2);
