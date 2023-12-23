@@ -28,14 +28,11 @@ public class dietDisplay extends AppCompatActivity {
     public TextView generateArea;
     Button button;
     static final String apiKey = "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";
-    private ActivityDietDisplayBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_display);
-
-
 
         Intent intent = getIntent();
         generateArea = findViewById(R.id.textGenerated);
@@ -59,7 +56,7 @@ public class dietDisplay extends AppCompatActivity {
                 URL url = new URL("https://api.openai.com/v1/chat/completions");
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
-                // Set request method and headers
+
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setRequestProperty("Content-Type", "application/json");
                 urlConnection.setRequestProperty("Authorization", "Bearer " + apiKey);
@@ -76,13 +73,13 @@ public class dietDisplay extends AppCompatActivity {
                         "  \"max_tokens\": 150\n" +
                         "}";
 
-                // Write JSON payload to the request
+
                 try (OutputStream os = urlConnection.getOutputStream()) {
                     byte[] input = jsonInputString.getBytes("utf-8");
                     os.write(input, 0, input.length);
                 }
 
-                // Get the API response
+
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "utf-8"))) {
                     StringBuilder response = new StringBuilder();
                     String responseLine;
@@ -90,10 +87,8 @@ public class dietDisplay extends AppCompatActivity {
                         response.append(responseLine);
                     }
 
-                    // Parse the JSON response
                     JSONObject jsonResponse = new JSONObject(response.toString());
 
-                    // Extract the relevant content
                     JSONArray choicesArray = jsonResponse.getJSONArray("choices");
                     JSONObject firstChoice = choicesArray.getJSONObject(0);
                     JSONObject message = firstChoice.getJSONObject("message");

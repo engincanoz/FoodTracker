@@ -46,17 +46,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class    ocrScan extends AppCompatActivity {
+public class ocrScan extends AppCompatActivity {
 
-    //UI views
     private MaterialButton inputImageBtn;
     private MaterialButton recognizeTextBtn;
     private MaterialButton saveIngredientsButton;
-
     private Button cancelButton;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
-    private static final    String TAG = "MAIN_TAG";
+    private static final String TAG = "MAIN_TAG";
     private Uri imageUri = null;
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
@@ -121,10 +119,6 @@ public class    ocrScan extends AppCompatActivity {
 
                 Intent intent = new Intent(ocrScan.this,recycle.class);
 
-                // If you want to pass data to the new activity, you can use intent.putExtra()
-                // intent.putExtra("key", "value");
-
-                // Start the new activity
                 startActivity(intent);
 
             }
@@ -132,13 +126,11 @@ public class    ocrScan extends AppCompatActivity {
 
     }
     public static ArrayList<String> getList(String ingredients) {
-        // Split the ingredients string using commas as the delimiter
         String[] ingredientsArray = ingredients.split("[,\\s]+");
 
-        // Convert the array to an ArrayList
+
         ArrayList<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
 
-        // Remove leading and trailing whitespaces from each ingredient
         for (int i = 0; i < ingredientsList.size(); i++) {
             ingredientsList.set(i, ingredientsList.get(i).trim());
         }

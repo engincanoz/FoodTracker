@@ -19,18 +19,13 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 
 
-public class    dietHelp extends AppCompatActivity {
-   Context context;
-    ProductController controller;
-    //Product newProduct = new Product(null, null, null, null,null);
-    private Button saveIngredientsButton;
-    String ingredients;
-    //UI views
+public class dietHelp extends AppCompatActivity {
+    Context context;
     private MaterialButton inputImageBtn;
     private MaterialButton recognizeTextBtn;
     private ShapeableImageView imageIv;
     private EditText recognizedTextEt;
-    private static final    String TAG = "MAIN_TAG";
+    private static final String TAG = "MAIN_TAG";
     private Uri imageUri = null;
     private static final int CAMERA_REQUEST_CODE = 100;
     private static final int STORAGE_REQUEST_CODE = 101;
@@ -42,7 +37,6 @@ public class    dietHelp extends AppCompatActivity {
     String kgText ="";
 
     BottomNavigationView bottomNavigationView;
-    Button button;
     int kgValue = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +56,6 @@ public class    dietHelp extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 int selectedItemId = item.getItemId();
 
-                // Check if the selected item is already the current item
                 if (selectedItemId != bottomNavigationView.getSelectedItemId()) {
                     if (selectedItemId == R.id.dietHelp_icon) {
                         return true;
@@ -96,7 +89,7 @@ public class    dietHelp extends AppCompatActivity {
         radioButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gender = radioButton1.getText().toString(); // Set the selected option to a specific value
+                gender = radioButton1.getText().toString();
                 if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
                     generateButton.setEnabled(true);
                 } else {
@@ -132,7 +125,7 @@ public class    dietHelp extends AppCompatActivity {
         radioButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lifeStyle = "Current lifestyle is moderately active"; // Set the selected option to a specific value
+                lifeStyle = "Current lifestyle is moderately active";
                 if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
                     generateButton.setEnabled(true);
                 } else {
@@ -145,7 +138,7 @@ public class    dietHelp extends AppCompatActivity {
         radioButton6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lifeStyle = "current lifestyle is lightly active"; // Set the selected option to a specific value
+                lifeStyle = "current lifestyle is lightly active";
                 if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
                     generateButton.setEnabled(true);
                 } else {
@@ -159,7 +152,7 @@ public class    dietHelp extends AppCompatActivity {
         radioButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lifeStyle = "current lifestyle is highly active"; // Set the selected option to a specific value
+                lifeStyle = "current lifestyle is highly active";
                 if (gender != null && dietPlan != null && lifeStyle != null && !kgText.isEmpty()) {
                     generateButton.setEnabled(true);
                 } else {
@@ -170,7 +163,7 @@ public class    dietHelp extends AppCompatActivity {
         });
 
 
-        Button buttonDiet1 = findViewById(R.id.ProteinDiet); // Replace with your Button IDs
+        Button buttonDiet1 = findViewById(R.id.ProteinDiet);
         Button buttonDiet2 = findViewById(R.id.KetogenicDiet);
         Button buttonDiet3 = findViewById(R.id.WeightlossDiet);
         Button buttonDiet4 = findViewById(R.id.WeightGainDiet);
@@ -243,15 +236,15 @@ public class    dietHelp extends AppCompatActivity {
         EditText kgInput = findViewById(R.id.kgInput);
 
         kgInput.addTextChangedListener(new TextWatcher() {
-            @Override
+
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
-            @Override
+
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
-            @Override
+
             public void afterTextChanged(Editable editable) {
                 kgText = kgInput.getText().toString();
 
@@ -263,8 +256,6 @@ public class    dietHelp extends AppCompatActivity {
                 updatePromptText();
             }
         });
-
-
     }
     private void updatePromptText() {
         promptText = String.format("Generate a small(not much detailed) daily nutrition plan for morning, noon, and evening(by saying only the food not any advice in table structure) based on gender %s, lifestyle %s, diet plan %s, and weight %s. Give advices on what the user gonna eat in a day in standard. Emphasize the gender, kilo, diet pla and lifestyle" +
@@ -272,14 +263,10 @@ public class    dietHelp extends AppCompatActivity {
 
     }
     public void launchGenerate(View v){
-
         Intent i = new Intent(this, dietDisplay.class);
         i.putExtra("PROMPT", promptText);
         startActivity(i);
     }
-
-
-
 }
 
 

@@ -11,10 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ import java.util.Locale;
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
 
-    ProductRepository productRepository;
+    DatabaseHelper databaseHelper;
     private View.OnClickListener onItemClickListener;
 
     Activity activity;
@@ -41,7 +39,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         this.name = name;
         this.id = id;
         this.freshness = freshness;
-        productRepository = new ProductRepository(context);
+        databaseHelper = new DatabaseHelper(context);
     }
 
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -63,7 +61,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
 
                 int clickedId = id.get(clickedPosition);
 
-                Cursor cursor = productRepository.getProductData(clickedId);
+                Cursor cursor = databaseHelper.getProductData(clickedId);
                 int nameIndex = cursor.getColumnIndex("Name");
                 int freshnessIndex = cursor.getColumnIndex("Freshness");
                 int ingredientsIndex = cursor.getColumnIndex("Ingredients");
@@ -114,8 +112,8 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             return "Unknown";
         }
 
-        long oneDayMillis = 24 * 60 * 60 * 1000; // One day in milliseconds
-        long fiveDaysMillis = 5 * oneDayMillis; // Five days in milliseconds
+        long oneDayMillis = 24 * 60 * 60 * 1000;
+        long fiveDaysMillis = 5 * oneDayMillis;
 
         long remaining = expiration.getTime() - System.currentTimeMillis();
         if (remaining < oneDayMillis && remaining > 0) {
@@ -157,7 +155,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         public MyViewHolder(@NonNull View itemView, View.OnClickListener listener) {
             super(itemView);
 
-            parentLayout = itemView.findViewById(R.id.parentLayout); // Update to new ID
+            parentLayout = itemView.findViewById(R.id.parentLayout);
 
             freshmessText = itemView.findViewById(R.id.tvFreshness);
             nameText = itemView.findViewById(R.id.tvProductName);

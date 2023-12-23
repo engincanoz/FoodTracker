@@ -4,36 +4,25 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.foodtracker.databinding.ActivityRecycleBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
-import java.util.Currency;
 
 public class recycle extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    FloatingActionButton addButton;
     Recyclerviewadapter recyclerviewadapter;
-    ProductRepository productRepository;
+    DatabaseHelper databaseHelper;
     ArrayList<String> name, freshness;
     ArrayList<Integer> id;
     BottomNavigationView bottomNavigationView;
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle);
@@ -46,7 +35,7 @@ public class recycle extends AppCompatActivity {
         selectedItem.setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
+
             public boolean onNavigationItemSelected(MenuItem item) {
                 int selectedItemId = item.getItemId();
 
@@ -71,7 +60,7 @@ public class recycle extends AppCompatActivity {
                 return false;
             }
         });
-        productRepository = new ProductRepository(recycle.this);
+        databaseHelper = new DatabaseHelper(recycle.this);
         id = new ArrayList<>();
         name = new ArrayList<>();
 
@@ -84,7 +73,6 @@ public class recycle extends AppCompatActivity {
 
     }
 
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode ==1) {
@@ -93,7 +81,7 @@ public class recycle extends AppCompatActivity {
     }
 
     void storeData() {
-        Cursor cursor = productRepository.retrieveProductInfo();
+        Cursor cursor = databaseHelper.retrieveProductInfo();
 
             while( cursor.moveToNext()) {
                 id.add(cursor.getInt(0));

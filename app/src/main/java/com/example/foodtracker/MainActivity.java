@@ -5,14 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 public class MainActivity extends AppCompatActivity {
-    ProductRepository productRepository;
-    @Override
+    DatabaseHelper databaseHelper;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        productRepository = new ProductRepository(MainActivity.this);
-        if (productRepository.isDatabaseEmpty()) {
+        databaseHelper = new DatabaseHelper(MainActivity.this);
+        if (databaseHelper.isDatabaseEmpty()) {
             Intent intent = new Intent(MainActivity.this, login.class);
             startActivity(intent);
         }
