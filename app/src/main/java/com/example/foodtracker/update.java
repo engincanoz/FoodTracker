@@ -27,15 +27,11 @@ public class update extends AppCompatActivity {
         ArrayList<String> allergens = userAllergensAndUnwanteds.first;
         ArrayList<String> unwanteds = userAllergensAndUnwanteds.second;
         allergensText = findViewById(R.id.editTextTextAllergens);
-        String text1 = "";
-        String text2 = "";
-        for(int i = 0; i < allergens.size();i++){
-            text1 += allergens.get(i)+ " ";
-        }
+        String text1 = getAllergensAsText(allergens);
+        String text2 = getUnwantedsAsText(unwanteds);
+
         unwantedsText = findViewById(R.id.editTextTextUnwanteds);
-        for(int i = 0; i < unwanteds.size();i++){
-            text2 += unwanteds.get(i)+ " ";
-        }
+
         allergensText.setText(text1);
         unwantedsText.setText(text2);
 
@@ -64,11 +60,27 @@ public class update extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(update.this,recycle.class);
+                Intent intent = new Intent(update.this,MyProducts.class);
 
                 startActivity(intent);
 
             }
         });
     }
+
+    private static String getAllergensAsText(ArrayList<String> allergens) {
+        String text = "";
+        for(int i = 0; i < allergens.size();i++){
+            text += allergens.get(i)+ " ";
+        }
+        return text;
+    }
+    private static String getUnwantedsAsText(ArrayList<String> unwanteds) {
+        String text = "";
+        for(int i = 0; i < unwanteds.size();i++){
+            text += unwanteds.get(i)+ " ";
+        }
+        return text;
+    }
+
 }

@@ -46,6 +46,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// Some parts of this code are taken from https://youtu.be/1wewsm0Av98?si=zWhkj5-QCdUqQMY0
+
 public class ocrScan extends AppCompatActivity {
 
     private MaterialButton inputImageBtn;
@@ -117,7 +119,7 @@ public class ocrScan extends AppCompatActivity {
 
 
 
-                Intent intent = new Intent(ocrScan.this,recycle.class);
+                Intent intent = new Intent(ocrScan.this,MyProducts.class);
 
                 startActivity(intent);
 

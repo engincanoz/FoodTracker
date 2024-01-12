@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class recycle extends AppCompatActivity {
+public class MyProducts extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Recyclerviewadapter recyclerviewadapter;
@@ -60,16 +60,16 @@ public class recycle extends AppCompatActivity {
                 return false;
             }
         });
-        databaseHelper = new DatabaseHelper(recycle.this);
+        databaseHelper = new DatabaseHelper(MyProducts.this);
         id = new ArrayList<>();
         name = new ArrayList<>();
 
         freshness = new ArrayList<>();
         storeData();
 
-        recyclerviewadapter = new Recyclerviewadapter(recycle.this, this, name, id, freshness);
+        recyclerviewadapter = new Recyclerviewadapter(MyProducts.this, this, name, id, freshness);
         recyclerView.setAdapter(recyclerviewadapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(recycle.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MyProducts.this));
 
     }
 
@@ -89,5 +89,4 @@ public class recycle extends AppCompatActivity {
                 freshness.add(cursor.getString(2));
         }
     }
-
 }

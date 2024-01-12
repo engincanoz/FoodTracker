@@ -80,7 +80,6 @@ public class addProduct extends AppCompatActivity {
 
     }
 
-
     private String determineFreshness(String expirationDate) {
         java.sql.Date expiration = parseSqlDate(expirationDate);
 

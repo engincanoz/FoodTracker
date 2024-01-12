@@ -1,0 +1,10 @@
+Group Meeting Dates and What is Done at Each Meeting:
+September 27, 2023 -> Deciding the aim and features of the project.
+October 10, 2023 -> Finalizing the decisions on the requirements for the project (technologies, features, libraries that will be used, etc.).
+November 5, 2023 -> Discussing the superficial view of the main aspects of the project, i.e., basics of the UI design. Additionally, revision of the needs for the project.
+November 27, 2023 -> Deciding on how the hierarchy of the classes should be in a detailed manner, who should be responsible for which features' and technologies' implementation and integration, and improvements on the planned user interface.
+December 5, 2023 -> Everyone revised others' implementations so far, and the potential unparallel progressions among the members are prevented.
+December 12, 2023 -> Each group member reported their progress, and the roadmap to the finalization of the project is created.
+December 19, 2023 -> Final tests for the working application are conducted to ensure that there is no problem that is overlooked. 
+
+

@@ -40,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Upload Failed", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Added successfully", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(context, recycle.class);
+            Intent intent = new Intent(context, MyProducts.class);
             context.startActivity(intent);
         }
     }

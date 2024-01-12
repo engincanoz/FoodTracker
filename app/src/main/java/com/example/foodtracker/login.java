@@ -12,7 +12,9 @@ public class login extends AppCompatActivity {
     private EditText allergensditText;
     private EditText unwantedEditText;
 
-   DatabaseHelper databaseHelper;
+    private String allergens;
+    private String unwanteds;
+    DatabaseHelper databaseHelper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +27,17 @@ public class login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                databaseHelper = new DatabaseHelper(login.this);
-                String allergens = allergensditText.getText().toString();
-                String unwanteds = (unwantedEditText.getText().toString());
-                databaseHelper.insertOrUpdateUserData(allergens, unwanteds);
-                Intent intent = new Intent(login.this,recycle.class);
-                startActivity(intent);
+                saveData();
             }
         });
+    }
+
+    private void saveData(){
+        databaseHelper = new DatabaseHelper(login.this);
+        allergens = allergensditText.getText().toString();
+        unwanteds = (unwantedEditText.getText().toString());
+        databaseHelper.insertOrUpdateUserData(allergens, unwanteds);
+        Intent intent = new Intent(login.this,MyProducts.class);
+        startActivity(intent);
     }
 }

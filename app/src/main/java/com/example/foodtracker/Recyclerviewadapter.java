@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+// Some parts of this code are taken from this playlist: https://youtu.be/hJPk50p7xwA?si=GJMHo6RWzA72k09Q
 public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapter.MyViewHolder> {
     Context context;
 
@@ -28,8 +29,6 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
     public void setOnItemClickListener(View.OnClickListener listener) {
         this.onItemClickListener = listener;
     }
-
-
 
     ArrayList<String> name, freshness;
     ArrayList<Integer> id;
@@ -89,7 +88,7 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
                     String calculatedFreshness = determineFreshness(expirationDate);
                     Intent intent = new Intent(context, productx.class);
 
-                    // Pass the product data as extras to the new activity
+
                     intent.putExtra("productId", clickedId);
                     intent.putExtra("productName", name);
                     intent.putExtra("productFreshness", calculatedFreshness);
@@ -140,7 +139,6 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
         }
     }
 
-    @Override
     public int getItemCount() {
         return name.size();
     }
@@ -160,8 +158,6 @@ public class Recyclerviewadapter extends RecyclerView.Adapter<Recyclerviewadapte
             freshmessText = itemView.findViewById(R.id.tvFreshness);
             nameText = itemView.findViewById(R.id.tvProductName);
             idText = itemView.findViewById(R.id.ID);
-
-
         }
     }
 }
