@@ -3,9 +3,12 @@
 
 ### This application can be used by cloning the source code in a directory and running it with a proper application such as Android Studio. In order to make use of the diet help part, an OpenAI API (ChatGPT) key should be obtained. 
 
-[![My Skills](https://skillicons.dev/icons?i=java,androidstudio,gradle,sqlite&perline=50)](https://skillicons.dev)
+![My Skills](https://skillicons.dev/icons?i=java,androidstudio,gradle,sqlite&perline=50)
 
-![](https://github.com/engincanoz/FoodTracker/blob/main/ScreenShots%20Food%20Tracker.gif)
+<p align="center">
+    <img src="https://github.com/engincanoz/FoodTracker/blob/main/ScreenShots%20Food%20Tracker.gif" alt="">
+</p>
+
 
 
 
