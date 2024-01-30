@@ -6,7 +6,7 @@
 ![My Skills](https://skillicons.dev/icons?i=java,androidstudio,gradle,sqlite&perline=50)
 
 <p align="center">
-    <img src="https://github.com/engincanoz/FoodTracker/blob/main/ScreenShots%20Food%20Tracker.gif" alt="">
+    <img src="https://github.com/engincanoz/FoodTracker/blob/main/ScreenShots%20Food%20Tracker.gif" alt="" width = 250 height = 500>
 </p>
 
 
